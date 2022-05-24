@@ -1,0 +1,722 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LazuriteCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Intro这一部分是实验的课程阅读 Project 1简单的说是一些大概的介绍。值得一提的点：需要填写的代码    名称 解释    search.py Where all of your search algorithms will reside.   searchAgents.py Where all of your search-based agents will reside.   需要阅">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能 Pacman Walkthrough">
+<meta property="og:url" content="http://example.com/2022/03/28/ArtificialIntelligence/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD-Pacman-Walkthrough/index.html">
+<meta property="og:site_name" content="Lazurite&#39;s Blog.">
+<meta property="og:description" content="Intro这一部分是实验的课程阅读 Project 1简单的说是一些大概的介绍。值得一提的点：需要填写的代码    名称 解释    search.py Where all of your search algorithms will reside.   searchAgents.py Where all of your search-based agents will reside.   需要阅">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-28T11:01:46.000Z">
+<meta property="article:modified_time" content="2022-05-24T02:21:04.143Z">
+<meta property="article:author" content="LazuriteCoder">
+<meta property="article:tag" content="实验记录">
+<meta property="article:tag" content="人工智能">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>人工智能 Pacman Walkthrough - Lazurite&#39;s Blog.</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="人工智能 Pacman Walkthrough"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-28 19:01" pubdate>
+          2022年3月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">人工智能 Pacman Walkthrough</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>这一部分是实验的课程阅读 <a target="_blank" rel="noopener" href="https://inst.eecs.berkeley.edu/~cs188/fa20/project1/">Project 1</a><br>简单的说是一些大概的介绍。<br>值得一提的点：<br><strong>需要填写的代码</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>search.py</td>
+<td>Where all of your search algorithms will reside.</td>
+</tr>
+<tr>
+<td>searchAgents.py</td>
+<td>Where all of your search-based agents will reside.</td>
+</tr>
+</tbody></table>
+<p><strong>需要阅读的代码</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pacman.py</td>
+<td>The main file that runs Pacman games. This file describes a Pacman GameState type, which you use in this project.</td>
+</tr>
+<tr>
+<td>game.py</td>
+<td>The logic behind how the Pacman world works. This file describes several supporting types like AgentState, Agent, Direction, and Grid.</td>
+</tr>
+<tr>
+<td>util.py</td>
+<td>Useful data structures for implementing search algorithms.</td>
+</tr>
+</tbody></table>
+<p><strong>需要解决的问题</strong></p>
+<h2 id="代码阅读"><a href="#代码阅读" class="headerlink" title="代码阅读"></a>代码阅读</h2><h3 id="pacman-py"><a href="#pacman-py" class="headerlink" title="pacman.py"></a>pacman.py</h3><p>吃豆人游戏的主程序<br>首先是 Interface 部分，<br>这部分代码包含了一个 <code>GameState</code> 类，其中包含了一些关键的操作。</p>
+<p>至于 Hidden Secrets 既然说了不需要，就暂时放置吧！</p>
+<h3 id="game-py"><a href="#game-py" class="headerlink" title="game.py"></a>game.py</h3><p>吃豆人游戏的运行逻辑<br>这里给出了一个 Parts worth reading 的部分，那么这里来看一下吧！</p>
+<p>它包含了 <code>Agent</code>、<code>Directions</code>、<code>Configuration</code>、<code>AgentState</code>和<code>Grid</code> 这几个类，实现了 <code>reconstituteGrid</code> 函数。<br>class</p>
+<p><code>Agent</code>:<br>它表示了一个 <code>Agent</code> 必须定义一个 <code>getAction</code> 方法，这个 <code>getAction</code> 会从 <code>Directions</code> 返回</p>
+<p><code>Directions</code>:<br>定义了操作的方向，包括了面向左方和右方时的情况，并且有反转的情况。</p>
+<p><code>Configuration</code>:<br>关于某角色的信息，包含 <code>getPosition()</code>、<code>getDirection()</code> 和 <code>isInteger()</code> 方法。<br>有 <code>generateSuccessor()</code> 进行移动。</p>
+<p><code>AgentState</code>:<br>记录一个 <code>Agent</code> 的信息，提供 <code>copy()</code>、<code>getPostion()</code> 和 <code>getDirection()</code> 方法，很大程度上是来自上面的 <code>Configuration</code> 而实现的😀。</p>
+<p><code>Grid</code>:<br>一个列表支持的二维数组<br><del>好复杂！</del><br>关键在于 <code>asList()</code> 的理解。</p>
+<p>def<br><code>reconstituteGrid</code>: </p>
+<h3 id="util-py"><a href="#util-py" class="headerlink" title="util.py"></a>util.py</h3><p>搜索策略可以用到的数据结构<br>这里依次进行介绍：</p>
+<p><code>Stack</code>:<br>基础的 LIFO 栈结构，包含了 <code>push()</code>、<code>pop()</code>和 <code>isEmpty()</code> 这几个基本操作，如其名所示，不展开介绍。</p>
+<p><code>Queue</code>:<br>基础的 FIFO 队列结构，包含了 <code>push()</code>、<code>pop()</code>和 <code>isEmpty()</code> 这几个基本操作，如其名所示，不展开介绍。</p>
+<p><code>PriorityQueue</code>: 优先级队列，它允许对最低优先级的项目进行 O(1) 的访问。</p>
+<p><del>应该是用列表模拟堆实现的。</del><br>有 <code>self.heap</code> 和 <code>self.count</code> 这两个关键成员<br>它的操作如下：</p>
+<p><code>push()</code>: 大概是将自带优先级的东西 push 进去吧</p>
+<p><code>pop()</code>: 基本的 pop 操作</p>
+<p><code>isEmpty()</code>: 基本的 isEmpty 操作</p>
+<p><code>update()</code>: 如果需要 update 的 item 已经在队列里了，并且此 item 优先级比队列里的高，那么更新优先级，并且重建堆，否则不变，如果里面没有 item，就和 push 操作一样。</p>
+<p><code>PriorityQueueWithFunction</code>:</p>
+<p><code>manhattanDistance</code>: 求曼哈顿距离</p>
+<h2 id="代码完成思路"><a href="#代码完成思路" class="headerlink" title="代码完成思路"></a>代码完成思路</h2><p>处于对知识产权的保护，这里不会具体的列出解法，仅仅是保留一些个人在做实验中留下来的 tips。</p>
+<h3 id="search-py"><a href="#search-py" class="headerlink" title="search.py"></a>search.py</h3><p>待实现的搜索算法，q1~q4<br>前面几个基本的搜索还是比较简单</p>
+<h3 id="searchAgents-py"><a href="#searchAgents-py" class="headerlink" title="searchAgents.py"></a>searchAgents.py</h3><p>待实现的智能体和相关 Problem，q5~q8<br>q5. 看得懂并实现 <code>CornersProblem()</code>，基本上是一些基础内容，需要注意的是，如果设置用于保存是否访问角落的 <code>close_list</code> 不应存在于类中，应该随时随着 <code>state</code> 更新，不然检测 close 表时就会造成访问某位置的节点已经访问过，但是会卡在小巷里无法回头，将是否访问了角落的节点与状态一起维护，可以保证有退路。</p>
+<p>q6. 不难</p>
+<p>q7. 不难</p>
+<p>q8. 不难</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一次写这样的记录，还挺不成熟的，再接再厉！</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="category-chain-item">人工智能</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/">#实验记录</a>
+      
+        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">#人工智能</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>人工智能 Pacman Walkthrough</div>
+      <div>http://example.com/2022/03/28/ArtificialIntelligence/人工智能-Pacman-Walkthrough/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LazuriteCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

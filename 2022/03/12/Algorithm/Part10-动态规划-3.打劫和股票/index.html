@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LazuriteCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Intro打家劫舍打劫问题就是注意维护选择当前点的状态和不选择当前点的状态即可。 股票其实贪心挺好用，但是这里可以考虑学学动态规划版本，用于对属性动态规划。 Example打家劫舍打家劫舍还是比较基础，主要需要想明白动态规划转移该如何进行即可。 很自然的，因为不能选择两间紧挨着的房屋行动，所以考虑的情况一般都是隔一间行动，就可以知道一个状态必然会与 dp[i-2] + nums[i] 即直接跳过一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part10 动态规划 打劫和股票">
+<meta property="og:url" content="http://example.com/2022/03/12/Algorithm/Part10-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-3.%E6%89%93%E5%8A%AB%E5%92%8C%E8%82%A1%E7%A5%A8/index.html">
+<meta property="og:site_name" content="Lazurite&#39;s Blog.">
+<meta property="og:description" content="Intro打家劫舍打劫问题就是注意维护选择当前点的状态和不选择当前点的状态即可。 股票其实贪心挺好用，但是这里可以考虑学学动态规划版本，用于对属性动态规划。 Example打家劫舍打家劫舍还是比较基础，主要需要想明白动态规划转移该如何进行即可。 很自然的，因为不能选择两间紧挨着的房屋行动，所以考虑的情况一般都是隔一间行动，就可以知道一个状态必然会与 dp[i-2] + nums[i] 即直接跳过一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-12T03:09:46.000Z">
+<meta property="article:modified_time" content="2022-05-24T02:21:04.027Z">
+<meta property="article:author" content="LazuriteCoder">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Part10 动态规划 打劫和股票 - Lazurite&#39;s Blog.</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Part10 动态规划 打劫和股票"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-12 11:09" pubdate>
+          2022年3月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Part10 动态规划 打劫和股票</h1>
+            
+            <div class="markdown-body">
+              
+              <h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><h4 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍"></a>打家劫舍</h4><p>打劫问题就是注意维护选择当前点的状态和不选择当前点的状态即可。</p>
+<h4 id="股票"><a href="#股票" class="headerlink" title="股票"></a>股票</h4><p>其实贪心挺好用，但是这里可以考虑学学动态规划版本，用于对属性动态规划。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><h4 id="打家劫舍-1"><a href="#打家劫舍-1" class="headerlink" title="打家劫舍"></a>打家劫舍</h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/">打家劫舍</a><br>还是比较基础，主要需要想明白动态规划转移该如何进行即可。</p>
+<p>很自然的，因为不能选择两间紧挨着的房屋行动，所以考虑的情况一般都是隔一间行动，就可以知道一个状态必然会与 <code>dp[i-2] + nums[i]</code> 即直接跳过一间进行操作有关，但是如果仅仅这么操作并不能够完成处理子问题的需求，比如下面的那种情况：</p>
+<table>
+<thead>
+<tr>
+<th><code>nums[]</code></th>
+<th>1</th>
+<th>1</th>
+<th>3</th>
+<th>1</th>
+<th>1</th>
+<th>9</th>
+<th>1</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dp[]</code></td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>4+1&#x3D;5</td>
+<td>4+9&#x3D;13</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>可以看出，在 i&#x3D;3 时，很显然最优策略是选择 i&#x3D;0, i&#x3D;2 的方案，即其实根本没有选择要对这个位置操作，那么我们就可以得知另一个可行状态：<code>dp[i-1]</code>，即这一格不得行，不如直接多跳一格。<br>于是就有了 <code>dp[i] = max(dp[i-1], dp[i-2]+nums[i])</code> 的逻辑。<br>剩下的部分就很简单啦！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> Math.max(nums[<span class="hljs-number">0</span>], nums[<span class="hljs-number">1</span>]);<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n+<span class="hljs-number">1</span>];<br>        dp[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>];<br>        dp[<span class="hljs-number">1</span>] = Math.max(nums[<span class="hljs-number">0</span>], nums[<span class="hljs-number">1</span>]);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt; nums.length; i++) &#123;<br>            dp[i] = Math.max(dp[i-<span class="hljs-number">2</span>] + nums[i], dp[i-<span class="hljs-number">1</span>]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n-<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber-ii/">打家劫舍 II</a><br>变成环形的了，但是同理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">return</span> Math.max(subrob(nums, <span class="hljs-number">0</span>, nums.length-<span class="hljs-number">2</span>), subrob(nums, <span class="hljs-number">1</span>, nums.length-<span class="hljs-number">1</span>));<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">subrob</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>        <span class="hljs-comment">// x = dp[i-2], y = dp[i-1]</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>, z = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> start; i &lt;= end; i++) &#123;<br>            y = z;  <span class="hljs-comment">// same as y = dp[i-1]</span><br>            z = Math.max(y, x + nums[i]);<br>            x = y;  <span class="hljs-comment">// same as x = dp[i-2]</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> z;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber-iii/">打家劫舍 III</a><br><del>真能偷啊，偷到二叉树来了，原本想一次遍历的，结果被狠狠地整蛊到了</del><br>思路：如果选了一个点，那么它的左右就不能选了，得选择左右节点的未选择左右节点的部分。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-type">int</span>[] res = subrob(root);<br>        <span class="hljs-keyword">return</span> Math.max(res[<span class="hljs-number">0</span>], res[<span class="hljs-number">1</span>]);<br>    &#125;<br><br>    <span class="hljs-type">int</span>[] subrob(TreeNode root) &#123;<br>        <span class="hljs-type">int</span> res[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">return</span> res;<br><br>        <span class="hljs-type">int</span>[] left = subrob(root.left);<br>        <span class="hljs-type">int</span>[] right = subrob(root.right);<br><br>        <span class="hljs-comment">// 不选择当前点</span><br>        res[<span class="hljs-number">0</span>] = Math.max(left[<span class="hljs-number">0</span>], left[<span class="hljs-number">1</span>]) + Math.max(right[<span class="hljs-number">0</span>], right[<span class="hljs-number">1</span>]);<br>        <span class="hljs-comment">// 选择当前点</span><br>        res[<span class="hljs-number">1</span>] = root.val + left[<span class="hljs-number">0</span>] + right[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="股票-1"><a href="#股票-1" class="headerlink" title="股票"></a>股票</h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">买卖股票的最佳时机</a><br>首先来一个经典贪心：<br>直接取最大区间利润！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">low</span> <span class="hljs-operator">=</span> prices[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> price : prices) &#123;<br>            low = low &lt; price ? low : price;<br>            res = Math.max(res, price-low);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a><br>虽然贪心很方便，但是这次是动态规划版。<br>因为只对一只股票操作，而且状态是按照时间（一天）为单位而变化的，所以可以只记录当天和前一天，动态规划数组可以只开两行！<br>同样的，一天的操作只有卖出和持有，动态规划数组只开两列。用 0 表示持有，用 1 表示不持有!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-type">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>];<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = -prices[<span class="hljs-number">0</span>]; <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; prices.length; i++) &#123;<br>            dp[i % <span class="hljs-number">2</span>][<span class="hljs-number">0</span>] = Math.max(dp[(i - <span class="hljs-number">1</span>) % <span class="hljs-number">2</span>][<span class="hljs-number">0</span>], dp[(i - <span class="hljs-number">1</span>) % <span class="hljs-number">2</span>][<span class="hljs-number">1</span>] - prices[i]);<br>            dp[i % <span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = Math.max(dp[(i - <span class="hljs-number">1</span>) % <span class="hljs-number">2</span>][<span class="hljs-number">1</span>], prices[i] + dp[(i - <span class="hljs-number">1</span>) % <span class="hljs-number">2</span>][<span class="hljs-number">0</span>]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[(prices.length-<span class="hljs-number">1</span>)%<span class="hljs-number">2</span>][<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/">买卖股票的最佳时机 III</a><br>这个好复杂……<br>要不断记录每天的状态，还要进行操作更新。<br>状态：<br><code>dp[0]</code>: Do nothing.<br><code>dp[1]</code>: 第一次买入<br><code>dp[2]</code>: 第一次卖出<br><code>dp[3]</code>: 第二次买入<br><code>dp[4]</code>: 第二次卖出<br>直接按顺序操作，保证了就算是什么都不做也能够保存状态到 <code>dp[4]</code> 中。<br>假如最优是什么都不买，那么 <code>dp[1]</code> 和 <code>dp[3]</code> 将会保持一个始终小于的状态，<code>dp[2]</code> 和 <code>dp[3]</code> 也一直保持为零。</p>
+<p>假如最优是只操作一次，那么必然是在一个低价买入，一个高价卖出。那么 <code>dp[2]</code> 必然是保持了一个 <strong>卖出 - 买入</strong> 的差值最大的状态，而且之前也没有能够进行获利，后续也无法满足再有一次能够收取利润的状态，即为：股价一路下跌，只涨了一次，之后又是一路下跌的状态！那么，对变量进行一个命名吧！规定：</p>
+<p>$price_{min}$ 股票一开始就下跌的最低点，也是由跌转涨的转折点；<br>$price_{max}$ 股票唯一一次上涨的最高的，也是由涨转跌的转折点；</p>
+<p>所以无论如何，<code>dp[3]</code> 只能为 $price_{max} - price_{min} - price_{下跌}$ 这一状态下，能取到的只能在最后一个点。</p>
+<p>（不可能为初值，因为如果初值是最大值的情况下：<br>$price_{begin} &#x3D; price_{min}$，此时 $dp[3] &#x3D; -price_{min}$，<br>在最后一个点有：<br>$price_{max} - price_{min} - price_{end} \ &#x3D; (price_{max} - price_{end}) - price_{begin}$<br>它如果要取最小值，就得有 $price{end} &#x3D; price_{max}$ ，<br>也就是说，就算它的结果是初值，它也和最后一个点的值相同），所以 <code>dp[4]</code> 就能够忠诚地记录下<br>$dp[3] + price &#x3D; dp[2] - price + price &#x3D; dp[2]$ 的值。</p>
+<p>如果是操作了两次，分析过程类似，暂时不赘述了。<br>（第一次进行买入卖出操作时的初值为 0，之后的初值为前面的买入卖出操作的最大值）<br>结果代码写出来那么简洁哇…</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">5</span>];<br>        dp[<span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>];<br>        dp[<span class="hljs-number">3</span>] = -prices[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> price : prices) &#123;<br>            dp[<span class="hljs-number">1</span>] = Math.max(dp[<span class="hljs-number">1</span>], dp[<span class="hljs-number">0</span>] - price);<br>            dp[<span class="hljs-number">2</span>] = Math.max(dp[<span class="hljs-number">2</span>], dp[<span class="hljs-number">1</span>] + price);<br>            dp[<span class="hljs-number">3</span>] = Math.max(dp[<span class="hljs-number">3</span>], dp[<span class="hljs-number">2</span>] - price);<br>            dp[<span class="hljs-number">4</span>] = Math.max(dp[<span class="hljs-number">4</span>], dp[<span class="hljs-number">3</span>] + price);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">4</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/">买卖股票的最佳时机 IV</a><br>这次是 k 笔交易了😨😨😨<br>其实可以把上面的那一题当成 k &#x3D; 2 把这个泛化一下就好了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span> k, <span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-keyword">if</span>(prices.length == <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(k == <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br><br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[ (k &lt;&lt; <span class="hljs-number">1</span>)];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; dp.length; i += <span class="hljs-number">2</span>) &#123;<br>            dp[i] = -prices[<span class="hljs-number">0</span>];<br>        &#125;<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> price : prices) &#123;<br>            dp[<span class="hljs-number">0</span>] = Math.max(dp[<span class="hljs-number">0</span>], -price);<br>            dp[<span class="hljs-number">1</span>] = Math.max(dp[<span class="hljs-number">1</span>], dp[<span class="hljs-number">0</span>] + price);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt; dp.length; i += <span class="hljs-number">2</span>) &#123;<br>                dp[i] = Math.max(dp[i], dp[i-<span class="hljs-number">1</span>] - price);<br>                dp[i+<span class="hljs-number">1</span>] = Math.max(dp[i+<span class="hljs-number">1</span>], dp[i] + price);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[dp.length-<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">最佳买卖股票时机含冷冻期</a><br>冷冻期都来了…<br>其实吧还是处理状态的问题……<br>一般来说有三种操作——卖出、等待好价和有股（包括昨日买入和啥都没做单纯抱着股票等着卖）。设为 0, 1, 2。</p>
+<table>
+<thead>
+<tr>
+<th>yesterday</th>
+<th>today</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>卖出</td>
+<td>冷冻</td>
+</tr>
+<tr>
+<td>等待好价</td>
+<td>买入（变成有股） &#x2F; 等待</td>
+</tr>
+<tr>
+<td>有股等卖</td>
+<td>卖出 &#x2F; 继续有股</td>
+</tr>
+<tr>
+<td>所以有状态转移：</td>
+<td></td>
+</tr>
+<tr>
+<td>$dp[i][0] &#x3D; do[i-1][2] + price \ dp[i][1] &#x3D; max(dp[i-1][1], do[i-1][0]) \ dp[i][2] &#x3D; max(dp[i-1][1] - price, dp[i-1][2])$</td>
+<td></td>
+</tr>
+<tr>
+<td>接下来实现就可以了，不过最后的时候需要考虑一下在最后几天的时候究竟是卖出去赚，还是早就卖出去了才是赚的。</td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>];<br>        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>        dp[<span class="hljs-number">2</span>] = -prices[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> price : prices) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">tmp0</span> <span class="hljs-operator">=</span> dp[<span class="hljs-number">0</span>];<br>            <span class="hljs-type">int</span> <span class="hljs-variable">tmp1</span> <span class="hljs-operator">=</span> dp[<span class="hljs-number">1</span>];<br>            dp[<span class="hljs-number">0</span>] = dp[<span class="hljs-number">2</span>] + price;<br>            dp[<span class="hljs-number">1</span>] = Math.max(dp[<span class="hljs-number">1</span>], tmp0);<br>            dp[<span class="hljs-number">2</span>] = Math.max(tmp1 - price, dp[<span class="hljs-number">2</span>]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> Math.max(dp[<span class="hljs-number">0</span>], dp[<span class="hljs-number">1</span>]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">买卖股票的最佳时机含手续费</a><br>基本操作加上一个减去手续费即可了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices, <span class="hljs-type">int</span> fee)</span> &#123;<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>];<br>        dp[<span class="hljs-number">0</span>] = -prices[<span class="hljs-number">0</span>];<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> price : prices) &#123;<br>            dp[<span class="hljs-number">0</span>] = Math.max(dp[<span class="hljs-number">0</span>], dp[<span class="hljs-number">1</span>] - price);<br>            dp[<span class="hljs-number">1</span>] = Math.max(dp[<span class="hljs-number">1</span>], dp[<span class="hljs-number">0</span>] + price - fee);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>但是怎么比贪心用时超了这么多…<br>对比贪心的话，发现应该是操作太多了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices, <span class="hljs-type">int</span> fee)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">buy</span> <span class="hljs-operator">=</span> prices[<span class="hljs-number">0</span>] + fee;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> p : prices) &#123;<br>            <span class="hljs-keyword">if</span> (p + fee &lt; buy) &#123;<br>                buy = p + fee;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p &gt; buy)&#123;<br>                sum += p - buy;<br>                buy = p;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><h4 id="打家劫舍-2"><a href="#打家劫舍-2" class="headerlink" title="打家劫舍"></a>打家劫舍</h4><p>打劫问题的思路就在于把握住两状态：<strong>选择当前点</strong>和<strong>不选择当前点</strong>。<br>按照这样的逻辑进行状态维护就可以了。</p>
+<h4 id="股票-2"><a href="#股票-2" class="headerlink" title="股票"></a>股票</h4><p>主要要知道需要维护很多很多状态和知道状态要怎么变化。<br>很多时候最好是把状态都列出来，宁可多列得详细一些，最后在合并化简，也不要直接简化。。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Part10 动态规划 打劫和股票</div>
+      <div>http://example.com/2022/03/12/Algorithm/Part10-动态规划-3.打劫和股票/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LazuriteCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月12日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/13/Algorithm/Part10-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-4.%E5%AD%90%E5%BA%8F%E5%88%97/" title="Part10 动态规划 子序列">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Part10 动态规划 子序列</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/10/Algorithm/Part10-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-2.%E8%83%8C%E5%8C%85/" title="Part10 动态规划 背包">
+                        <span class="hidden-mobile">Part10 动态规划 背包</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
