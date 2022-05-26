@@ -24,7 +24,7 @@
 <meta property="og:description" content="Intro在写今天的每日一题的时候正好碰到了线段树，总之记录一下吧！区域和检索 - 数组可修改 MainBasicInfo其实这一个如果什么都不想的话，就很想直接一个模拟操作上去做了，但是如果它频繁的进行一些操作，那么简简单单的实现就很容易超时，所以这里使用线段树进行操作！首先就迎来了一个问题：什么是线段树？线段树是一种常用的用来维护 区间信息 的数据结构。线段树可以在 $O(logN)$ 的时间">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-04T00:28:17.000Z">
-<meta property="article:modified_time" content="2022-05-24T02:21:04.035Z">
+<meta property="article:modified_time" content="2022-05-26T01:38:31.534Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary_large_image">
@@ -287,7 +287,7 @@
 <li>区间修改</li>
 <li>区间查询（区间求和，求区间最大值，求区间最小值）<br>可以看出来，单点修改是普通的树就具有的特征，但是这两个区间的操作是线段树的优势地段。<br>接下来是一些与近世代数有关的性质<br>线段树维护的信息其实可以认为是满足了（幺）半群的一些特征</li>
 <li>一个幺半群 $M &#x3D; (S, \circ, e)$ 所具有的特质：<ul>
-<li>封闭性：$\forall x \in S,\ \forall y in S.\ x \circ y in S$</li>
+<li>封闭性：$\forall x \in S,\ \forall y \in S.\ x \circ y \in S$</li>
 <li>结合律：$\forall x, y, z \in S, (x \circ y) \circ z &#x3D; x \circ (y \circ z)$</li>
 <li>幺元：$\exists e \in S, \forall x \in S$，如果 $e \circ x &#x3D; x$，则 $e$ 为左幺元，或 $x \circ e &#x3D; x$，则为右幺元<br><del>近世代数真没白学，好啊！</del></li>
 </ul>
