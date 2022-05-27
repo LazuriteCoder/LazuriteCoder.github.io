@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络使用例.png">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络全联合概率计算.png">
 <meta property="article:published_time" content="2022-04-13T08:23:31.000Z">
-<meta property="article:modified_time" content="2022-05-27T03:14:39.861Z">
+<meta property="article:modified_time" content="2022-05-27T03:16:06.017Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="不确定性推理">
@@ -405,7 +405,9 @@ CF_{1,2,3}(H) = \dfrac{CF_{1,2}(H)+CF_3(H)}{1-min\{|CF_{1,2}(H)|,|CF_3(H)|\}}=\d
 <p>不确定性的更新： - 证据当前观察下肯定为真 <span class="math inline">\(O(H|E) = LS \times O(H) \\ P(H|E) = \dfrac{LS \times P(H)}{(LS-1) \times P(H) + 1}\)</span></p>
 <ul>
 <li><p>证据当前观察下肯定为假 <span class="math inline">\(O(H|\neg E) = N \times O(H) \\ P(H|\neg E) = \dfrac{LN \times P(H)}{(LN-1) \times P(H) + 1}\)</span></p></li>
-<li><p>证据当前观察下非真非假 <span class="math inline">\(P(H|S)=P(H|E)P(E|S)+P(H|\neg E)P(\neg E|S)\)</span> 分不同情况有： <span class="math inline">\(P(E|S) = 1 \\ P(E|S) = P(H|E) = \dfrac{LS \times P(H)}{(LS - 1) \times P(H) + 1}\)</span> <span class="math inline">\(P(E|S) = 0 \\ P(E|S) = P(H|\neg E) = \dfrac{LS \times P(H)}{(LS-1) \times P(H) + 1}\)</span> <span class="math inline">\(P(E|S) = P(E) \\ P(E|S) = P(H|E)P(E|S)+P(H|\neg E)P(\neg E|S) \\ = P(HE|E)P(E) + P(H|\neg E)P(\neg E) = P(H)\)</span> <span class="math inline">\(P(E|S) 为其他值，可以通过上面三个特殊点的分段插值函数求得 \\ P(H|S) = \left\{ \begin{array}{l} P(H|\neg E) + \dfrac{P(H)-P(H|\neg E)}{P(E)} \times P(E|S) &amp; 0 \le P(E|S) &lt; P(E) \\ P(H) + \dfrac{P(H|E) - P(H)}{ 1-P(E)} \times [P(E|S) - P(E)] &amp; P(E) \le P(E|S) \le 1 \end{array} \right.\)</span></p></li>
+<li><p>证据当前观察下非真非假 <span class="math inline">\(P(H|S)=P(H|E)P(E|S)+P(H|\neg E)P(\neg E|S)\)</span> 分不同情况有： <span class="math inline">\(P(E|S) = 1 \\ P(E|S) = P(H|E) = \dfrac{LS \times P(H)}{(LS - 1) \times P(H) + 1}\)</span> <span class="math inline">\(P(E|S) = 0 \\ P(E|S) = P(H|\neg E) = \dfrac{LS \times P(H)}{(LS-1) \times P(H) + 1}\)</span> <span class="math inline">\(P(E|S) = P(E) \\ P(E|S) = P(H|E)P(E|S)+P(H|\neg E)P(\neg E|S) \\ = P(HE|E)P(E) + P(H|\neg E)P(\neg E) = P(H)\)</span> <span class="math inline">\(P(E|S)\)</span> 为其他值，可以通过上面三个特殊点的分段插值函数求得 <span class="math display">\[
+P(H|S) = \left\{ \begin{array}{l} P(H|\neg E) + \dfrac{P(H)-P(H|\neg E)}{P(E)} \times P(E|S) &amp; 0 \le P(E|S) &lt; P(E) \\ P(H) +  \dfrac{P(H|E) - P(H)}{ 1-P(E)} \times [P(E|S) - P(E)] &amp; P(E) \le P(E|S) \le 1 \end{array} \right.
+\]</span></p></li>
 </ul>
 <h3 id="主观-bayes-推理的例子">主观 Bayes 推理的例子</h3>
 <p>设有规则： $$ \begin{array}{l}</p>
