@@ -16,12 +16,12 @@
   <meta name="author" content="LazuriteCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Intro这一部分是实验的课程阅读 Project 1简单的说是一些大概的介绍。值得一提的点：需要填写的代码    名称 解释    search.py Where all of your search algorithms will reside.   searchAgents.py Where all of your search-based agents will reside.   需要阅">
+    <meta name="description" content="Intro 这一部分是实验的课程阅读 Project 1 简单的说是一些大概的介绍。 值得一提的点： 需要填写的代码 |名称|解释| |-|-| |search.py| Where all of your search algorithms will reside.| |searchAgents.py| Where all of your search-based agents will resi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工智能 Pacman Walkthrough">
 <meta property="og:url" content="http://example.com/2022/03/28/ArtificialIntelligence/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD-Pacman-Walkthrough/index.html">
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
-<meta property="og:description" content="Intro这一部分是实验的课程阅读 Project 1简单的说是一些大概的介绍。值得一提的点：需要填写的代码    名称 解释    search.py Where all of your search algorithms will reside.   searchAgents.py Where all of your search-based agents will reside.   需要阅">
+<meta property="og:description" content="Intro 这一部分是实验的课程阅读 Project 1 简单的说是一些大概的介绍。 值得一提的点： 需要填写的代码 |名称|解释| |-|-| |search.py| Where all of your search algorithms will reside.| |searchAgents.py| Where all of your search-based agents will resi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-28T11:01:46.000Z">
 <meta property="article:modified_time" content="2022-05-24T02:21:04.143Z">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.9k 字
         
       </span>
     
@@ -281,73 +281,44 @@
             
             <div class="markdown-body">
               
-              <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>这一部分是实验的课程阅读 <a target="_blank" rel="noopener" href="https://inst.eecs.berkeley.edu/~cs188/fa20/project1/">Project 1</a><br>简单的说是一些大概的介绍。<br>值得一提的点：<br><strong>需要填写的代码</strong></p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>search.py</td>
-<td>Where all of your search algorithms will reside.</td>
-</tr>
-<tr>
-<td>searchAgents.py</td>
-<td>Where all of your search-based agents will reside.</td>
-</tr>
-</tbody></table>
-<p><strong>需要阅读的代码</strong></p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pacman.py</td>
-<td>The main file that runs Pacman games. This file describes a Pacman GameState type, which you use in this project.</td>
-</tr>
-<tr>
-<td>game.py</td>
-<td>The logic behind how the Pacman world works. This file describes several supporting types like AgentState, Agent, Direction, and Grid.</td>
-</tr>
-<tr>
-<td>util.py</td>
-<td>Useful data structures for implementing search algorithms.</td>
-</tr>
-</tbody></table>
+              <h2 id="intro">Intro</h2>
+<p>这一部分是实验的课程阅读 <a target="_blank" rel="noopener" href="https://inst.eecs.berkeley.edu/~cs188/fa20/project1/">Project 1</a> 简单的说是一些大概的介绍。 值得一提的点： <strong>需要填写的代码</strong> |名称|解释| |-|-| |search.py| Where all of your search algorithms will reside.| |searchAgents.py| Where all of your search-based agents will reside.|</p>
+<p><strong>需要阅读的代码</strong> |名称|解释| |-|-| |pacman.py|The main file that runs Pacman games. This file describes a Pacman GameState type, which you use in this project.| |game.py|The logic behind how the Pacman world works. This file describes several supporting types like AgentState, Agent, Direction, and Grid.| |util.py|Useful data structures for implementing search algorithms.|</p>
 <p><strong>需要解决的问题</strong></p>
-<h2 id="代码阅读"><a href="#代码阅读" class="headerlink" title="代码阅读"></a>代码阅读</h2><h3 id="pacman-py"><a href="#pacman-py" class="headerlink" title="pacman.py"></a>pacman.py</h3><p>吃豆人游戏的主程序<br>首先是 Interface 部分，<br>这部分代码包含了一个 <code>GameState</code> 类，其中包含了一些关键的操作。</p>
+<h2 id="代码阅读">代码阅读</h2>
+<h3 id="pacman.py">pacman.py</h3>
+<p>吃豆人游戏的主程序 首先是 Interface 部分， 这部分代码包含了一个 <code>GameState</code> 类，其中包含了一些关键的操作。</p>
 <p>至于 Hidden Secrets 既然说了不需要，就暂时放置吧！</p>
-<h3 id="game-py"><a href="#game-py" class="headerlink" title="game.py"></a>game.py</h3><p>吃豆人游戏的运行逻辑<br>这里给出了一个 Parts worth reading 的部分，那么这里来看一下吧！</p>
-<p>它包含了 <code>Agent</code>、<code>Directions</code>、<code>Configuration</code>、<code>AgentState</code>和<code>Grid</code> 这几个类，实现了 <code>reconstituteGrid</code> 函数。<br>class</p>
-<p><code>Agent</code>:<br>它表示了一个 <code>Agent</code> 必须定义一个 <code>getAction</code> 方法，这个 <code>getAction</code> 会从 <code>Directions</code> 返回</p>
-<p><code>Directions</code>:<br>定义了操作的方向，包括了面向左方和右方时的情况，并且有反转的情况。</p>
-<p><code>Configuration</code>:<br>关于某角色的信息，包含 <code>getPosition()</code>、<code>getDirection()</code> 和 <code>isInteger()</code> 方法。<br>有 <code>generateSuccessor()</code> 进行移动。</p>
-<p><code>AgentState</code>:<br>记录一个 <code>Agent</code> 的信息，提供 <code>copy()</code>、<code>getPostion()</code> 和 <code>getDirection()</code> 方法，很大程度上是来自上面的 <code>Configuration</code> 而实现的😀。</p>
-<p><code>Grid</code>:<br>一个列表支持的二维数组<br><del>好复杂！</del><br>关键在于 <code>asList()</code> 的理解。</p>
-<p>def<br><code>reconstituteGrid</code>: </p>
-<h3 id="util-py"><a href="#util-py" class="headerlink" title="util.py"></a>util.py</h3><p>搜索策略可以用到的数据结构<br>这里依次进行介绍：</p>
-<p><code>Stack</code>:<br>基础的 LIFO 栈结构，包含了 <code>push()</code>、<code>pop()</code>和 <code>isEmpty()</code> 这几个基本操作，如其名所示，不展开介绍。</p>
-<p><code>Queue</code>:<br>基础的 FIFO 队列结构，包含了 <code>push()</code>、<code>pop()</code>和 <code>isEmpty()</code> 这几个基本操作，如其名所示，不展开介绍。</p>
+<h3 id="game.py">game.py</h3>
+<p>吃豆人游戏的运行逻辑 这里给出了一个 Parts worth reading 的部分，那么这里来看一下吧！</p>
+<p>它包含了 <code>Agent</code>、<code>Directions</code>、<code>Configuration</code>、<code>AgentState</code>和<code>Grid</code> 这几个类，实现了 <code>reconstituteGrid</code> 函数。 class</p>
+<p><code>Agent</code>: 它表示了一个 <code>Agent</code> 必须定义一个 <code>getAction</code> 方法，这个 <code>getAction</code> 会从 <code>Directions</code> 返回</p>
+<p><code>Directions</code>: 定义了操作的方向，包括了面向左方和右方时的情况，并且有反转的情况。</p>
+<p><code>Configuration</code>: 关于某角色的信息，包含 <code>getPosition()</code>、<code>getDirection()</code> 和 <code>isInteger()</code> 方法。 有 <code>generateSuccessor()</code> 进行移动。</p>
+<p><code>AgentState</code>: 记录一个 <code>Agent</code> 的信息，提供 <code>copy()</code>、<code>getPostion()</code> 和 <code>getDirection()</code> 方法，很大程度上是来自上面的 <code>Configuration</code> 而实现的😀。</p>
+<p><code>Grid</code>: 一个列表支持的二维数组 <del>好复杂！</del> 关键在于 <code>asList()</code> 的理解。</p>
+<p>def <code>reconstituteGrid</code>:</p>
+<h3 id="util.py">util.py</h3>
+<p>搜索策略可以用到的数据结构 这里依次进行介绍：</p>
+<p><code>Stack</code>: 基础的 LIFO 栈结构，包含了 <code>push()</code>、<code>pop()</code>和 <code>isEmpty()</code> 这几个基本操作，如其名所示，不展开介绍。</p>
+<p><code>Queue</code>: 基础的 FIFO 队列结构，包含了 <code>push()</code>、<code>pop()</code>和 <code>isEmpty()</code> 这几个基本操作，如其名所示，不展开介绍。</p>
 <p><code>PriorityQueue</code>: 优先级队列，它允许对最低优先级的项目进行 O(1) 的访问。</p>
-<p><del>应该是用列表模拟堆实现的。</del><br>有 <code>self.heap</code> 和 <code>self.count</code> 这两个关键成员<br>它的操作如下：</p>
+<p><del>应该是用列表模拟堆实现的。</del> 有 <code>self.heap</code> 和 <code>self.count</code> 这两个关键成员 它的操作如下：</p>
 <p><code>push()</code>: 大概是将自带优先级的东西 push 进去吧</p>
 <p><code>pop()</code>: 基本的 pop 操作</p>
 <p><code>isEmpty()</code>: 基本的 isEmpty 操作</p>
 <p><code>update()</code>: 如果需要 update 的 item 已经在队列里了，并且此 item 优先级比队列里的高，那么更新优先级，并且重建堆，否则不变，如果里面没有 item，就和 push 操作一样。</p>
 <p><code>PriorityQueueWithFunction</code>:</p>
 <p><code>manhattanDistance</code>: 求曼哈顿距离</p>
-<h2 id="代码完成思路"><a href="#代码完成思路" class="headerlink" title="代码完成思路"></a>代码完成思路</h2><p>处于对知识产权的保护，这里不会具体的列出解法，仅仅是保留一些个人在做实验中留下来的 tips。</p>
-<h3 id="search-py"><a href="#search-py" class="headerlink" title="search.py"></a>search.py</h3><p>待实现的搜索算法，q1~q4<br>前面几个基本的搜索还是比较简单</p>
-<h3 id="searchAgents-py"><a href="#searchAgents-py" class="headerlink" title="searchAgents.py"></a>searchAgents.py</h3><p>待实现的智能体和相关 Problem，q5~q8<br>q5. 看得懂并实现 <code>CornersProblem()</code>，基本上是一些基础内容，需要注意的是，如果设置用于保存是否访问角落的 <code>close_list</code> 不应存在于类中，应该随时随着 <code>state</code> 更新，不然检测 close 表时就会造成访问某位置的节点已经访问过，但是会卡在小巷里无法回头，将是否访问了角落的节点与状态一起维护，可以保证有退路。</p>
+<h2 id="代码完成思路">代码完成思路</h2>
+<p>处于对知识产权的保护，这里不会具体的列出解法，仅仅是保留一些个人在做实验中留下来的 tips。 ### search.py 待实现的搜索算法，q1~q4 前面几个基本的搜索还是比较简单</p>
+<h3 id="searchagents.py">searchAgents.py</h3>
+<p>待实现的智能体和相关 Problem，q5~q8 q5. 看得懂并实现 <code>CornersProblem()</code>，基本上是一些基础内容，需要注意的是，如果设置用于保存是否访问角落的 <code>close_list</code> 不应存在于类中，应该随时随着 <code>state</code> 更新，不然检测 close 表时就会造成访问某位置的节点已经访问过，但是会卡在小巷里无法回头，将是否访问了角落的节点与状态一起维护，可以保证有退路。</p>
 <p>q6. 不难</p>
 <p>q7. 不难</p>
 <p>q8. 不难</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一次写这样的记录，还挺不成熟的，再接再厉！</p>
+<h2 id="总结">总结</h2>
+<p>第一次写这样的记录，还挺不成熟的，再接再厉！</p>
 
               
             </div>

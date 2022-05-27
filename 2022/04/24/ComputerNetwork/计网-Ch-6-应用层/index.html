@@ -16,12 +16,12 @@
   <meta name="author" content="LazuriteCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总览本章学习目标  掌握网络应用体系结构 理解网络应用通信原理 掌握域名系统及域名解析过程 掌握FTP应用及应用层协议 掌握email应用及应用层协议 掌握Web应用及应用层协议 掌握Web响应时间优化方案 掌握P2P应用原理及特点 掌握P2P文件分发原理 掌握P2P索引技术 掌握Socket编程技术  内容网络应用体系结构 客户端&#x2F;服务器结构 (Client-Server, C&amp;#x2">
+    <meta name="description" content="总览 本章学习目标 - 掌握网络应用体系结构 - 理解网络应用通信原理 - 掌握域名系统及域名解析过程 - 掌握FTP应用及应用层协议 - 掌握email应用及应用层协议 - 掌握Web应用及应用层协议 - 掌握Web响应时间优化方案 - 掌握P2P应用原理及特点 - 掌握P2P文件分发原理 - 掌握P2P索引技术 - 掌握Socket编程技术 内容 网络应用体系结构  客户端&#x2F;服务器结构 (Cl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计网 Ch.6 应用层">
 <meta property="og:url" content="http://example.com/2022/04/24/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-6-%E5%BA%94%E7%94%A8%E5%B1%82/index.html">
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
-<meta property="og:description" content="总览本章学习目标  掌握网络应用体系结构 理解网络应用通信原理 掌握域名系统及域名解析过程 掌握FTP应用及应用层协议 掌握email应用及应用层协议 掌握Web应用及应用层协议 掌握Web响应时间优化方案 掌握P2P应用原理及特点 掌握P2P文件分发原理 掌握P2P索引技术 掌握Socket编程技术  内容网络应用体系结构 客户端&#x2F;服务器结构 (Client-Server, C&amp;#x2">
+<meta property="og:description" content="总览 本章学习目标 - 掌握网络应用体系结构 - 理解网络应用通信原理 - 掌握域名系统及域名解析过程 - 掌握FTP应用及应用层协议 - 掌握email应用及应用层协议 - 掌握Web应用及应用层协议 - 掌握Web响应时间优化方案 - 掌握P2P应用原理及特点 - 掌握P2P文件分发原理 - 掌握P2P索引技术 - 掌握Socket编程技术 内容 网络应用体系结构  客户端&#x2F;服务器结构 (Cl">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-24T02:09:54.000Z">
 <meta property="article:modified_time" content="2022-05-24T02:21:04.255Z">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          784 字
+          797 字
         
       </span>
     
@@ -281,101 +281,63 @@
             
             <div class="markdown-body">
               
-              <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>本章学习目标</p>
+              <h2 id="总览">总览</h2>
+<p>本章学习目标 - 掌握网络应用体系结构 - 理解网络应用通信原理 - 掌握域名系统及域名解析过程 - 掌握FTP应用及应用层协议 - 掌握email应用及应用层协议 - 掌握Web应用及应用层协议 - 掌握Web响应时间优化方案 - 掌握P2P应用原理及特点 - 掌握P2P文件分发原理 - 掌握P2P索引技术 - 掌握Socket编程技术</p>
+<h2 id="内容">内容</h2>
+<h3 id="网络应用体系结构">网络应用体系结构</h3>
 <ul>
-<li>掌握网络应用体系结构</li>
-<li>理解网络应用通信原理</li>
-<li>掌握域名系统及域名解析过程</li>
-<li>掌握FTP应用及应用层协议</li>
-<li>掌握email应用及应用层协议</li>
-<li>掌握Web应用及应用层协议</li>
-<li>掌握Web响应时间优化方案</li>
-<li>掌握P2P应用原理及特点</li>
-<li>掌握P2P文件分发原理</li>
-<li>掌握P2P索引技术</li>
-<li>掌握Socket编程技术</li>
-</ul>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="网络应用体系结构"><a href="#网络应用体系结构" class="headerlink" title="网络应用体系结构"></a>网络应用体系结构</h3><ul>
-<li>客户端&#x2F;服务器结构 (Client-Server, C&#x2F;S)</li>
+<li>客户端/服务器结构 (Client-Server, C/S)</li>
 <li>点对点结构 (Peer-to-Peer P2P)</li>
 <li>混合结构 (Hybrid)</li>
 </ul>
-<h4 id="C-x2F-S-架构"><a href="#C-x2F-S-架构" class="headerlink" title="C&#x2F;S 架构"></a>C&#x2F;S 架构</h4><p>服务器 (server)</p>
+<h4 id="cs-架构">C/S 架构</h4>
+<p>服务器 (server) - 7*24 小时提供服务 - 永久性可访问地址/域名 - 利用大量服务器实现可扩展性 客户机 (client) - 与服务器通信，使用服务器提供的服务 - 间歇性接入网络 - 可能使用动态 IP 地址 - 不会与其他客户机直接通信</p>
+<h3 id="网络应用通信原理">网络应用通信原理</h3>
+<h3 id="域名解析系统-dns">域名解析系统 DNS</h3>
+<h4 id="section"></h4>
+<h4 id="本地域名服务器">本地域名服务器</h4>
 <ul>
-<li>7*24 小时提供服务</li>
-<li>永久性可访问地址&#x2F;域名</li>
-<li>利用大量服务器实现可扩展性<br>客户机 (client)</li>
-<li>与服务器通信，使用服务器提供的服务</li>
-<li>间歇性接入网络</li>
-<li>可能使用动态 IP 地址</li>
-<li>不会与其他客户机直接通信</li>
-</ul>
-<h3 id="网络应用通信原理"><a href="#网络应用通信原理" class="headerlink" title="网络应用通信原理"></a>网络应用通信原理</h3><h3 id="域名解析系统-DNS"><a href="#域名解析系统-DNS" class="headerlink" title="域名解析系统 DNS"></a>域名解析系统 DNS</h3><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="本地域名服务器"><a href="#本地域名服务器" class="headerlink" title="本地域名服务器"></a>本地域名服务器</h4><ul>
 <li>不严格属于层级体系</li>
 <li>每个 ISP</li>
 </ul>
-<h4 id="DNS-根域名服务器"><a href="#DNS-根域名服务器" class="headerlink" title="DNS 根域名服务器"></a>DNS 根域名服务器</h4><ul>
+<h4 id="dns-根域名服务器">DNS 根域名服务器</h4>
+<ul>
 <li>本地查不到就查根域名</li>
-<li>根域名服务器<ul>
+<li>根域名服务器
+<ul>
 <li>获得映射</li>
 <li>全球有 13 个</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="TLD-和权威域名解析服务器"><a href="#TLD-和权威域名解析服务器" class="headerlink" title="TLD 和权威域名解析服务器"></a>TLD 和权威域名解析服务器</h4><ul>
-<li>顶级域名服务器 (TLD, Top Level Domain)<ul>
+<h4 id="tld-和权威域名解析服务器">TLD 和权威域名解析服务器</h4>
+<ul>
+<li>顶级域名服务器 (TLD, Top Level Domain)
+<ul>
 <li>负责 com、org、net、edu 等顶级域名和国家顶级域名</li>
 <li>Network Solution 维护 com</li>
 <li>Educase 维护 edu</li>
-</ul>
-</li>
-<li>权威域名服务器<ul>
+</ul></li>
+<li>权威域名服务器
+<ul>
 <li>负责组织内部</li>
 <li>组织负责维护</li>
 <li>服务提供商负责维护</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="DNS-查询过程"><a href="#DNS-查询过程" class="headerlink" title="DNS 查询过程"></a>DNS 查询过程</h4><p>递归查询：</p>
-<!-- 图之后补 -->
-<p>迭代查询</p>
-<h4 id="注册域名"><a href="#注册域名" class="headerlink" title="注册域名"></a>注册域名</h4><h3 id="FTP-应用"><a href="#FTP-应用" class="headerlink" title="FTP 应用"></a>FTP 应用</h3><h3 id="Email-应用"><a href="#Email-应用" class="headerlink" title="Email 应用"></a>Email 应用</h3><p>构成组件：</p>
-<ul>
-<li>邮件客户端</li>
-<li>邮件服务器</li>
-<li>SMTP 协议</li>
-</ul>
-<p>邮件客户端（用户代理）：</p>
-<ul>
-<li>读、写消息</li>
-<li>与服务器交互，收发</li>
-</ul>
-<p>邮件服务器：</p>
-<ul>
-<li>邮箱：存储发给该用户的 Email</li>
-<li>消息队列：存储等待发送的 Email</li>
-</ul>
-<p>SMTP 协议：</p>
-<ul>
-<li>邮件服务器直接传递消息所使用的协议</li>
-<li>客户端：</li>
-<li>服务器：</li>
-<li>采用 TCP 实现可靠传输</li>
-<li>服务器端口号——25</li>
-<li>传输三阶段<ul>
-<li>握手</li>
-<li>消息传输</li>
-<li>关闭</li>
-</ul>
-</li>
-<li>命令&#x2F;响应交互模式<ul>
-<li>命令：</li>
-<li>响应：</li>
-</ul>
-</li>
-<li>Email 信息只能包含 7 比特 ASCII 码</li>
-</ul>
-<h3 id="Web-应用"><a href="#Web-应用" class="headerlink" title="Web 应用"></a>Web 应用</h3><h3 id="P2P-应用"><a href="#P2P-应用" class="headerlink" title="P2P 应用"></a>P2P 应用</h3><h3 id="Socket-编程"><a href="#Socket-编程" class="headerlink" title="Socket 编程"></a>Socket 编程</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+<h4 id="dns-查询过程">DNS 查询过程</h4>
+<p>递归查询： <!-- 图之后补 --> 迭代查询</p>
+<h4 id="注册域名">注册域名</h4>
+<h3 id="ftp-应用">FTP 应用</h3>
+<h3 id="email-应用">Email 应用</h3>
+<p>构成组件： - 邮件客户端 - 邮件服务器 - SMTP 协议</p>
+<p>邮件客户端（用户代理）： - 读、写消息 - 与服务器交互，收发</p>
+<p>邮件服务器： - 邮箱：存储发给该用户的 Email - 消息队列：存储等待发送的 Email</p>
+<p>SMTP 协议： - 邮件服务器直接传递消息所使用的协议 - 客户端： - 服务器： - 采用 TCP 实现可靠传输 - 服务器端口号——25 - 传输三阶段 - 握手 - 消息传输 - 关闭 - 命令/响应交互模式 - 命令： - 响应： - Email 信息只能包含 7 比特 ASCII 码</p>
+<h3 id="web-应用">Web 应用</h3>
+<h3 id="p2p-应用">P2P 应用</h3>
+<h3 id="socket-编程">Socket 编程</h3>
+<h2 id="总结">总结</h2>
+
               
             </div>
             <hr/>

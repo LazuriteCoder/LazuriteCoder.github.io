@@ -16,12 +16,12 @@
   <meta name="author" content="LazuriteCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、实验内容本次实验以小组的形式完成，需要完成的内容如下：  在本地用 TensorFlow、MindSpore、Pytorch 三种框架训练神经网络模型实现花卉识别 在 1. 的基础上，将本地实现移植到 ModelArts 平台，在本地进行推理测试或部署为在线服务  在本次实验中，个人完成的部分是：用 Pytorch 框架训练神经网络模型实现花卉识别，并且将其部署为在线服务。 实验的本地训练部分">
+    <meta name="description" content="一、实验内容 本次实验以小组的形式完成，需要完成的内容如下：  在本地用 TensorFlow、MindSpore、Pytorch 三种框架训练神经网络模型实现花卉识别 在 1. 的基础上，将本地实现移植到 ModelArts 平台，在本地进行推理测试或部署为在线服务  在本次实验中，个人完成的部分是：用 Pytorch 框架训练神经网络模型实现花卉识别，并且将其部署为在线服务。 实验的本地训练部">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工智能实验：Pytorch 实现 VGG16">
 <meta property="og:url" content="http://example.com/2022/04/23/ArtificialIntelligence/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%EF%BC%9APytorch-%E5%AE%9E%E7%8E%B0-VGG16/index.html">
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
-<meta property="og:description" content="一、实验内容本次实验以小组的形式完成，需要完成的内容如下：  在本地用 TensorFlow、MindSpore、Pytorch 三种框架训练神经网络模型实现花卉识别 在 1. 的基础上，将本地实现移植到 ModelArts 平台，在本地进行推理测试或部署为在线服务  在本次实验中，个人完成的部分是：用 Pytorch 框架训练神经网络模型实现花卉识别，并且将其部署为在线服务。 实验的本地训练部分">
+<meta property="og:description" content="一、实验内容 本次实验以小组的形式完成，需要完成的内容如下：  在本地用 TensorFlow、MindSpore、Pytorch 三种框架训练神经网络模型实现花卉识别 在 1. 的基础上，将本地实现移植到 ModelArts 平台，在本地进行推理测试或部署为在线服务  在本次实验中，个人完成的部分是：用 Pytorch 框架训练神经网络模型实现花卉识别，并且将其部署为在线服务。 实验的本地训练部">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/imgs/AI/lab/MyVGG16.png">
 <meta property="og:image" content="http://example.com/imgs/AI/lab/image-20220427002628547.png">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4.8k 字
         
       </span>
     
@@ -293,17 +293,21 @@
             
             <div class="markdown-body">
               
-              <h2 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h2><p>本次实验以小组的形式完成，需要完成的内容如下：</p>
-<ol>
+              <h2 id="一实验内容">一、实验内容</h2>
+<p>本次实验以小组的形式完成，需要完成的内容如下：</p>
+<ol type="1">
 <li>在本地用 TensorFlow、MindSpore、Pytorch 三种框架训练神经网络模型实现花卉识别</li>
 <li>在 1. 的基础上，将本地实现移植到 ModelArts 平台，在本地进行推理测试或部署为在线服务</li>
 </ol>
 <p>在本次实验中，个人完成的部分是：用 Pytorch 框架训练神经网络模型实现花卉识别，并且将其部署为在线服务。</p>
 <p>实验的本地训练部分在学校提供的高性能服务中心完成，在线部署部分在华为 ModelArts 上完成。</p>
 <p>实验完成了利用 Pytorch 实现 VGG16 网络进行识别任务，并且对数据集采取了归一化、随机裁切、随机旋转角度和随机抽取部分图片进行水平翻转处理的增强方式。</p>
-<h2 id="二、算法与模型介绍"><a href="#二、算法与模型介绍" class="headerlink" title="二、算法与模型介绍"></a>二、算法与模型介绍</h2><p>在这次实验里，使用并实现的模型是 VGG16 模型，名称来源于牛津大学视觉几何组（Visual Geometry Group）的缩写。</p>
+<h2 id="二算法与模型介绍">二、算法与模型介绍</h2>
+<p>在这次实验里，使用并实现的模型是 VGG16 模型，名称来源于牛津大学视觉几何组（Visual Geometry Group）的缩写。</p>
 <p>模型构建图如下：</p>
-<p><img src="/imgs/AI/lab/MyVGG16.png" srcset="/img/loading.gif" lazyload alt="MyVGG16"></p>
+<figure>
+<img src="/imgs/AI/lab/MyVGG16.png" srcset="/img/loading.gif" lazyload alt="MyVGG16" /><figcaption>MyVGG16</figcaption>
+</figure>
 <p>由于 VGG16 由</p>
 <ul>
 <li>13 个卷积层</li>
@@ -322,7 +326,9 @@
 </ul>
 <p>损失函数使用交叉熵损失函数 crossentropyloss，交叉熵损失函数让预测输出更接近真实样本标签，符合实验的需求。</p>
 <p>优化器选择 Adam 优化器，Adam 优化器适应稀疏梯度（图像分类）问题，也能够缓解梯度震荡问题。</p>
-<h2 id="三、算法实现"><a href="#三、算法实现" class="headerlink" title="三、算法实现"></a>三、算法实现</h2><h4 id="3-1-实验环境"><a href="#3-1-实验环境" class="headerlink" title="3.1 实验环境"></a>3.1 实验环境</h4><p>本地实验：</p>
+<h2 id="三算法实现">三、算法实现</h2>
+<h4 id="实验环境">3.1 实验环境</h4>
+<p>本地实验：</p>
 <p>由于本机配置受限，这里使用了学校的高性能云服务中心作为本地计算资源。</p>
 <p>平台的环境是：</p>
 <ul>
@@ -334,61 +340,70 @@
 </ul>
 <p>在线部署：</p>
 <ul>
-<li><p>CPU：8核 64GB</p>
-</li>
-<li><p>GPU: 1*NVIDIA-V100(32GB) </p>
-</li>
-<li><p>AI引擎：pytorch_1.8.0-cuda_10.2-py_3.7-ubuntu_18.04-x86_64</p>
-</li>
+<li><p>CPU：8核 64GB</p></li>
+<li>GPU: 1*NVIDIA-V100(32GB)</li>
+<li><p>AI引擎：pytorch_1.8.0-cuda_10.2-py_3.7-ubuntu_18.04-x86_64</p></li>
 </ul>
-<h4 id="3-2-数据集处理"><a href="#3-2-数据集处理" class="headerlink" title="3.2 数据集处理"></a>3.2 数据集处理</h4><p>数据预处理，通过</p>
+<h4 id="数据集处理">3.2 数据集处理</h4>
+<p>数据预处理，通过</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">infer_transformation = transforms.Compose([<br>    transforms.Resize([<span class="hljs-number">224</span>, <span class="hljs-number">224</span>], <span class="hljs-number">3</span>),<br>    <span class="hljs-comment"># 需要处理成pytorch tensor</span><br>    transforms.ToTensor(),<br>    transforms.Normalize(mean=[<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>], std=[  <span class="hljs-comment"># 图像归一化</span><br>        <span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>])<br>])<br></code></pre></td></tr></table></figure>
-
 <p>简单地对数据图像处理归一化。</p>
 <p>按照2：1的比例，划分数据为训练集和测试集。</p>
 <p>但是仅仅进行归一化处理得到的结果是：</p>
-<p><img src="/imgs/AI/lab/image-20220427002628547.png" srcset="/img/loading.gif" lazyload alt="image-20220427002628547"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427002628547.png" srcset="/img/loading.gif" lazyload alt="image-20220427002628547" /><figcaption>image-20220427002628547</figcaption>
+</figure>
 <p>可以看出，结果并不佳，于是采用进一步处理：</p>
 <p>为了增强数据的泛化能力，对数据进行随机旋转一定角度和随机裁切部分，处理前后的数据对比如下：</p>
 <p>处理前：</p>
-<p><img src="/imgs/AI/lab/image-20220427002737884.png" srcset="/img/loading.gif" lazyload alt="image-20220427002737884"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427002737884.png" srcset="/img/loading.gif" lazyload alt="image-20220427002737884" /><figcaption>image-20220427002737884</figcaption>
+</figure>
 <p>处理后：</p>
-<p><img src="/imgs/AI/lab/image-20220427002750479.png" srcset="/img/loading.gif" lazyload alt="image-20220427002750479"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427002750479.png" srcset="/img/loading.gif" lazyload alt="image-20220427002750479" /><figcaption>image-20220427002750479</figcaption>
+</figure>
 <p>在进行数据处理后，在测试集上的结果为：</p>
-<p><img src="/imgs/AI/lab/image-20220427003105405.png" srcset="/img/loading.gif" lazyload alt="image-20220427003105405"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427003105405.png" srcset="/img/loading.gif" lazyload alt="image-20220427003105405" /><figcaption>image-20220427003105405</figcaption>
+</figure>
 <p>可以看出有比较明显的提升。</p>
 <p>最终的图像处理 transforms 如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">transforms.Compose([transforms.RandomRotation(<span class="hljs-number">180</span>),<br>                                       transforms.RandomResizedCrop(<span class="hljs-number">224</span>),<br>                                       transforms.RandomHorizontalFlip(),<br>                                       transforms.ToTensor(),<br>                                       transforms.Normalize((<span class="hljs-number">0.485</span>,<span class="hljs-number">0.456</span>,<span class="hljs-number">0.406</span>),<br>                                                            (<span class="hljs-number">0.229</span>,<span class="hljs-number">0.224</span>,<span class="hljs-number">0.225</span>))])<br></code></pre></td></tr></table></figure>
-
-
-
-<h4 id="3-3-模型构建与训练"><a href="#3-3-模型构建与训练" class="headerlink" title="3.3 模型构建与训练"></a>3.3 模型构建与训练</h4><p>模型定义的代码：</p>
+<h4 id="模型构建与训练">3.3 模型构建与训练</h4>
+<p>模型定义的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">net</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, num_classes</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.num_classes = num_classes<br>        <br>        net = []<br>        <br>        <span class="hljs-comment"># Block 1</span><br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">3</span>, out_channels=<span class="hljs-number">64</span>, padding=<span class="hljs-number">1</span>, kernel_size=<span class="hljs-number">3</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">64</span>, out_channels=<span class="hljs-number">64</span>, padding=<span class="hljs-number">1</span>, kernel_size=<span class="hljs-number">3</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.MaxPool2d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>))<br>        <br>        <span class="hljs-comment"># Block 2</span><br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">64</span>, out_channels=<span class="hljs-number">128</span>, kernel_size=<span class="hljs-number">3</span>, stride=<span class="hljs-number">1</span>, padding=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">128</span>, out_channels=<span class="hljs-number">128</span>, kernel_size=<span class="hljs-number">3</span>, stride=<span class="hljs-number">1</span>, padding=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.MaxPool2d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>))<br><br>        <br>        <span class="hljs-comment"># Block 3</span><br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">128</span>, out_channels=<span class="hljs-number">256</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">256</span>, out_channels=<span class="hljs-number">256</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">256</span>, out_channels=<span class="hljs-number">256</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.MaxPool2d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>))<br><br>        <br>        <span class="hljs-comment"># Block 4</span><br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">256</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.MaxPool2d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>))<br>        <br>        <span class="hljs-comment"># Block 5</span><br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.Conv2d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>))<br>        net.append(nn.ReLU(inplace=<span class="hljs-literal">True</span>))<br>        net.append(nn.MaxPool2d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>))<br>        <br>        self.features = nn.Sequential(*net)<br>        <br>        self.avgpool = nn.AdaptiveAvgPool2d((<span class="hljs-number">7</span>, <span class="hljs-number">7</span>))<br>        <br>        classifier = []<br>        classifier.append(nn.Dropout(p=<span class="hljs-number">0.5</span>))<br>        classifier.append(nn.Linear(in_features=<span class="hljs-number">512</span>*<span class="hljs-number">7</span>*<span class="hljs-number">7</span>, out_features=<span class="hljs-number">4096</span>))<br>        classifier.append(nn.ReLU())<br>        classifier.append(nn.Dropout(p=<span class="hljs-number">0.5</span>))<br>        classifier.append(nn.Linear(in_features=<span class="hljs-number">4096</span>, out_features=<span class="hljs-number">4096</span>))<br>        classifier.append(nn.ReLU())<br>        classifier.append(nn.Dropout(p=<span class="hljs-number">0.5</span>))<br>        classifier.append(nn.Linear(in_features=<span class="hljs-number">4096</span>, out_features=self.num_classes))<br>        <br>        self.classifier = nn.Sequential(*classifier)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        x = self.features(x)<br>        x = self.avgpool(x)<br>        x = torch.flatten(x, <span class="hljs-number">1</span>)    <br>        x = self.classifier(x)<br>        <span class="hljs-keyword">return</span> x<br></code></pre></td></tr></table></figure>
-
-
-
 <p>超参数的设置：</p>
 <ul>
 <li>batch_size：均设置为了训练集大小的一半</li>
-<li>epoch：500<ul>
+<li>epoch：500
+<ul>
 <li>毕竟性能够，所以放开了测试</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>训练日志：</p>
-<p><img src="/imgs/AI/lab/image-20220427004201731.png" srcset="/img/loading.gif" lazyload alt="image-20220427004201731"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427004201731.png" srcset="/img/loading.gif" lazyload alt="image-20220427004201731" /><figcaption>image-20220427004201731</figcaption>
+</figure>
 <p>loss曲线图：</p>
-<p><img src="C:\Users\梁轩\Desktop\AI\loss.png" srcset="/img/loading.gif" lazyload alt="loss"></p>
-<h4 id="3-4-模型测试与评估"><a href="#3-4-模型测试与评估" class="headerlink" title="3.4 模型测试与评估"></a>3.4 模型测试与评估</h4><p>评测结果对训练集在准确率，F1分数，查准率和查全率等方面进行了评估：</p>
+<figure>
+<img src="C:\Users\梁轩\Desktop\AI\loss.png" srcset="/img/loading.gif" lazyload alt="loss" /><figcaption>loss</figcaption>
+</figure>
+<h4 id="模型测试与评估">3.4 模型测试与评估</h4>
+<p>评测结果对训练集在准确率，F1分数，查准率和查全率等方面进行了评估：</p>
 <p>本地训练的评估结果如下：</p>
-<p><img src="/imgs/AI/lab/image-20220427004451290.png" srcset="/img/loading.gif" lazyload alt="image-20220427004451290"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427004451290.png" srcset="/img/loading.gif" lazyload alt="image-20220427004451290" /><figcaption>image-20220427004451290</figcaption>
+</figure>
 <p>在线训练的评估结果如下：</p>
-<p><img src="/imgs/AI/lab/image-20220427004500483.png" srcset="/img/loading.gif" lazyload alt="image-20220427004500483"></p>
+<figure>
+<img src="/imgs/AI/lab/image-20220427004500483.png" srcset="/img/loading.gif" lazyload alt="image-20220427004500483" /><figcaption>image-20220427004500483</figcaption>
+</figure>
 <p>两个结果没有较大差别，由于在数据增强方面没有做进一步完善的处理，所以可以看出这个结果存在过拟合现象。</p>
-<h4 id="3-5-深度学习框架总结"><a href="#3-5-深度学习框架总结" class="headerlink" title="3.5 深度学习框架总结"></a>3.5 深度学习框架总结</h4><p>三种深度学习框架中：Pytorch 部署实现最为方便，TensorFlow 内容更为完善，MindSpore 在分布式的表现上更优。</p>
+<h4 id="深度学习框架总结">3.5 深度学习框架总结</h4>
+<p>三种深度学习框架中：Pytorch 部署实现最为方便，TensorFlow 内容更为完善，MindSpore 在分布式的表现上更优。</p>
 <p>对于同一框架的训练，在本地上的测试集的评估结果比 ModelArts 上更优一些，ModelArts 的输入输出调整更为灵活，本地框架训练对 Jupyter Notebook 的支持更完善，适于即时调试和检验。</p>
 <!-- ## 四、总结 -->
-
 <!-- #### 4.1 碰到的问题及解决办法
 
 本机的 GPU 内存不足，在进行试验时遇到了 out of memory 的情况，最终通过选择在学校提供的高性能计算云服务中心解决了问题。
@@ -402,8 +417,8 @@
 通过对实验的结果的分析，直观地意识到进行数据增强后，过拟合现象明显地减弱了，但是对应在训练集上的准确率由于收到了干扰，也随之下降了一些，但是鉴于在测试集上的表现，这样的损失在可以接受的范围内。
 
 对于本次的实验，希望能够在实验的指导方面增加一些补充说明，同时也希望能够更大力度地推广学校的高性能服务平台，个人的这次实验的本地训练部分几乎都是在这里进行，体验非常好，希望能够有更多的同学从中受益。 -->
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><!-- 这篇文章会隐藏到本门课结束后再公开。 -->
+<h2 id="总结">总结</h2>
+<!-- 这篇文章会隐藏到本门课结束后再公开。 -->
 <p>文章主体内容来自于本人的实验报告。</p>
 
               
