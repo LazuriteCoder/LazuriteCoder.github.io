@@ -25,10 +25,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/LS的性质.png">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/LN的性质.png">
+<meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/推理网络.png">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络使用例.png">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络全联合概率计算.png">
 <meta property="article:published_time" content="2022-04-13T08:23:31.000Z">
-<meta property="article:modified_time" content="2022-05-27T03:16:06.017Z">
+<meta property="article:modified_time" content="2022-05-27T03:17:19.575Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="不确定性推理">
@@ -225,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k 字
+          7.8k 字
         
       </span>
     
@@ -236,7 +237,7 @@
         
         
         
-          29 分钟
+          33 分钟
         
       </span>
     
@@ -410,12 +411,77 @@ P(H|S) = \left\{ \begin{array}{l} P(H|\neg E) + \dfrac{P(H)-P(H|\neg E)}{P(E)} \
 \]</span></p></li>
 </ul>
 <h3 id="主观-bayes-推理的例子">主观 Bayes 推理的例子</h3>
-<p>设有规则： $$ \begin{array}{l}</p>
-<p>r_1: IF E_1 THEN (2, 0.001) H_1 \ r_2: IF E_1 AND E_2 THEN (100,0.001) H_1 \ r_3: IF E_1 THEN (200, 0.01) H_2 \ 已知：P(E_1)=P(E_2)=0.6, P(H_1) = 0.091, P(H_2) = 0.01 \ 用户回答：P(E_1|S_1)=0.76, P(E_2|S_2) = 0.68 \ 求：P(H_2|S1,S2)=?</p>
-<p>\end{array} <span class="math display">\[
-得到推理网络图：
-![推理网络图](/imgs/AI/不确定性推理/推理网络.png)
-\]</span> \begin{array}{l} 解之前先进行分析: \ 要想得到 H_2，则先要有H_1， \ 但是需要有H_1，就要有 E_1 和 E_1  AND  E_2 \ 经过层层不确定性更新可以得到答案！ \ 解：\ (1) 计算O(H_1|S_1) \ O(H_1|S_1) =  \ 更新后验概率：P(H_1|E_1) =  =  = 0.167 \ P(E_1|S_1) = 0.76 &gt; P(E_1) \ P(H_1|S_1) = P(H_1) + (P(E_1|S_1) - P(E_1)) \ = 0.091 +  (0.76 - 0.6) = 0.121 \ O(H_1|S_1) =  = 0.138 \ (2) 计算O(H_1|(S_1  AND  S_2)) \ r_1 的前件是 E_1、E_2 的合取关系，所以仅考虑E_2对H_1的影响。\ 把H_1的先验概率P(H_1)更新为在E_2下的后验概率P(H_1|E_2) \ P(H_1 |E_2)= = =0.909 \ P(E_2|S_2) = 0.68 &gt; P(E_2) \ P(H_1|S_2)=P(H_1) +  (P(E_2|S_2)-P(E_2)) = 0.255 \ O(H_1|S_2) =  = 0.342 \ (3) 计算O(H_1|S_1, S_2)\ 将 H_1 的先验概率转换为先验几率 O(H_1) =  =  = 0.100 \ 再根据合成公式计算后验几率 \ O(H1|S1, S2) =   O(H_1) \ =   0.1s = 0.472 再将后验几率转变为后验概率 \ P(H_1|S_1, S_2) =  = =0.321 \ (4) 计算P(H_2|S_1, S_2)\ 先将H_2的先验概率P(H_2)转换为在H_1下的后验概率 \ P(H_2|H_1) =  =  = 0.669 \ P(H_1|S_1, S_2) = 0.321 &gt; P(H_1) \  P(H_2|S_1, S_2) = P(H_2) +  \ = 0.01 +  (0.321-0.091) = 0.177 \ \end{array} $$</p>
+<p>设有规则： <span class="math display">\[
+\begin{array}{l}
+r_1: IF \quad E_1 \quad THEN \quad (2, 0.001) \quad H_1
+\\
+r_2: IF \quad E_1 \quad AND \quad E_2 \quad THEN \quad (100,0.001) \quad H_1
+\\
+r_3: IF \quad E_1 \quad THEN \quad (200, 0.01) \quad H_2
+\\
+已知：P(E_1)=P(E_2)=0.6, P(H_1) = 0.091, P(H_2) = 0.01
+\\
+用户回答：P(E_1|S_1)=0.76, P(E_2|S_2) = 0.68
+\\
+求：P(H_2|S1,S2)=?
+\end{array}
+\]</span></p>
+<p>得到推理网络图： <img src="/imgs/AI/不确定性推理/推理网络.png" srcset="/img/loading.gif" lazyload alt="推理网络图" /></p>
+<p><span class="math display">\[
+\begin{array}{l}
+解之前先进行分析:
+\\
+要想得到 H_2，则先要有H_1，
+\\
+但是需要有H_1，就要有 E_1 和 E_1 \ AND \ E_2
+\\
+经过层层不确定性更新可以得到答案！
+\\
+解：\\
+(1)\ 计算O(H_1|S_1) \\
+\because O(H_1|S_1) = \dfrac{P(H_1|S_1)}{1-P(H1|S_1)}
+\\
+更新后验概率：P(H_1|E_1) = \dfrac{LS_1 \times P(H_1)}{(LS_1-1) \times P(H_1) + 1} = \dfrac{2 \times 0.091}{(2-1) \times 0.091 + 1} = 0.167
+\\
+\because P(E_1|S_1) = 0.76 &gt; P(E_1)
+\\
+\therefore P(H_1|S_1) = P(H_1) + \dfrac{P(H_1|E_1) - P(H_1)}{1 - P(E)}(P(E_1|S_1) - P(E_1)) \\
+= 0.091 + \dfrac{(0.167-0.091)}{1-0.6} \times (0.76 - 0.6) = 0.121
+\\
+\therefore O(H_1|S_1) = \dfrac{0.121}{1-0.121} = 0.138
+\\
+(2)\ 计算O(H_1|(S_1 \ AND \ S_2)) \\
+\because r_1 的前件是 E_1、E_2 的合取关系，所以仅考虑E_2对H_1的影响。\\
+把H_1的先验概率P(H_1)更新为在E_2下的后验概率P(H_1|E_2) \\
+P(H_1 |E_2)=\dfrac{LS_2\times P(H_1)}{(LS_2−1)\times P(H_1)+1} = \dfrac{(100\times 0.091}{(100−1)\times 0.091+1}=0.909
+\\
+\because P(E_2|S_2) = 0.68 &gt; P(E_2) \\
+\therefore P(H_1|S_2)=P(H_1) + \dfrac{P(H_1|E_2) - H_1}{1 - P(E_2)} \times (P(E_2|S_2)-P(E_2)) = 0.255 \\
+O(H_1|S_2) = \dfrac{P(H_1|S_2)}{1-P(H_1|S_2)} = 0.342
+\\
+(3)\ 计算O(H_1|S_1, S_2)\\
+将 H_1 的先验概率转换为先验几率
+O(H_1) = \dfrac{P(H_1)}{1-P(H_1)} = \dfrac{0.091}{1-0.091} = 0.100
+\\
+再根据合成公式计算后验几率 \\
+O(H1|S1, S2) = \dfrac{O(H_1|S_1)}{O(H_1)} \times \dfrac{O(H_1|S_2)}{O(H_1)} \times O(H_1) \\
+= \dfrac{0.138}{0.1} \times \dfrac{0.342}{0.1} \times 0.1s = 0.472
+再将后验几率转变为后验概率 \\
+P(H_1|S_1, S_2) = \dfrac{O(H_1|S_1, S_2)}{1 + O(H_1|S_1, S_2)} = \dfrac{0.472}{1+0.472}=0.321
+\\
+(4)\ 计算P(H_2|S_1, S_2)\\
+先将H_2的先验概率P(H_2)转换为在H_1下的后验概率
+\\
+P(H_2|H_1) = \dfrac{LS_3 \times P(H_2)}{(LS_3 - 1) \times P(H_2) + 1 } = \dfrac{200 \times 0.01}{(200-1)\times 0.01 + 1} = 0.669
+\\
+\because P(H_1|S_1, S_2) = 0.321 &gt; P(H_1)
+\\
+\therefore 
+P(H_2|S_1, S_2) = P(H_2) + \dfrac{P(H_2|H_1)-P(H_2)}{1-P(H_1)} \times [P(H_1|S_1, S_2) - P(H_1)] \\
+= 0.01 + \dfrac{0.669 - 0.01}{1-0.091} \times (0.321-0.091) = 0.177
+\\
+\end{array}
+\]</span></p>
 <h3 id="模糊推理">模糊推理</h3>
 <h3 id="贝叶斯网络">贝叶斯网络</h3>
 <p><del>贝叶斯网络其实也不是贝叶斯，是贝叶斯网络是由美国加州大学的珀尔 (J.Pearl)于 1985 年首先提出的一种模拟人类推理过程中因果关系的不确定性处理模型</del></p>
