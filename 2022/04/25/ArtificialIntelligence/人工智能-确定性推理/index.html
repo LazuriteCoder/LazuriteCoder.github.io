@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://example.com/imgs/AI/确定性推理/2.41-0.png">
 <meta property="og:image" content="http://example.com/imgs/AI/确定性推理/2.41-1.png">
 <meta property="article:published_time" content="2022-04-25T00:54:33.000Z">
-<meta property="article:modified_time" content="2022-05-24T02:21:04.147Z">
+<meta property="article:modified_time" content="2022-05-27T06:01:26.623Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="确定性推理">
@@ -309,9 +309,43 @@
 </ul>
 <p>涉及到的推理大概这几种： - 产生式推理 - 自然演绎推理 - 归结演绎推理</p>
 <p>什么是推理？ 推理就是<strong>按照某种策略从已有事实和知识推出结论的过程</strong></p>
-<p>推理的分类： 从逻辑分类： - 演绎推理 - 一般到个别的推理 - 常用：三段论 - 不能增殖新知识 - 归纳推理 - 大量事例归纳出一般的过程 - 从个别到一般 - 增殖新知识 &gt; 例如，一位计算机维修员，从书本知识，到通过大量实例积累经验，是一种归纳推理方式。运用这些一般性知识去维修计算机的过程则是演绎推理。</p>
-<p>按确定性分类： - 确定性推理 - 不确定性推理</p>
-<p>是否具有启发性分类： - 启发式推理 - 运用与问题有关的启发性知识 - 加快推理过程，提高推理效率 - 非启发式推理 - 按照一般模式推理 - 组合爆炸</p>
+<p>推理的分类：</p>
+<p>从逻辑分类:</p>
+<ul>
+<li>演绎推理
+<ul>
+<li>一般到个别的推理</li>
+<li>常用：三段论</li>
+<li>不能增殖新知识</li>
+</ul></li>
+<li>归纳推理
+<ul>
+<li>大量事例归纳出一般的过程</li>
+<li>从个别到一般</li>
+<li>增殖新知识</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>例如，一位计算机维修员，从书本知识，到通过大量实例积累经验，是一种归纳推理方式。运用这些一般性知识去维修计算机的过程则是演绎推理。</p>
+</blockquote>
+<p>按确定性分类：</p>
+<ul>
+<li>确定性推理</li>
+<li>不确定性推理</li>
+</ul>
+<p>是否具有启发性分类：</p>
+<ul>
+<li>启发式推理
+<ul>
+<li>运用与问题有关的启发性知识</li>
+<li>加快推理过程，提高推理效率</li>
+</ul></li>
+<li>非启发式推理
+<ul>
+<li>按照一般模式推理</li>
+<li>组合爆炸</li>
+</ul></li>
+</ul>
 <h2 id="main">Main</h2>
 <h3 id="产生式推理">产生式推理</h3>
 <p>产生是系统的基本结构； 综合数据库 DB - 存放与求解问题有关的各种当前信息 - eg: 初始状态、输入的事实、推理得到的中间结论和最终结论 规则库 RB - 存放与求解问题有关的规则集合 - 包含将初始状态转换成目标状态需要的变换规则 控制系统 Control System - 推理机 - 初始数据库、选择规则、执行规则、推理、结束</p>
