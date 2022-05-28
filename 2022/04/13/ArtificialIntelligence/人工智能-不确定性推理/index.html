@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络使用例.png">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络全联合概率计算.png">
 <meta property="article:published_time" content="2022-04-13T08:23:31.000Z">
-<meta property="article:modified_time" content="2022-05-28T12:32:43.047Z">
+<meta property="article:modified_time" content="2022-05-28T12:35:20.241Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="不确定性推理">
@@ -515,8 +515,18 @@ P(H_2|S_1, S_2) = P(H_2) + \dfrac{P(H_2|H_1)-P(H_2)}{1-P(H_1)} \times [P(H_1|S_1
 <p>一个贝叶斯网络的例子如下： <img src="/imgs/AI/不确定性推理/贝叶斯网络使用例.png" srcset="/img/loading.gif" lazyload alt="贝叶斯网络使用例" /> 可以看出还是“很贝叶斯”的（指条件概率） 它还有计算的部分： <img src="/imgs/AI/不确定性推理/贝叶斯网络全联合概率计算.png" srcset="/img/loading.gif" lazyload alt="贝叶斯网络全联合概率计算" /></p>
 <h3 id="贝叶斯网络的推理">贝叶斯网络的推理</h3>
 <h4 id="精确推理">精确推理</h4>
-<p>精确推理最基本的方法是基于枚举的算法。 它是使用全联合概率分布取推断查询变量的后验概率： <span class="math inline">\(P(X|s) = \alpha P(X, s) = \alpha \sum P(X, s, Y)\)</span> 变量解释： - <span class="math inline">\(X\)</span>: 查询变量 - <span class="math inline">\(s\)</span>: 一个观察到的特定事件 - <span class="math inline">\(Y\)</span>: 隐含变量集 - <span class="math inline">\(\alpha\)</span>: 归一化常数，用于保证相对于 <span class="math inline">\(X\)</span> 所有取值的后验概率和等于1</p>
-<p>为了对贝叶斯网络进行推理，利用贝叶斯网络的全概率公式： <span class="math inline">\(P(x_1, x_2, ... , x_n) = \prod\limits_{i-1}^n P(X_i|par(X_i))\)</span> 它的思路是将 <span class="math inline">\(P(X, s, Y)\)</span> 改写成为条件概率乘积的形式，可以通过先对 <span class="math inline">\(Y\)</span> 的各枚举值求其条件概率，再对各条件概率乘积求总和的方式去查询变量的条件概率。</p>
+<p>精确推理最基本的方法是基于枚举的算法。 它是使用全联合概率分布取推断查询变量的后验概率：</p>
+<p><span class="math inline">\(P(X|s) = \alpha P(X, s) = \alpha \sum P(X, s, Y)\)</span></p>
+<p>变量解释：</p>
+<ul>
+<li><span class="math inline">\(X\)</span>: 查询变量</li>
+<li><span class="math inline">\(s\)</span>: 一个观察到的特定事件</li>
+<li><span class="math inline">\(Y\)</span>: 隐含变量集</li>
+<li><span class="math inline">\(\alpha\)</span>: 归一化常数，用于保证相对于 <span class="math inline">\(X\)</span> 所有取值的后验概率和等于1</li>
+</ul>
+<p>为了对贝叶斯网络进行推理，利用贝叶斯网络的全概率公式：</p>
+<p><span class="math inline">\(P(x_1, x_2, ... , x_n) = \prod\limits_{i-1}^n P(X_i|par(X_i))\)</span></p>
+<p>它的思路是将 <span class="math inline">\(P(X, s, Y)\)</span> 改写成为条件概率乘积的形式，可以通过先对 <span class="math inline">\(Y\)</span> 的各枚举值求其条件概率，再对各条件概率乘积求总和的方式去查询变量的条件概率。</p>
 <p>具体应用可以看作业题（）</p>
 <h4 id="近似推理">近似推理</h4>
 <p>常用算法：马尔科夫蒙特卡罗 (MCMC)</p>
