@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://example.com/imgs/AI/确定性推理/2.41-0.png">
 <meta property="og:image" content="http://example.com/imgs/AI/确定性推理/2.41-1.png">
 <meta property="article:published_time" content="2022-04-25T00:54:33.000Z">
-<meta property="article:modified_time" content="2022-05-28T12:05:32.015Z">
+<meta property="article:modified_time" content="2022-05-28T12:06:26.929Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="确定性推理">
@@ -354,9 +354,21 @@
 <h2 id="main">Main</h2>
 <h3 id="产生式推理">产生式推理</h3>
 <p>产生是系统的基本结构；</p>
-<p>综合数据库 DB - 存放与求解问题有关的各种当前信息 - eg: 初始状态、输入的事实、推理得到的中间结论和最终结论</p>
-<p>规则库 RB - 存放与求解问题有关的规则集合 - 包含将初始状态转换成目标状态需要的变换规则</p>
-<p>控制系统 Control System - 推理机 - 初始数据库、选择规则、执行规则、推理、结束</p>
+<p>综合数据库 DB</p>
+<ul>
+<li>存放与求解问题有关的各种当前信息</li>
+<li>eg: 初始状态、输入的事实、推理得到的中间结论和最终结论</li>
+</ul>
+<p>规则库 RB</p>
+<ul>
+<li>存放与求解问题有关的规则集合</li>
+<li>包含将初始状态转换成目标状态需要的变换规则</li>
+</ul>
+<p>控制系统 Control System</p>
+<ul>
+<li>推理机</li>
+<li>初始数据库、选择规则、执行规则、推理、结束</li>
+</ul>
 <p>推理过程：</p>
 <ol type="1">
 <li><p>正向推理的特性 正向推理的主要优点是比较直观，主要缺点是推理无明确的目标，求解问题时可能会执行许多与解无关的操作，导致推理效率较低。</p></li>
