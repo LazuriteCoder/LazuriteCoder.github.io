@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络使用例.png">
 <meta property="og:image" content="http://example.com/imgs/AI/不确定性推理/贝叶斯网络全联合概率计算.png">
 <meta property="article:published_time" content="2022-04-13T08:23:31.000Z">
-<meta property="article:modified_time" content="2022-05-27T03:17:19.575Z">
+<meta property="article:modified_time" content="2022-05-28T03:45:28.328Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="不确定性推理">
@@ -338,7 +338,11 @@
 </ul></li>
 <li>结论不确定性的合成
 <ul>
-<li>假设有如下知识 </br> <span class="math inline">\(IF \quad E_1 \quad H \quad (CF(H,E_1))\)</span> </br> <span class="math inline">\(IF \quad E_2 \quad H \quad (CF(H,E_2))\)</span> </br> 则: </br> <span class="math inline">\(CF_1(H) = CF(H,E_1) \cdot max\{0,CF(E_1)\}\)</span> </br> <span class="math inline">\(CF_2(H) = CF(H,E_2) \cdot max\{0,CF(E_2)\}\)</span> </br> 综合可信度：</br> <span class="math inline">\(CF(H) = \left\{ \begin{array}{c} CF_1(H) + CF_2(H) - CF_1(H)CF_2(H) &amp; 若CF_1(H) \ge 0 且 CF_2(H) \ge 0 \\ CF_1(H) + CF_2(H) + CF_1(H)CF_2(H) &amp; 若CF_1(H)&lt;0且CF_2(H)&lt;0 \\ \dfrac{CF_1(H) + CF_2(H)}{1-min\{|CF_1(H)|,|CF_2(H)|\}} &amp; 若CF_1(H)和CF_2(H)异号 \end{array} \right.\)</span> ### 可信度推理的例子 设有如下一组知识： <span class="math display">\[ \begin{array}{l}
+<li>假设有如下知识 </br> <span class="math inline">\(IF \quad E_1 \quad H \quad (CF(H,E_1))\)</span> </br> <span class="math inline">\(IF \quad E_2 \quad H \quad (CF(H,E_2))\)</span> </br> 则: </br> <span class="math inline">\(CF_1(H) = CF(H,E_1) \cdot max\{0,CF(E_1)\}\)</span> </br> <span class="math inline">\(CF_2(H) = CF(H,E_2) \cdot max\{0,CF(E_2)\}\)</span> </br> 综合可信度：</br> <span class="math inline">\(CF(H) = \left\{ \begin{array}{c} CF_1(H) + CF_2(H) - CF_1(H)CF_2(H) &amp; 若CF_1(H) \ge 0 且 CF_2(H) \ge 0 \\ CF_1(H) + CF_2(H) + CF_1(H)CF_2(H) &amp; 若CF_1(H)&lt;0且CF_2(H)&lt;0 \\ \dfrac{CF_1(H) + CF_2(H)}{1-min\{|CF_1(H)|,|CF_2(H)|\}} &amp; 若CF_1(H)和CF_2(H)异号 \end{array} \right.\)</span></li>
+</ul></li>
+</ul>
+<h3 id="可信度推理的例子">可信度推理的例子</h3>
+<p>设有如下一组知识： <span class="math display">\[ \begin{array}{l}
 r_1:\ IF \quad E_1 \quad THEN \quad H \quad (0.9) \\
 r_2:\ IF \quad E_2 \quad THEN \quad H \quad (0.6) \\
 r_3:\ IF \quad E_3 \quad THEN \quad H \quad (-0.5) \\
@@ -346,9 +350,7 @@ r_4:\ IF \quad E_4 \ AND \ (E_4 \ OR \ E_6) \quad THEN \quad E_1 \quad (0.8) \\
 且：CF(E_2) = 0.8,CF(E_3)=0.6,CF(E_4)=0.5,CF(E_5)=0.6,CF(E_6)=0.8 \\ 
 求：CF(H)
 \end{array}
-\]</span></li>
-</ul></li>
-</ul>
+\]</span></p>
 <p><span class="math display">\[ \begin{array}{l}
 解：\\
 由r_4得 \\
