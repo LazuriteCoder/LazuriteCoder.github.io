@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://example.com/imgs/AI/搜索/极大极小搜索的例子.png">
 <meta property="og:image" content="http://example.com/imgs/AI/搜索/alphabeta剪枝使用例.png">
 <meta property="article:published_time" content="2022-04-25T00:54:39.000Z">
-<meta property="article:modified_time" content="2022-05-28T14:42:38.324Z">
+<meta property="article:modified_time" content="2022-05-29T03:26:58.910Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="搜索">
@@ -381,8 +381,16 @@
 </figure>
 <h4 id="alpha--beta-剪枝"><span class="math inline">\(\alpha -\beta\)</span> 剪枝</h4>
 <p>极大/极小过程是先生成与/或树，再计算估值，所以搜索效率低（😅） 那么边生成节点边对节点估值，就可以剪去一些没用的分支，这种技术就是 <span class="math inline">\(\alpha -\beta\)</span> 剪枝。</p>
-<p>它的方法和规则如下： 剪枝方法： - MAX 节点（或节点）的 <span class="math inline">\(\alpha\)</span> 值为当前子节点的最大倒推值； - MIN 节点（与节点）的 <span class="math inline">\(\beta\)</span> 值为当前子节点的最小倒推值； 剪枝的规则： <span class="math inline">\(\beta\)</span> 剪枝 任何 MAX 节点 n 的 <span class="math inline">\(\alpha\)</span> 值大于或等于它先辈节点的 <span class="math inline">\(\beta\)</span> 值，则 n 以下的分枝可停止搜索，并令节点 n 的倒推值为 <span class="math inline">\(\alpha\)</span> 。这种枝称为 <span class="math inline">\(\beta\)</span> 剪枝。</p>
-<p><span class="math inline">\(\alpha\)</span> 剪枝 任何 MIN 节点 n 的 <span class="math inline">\(\beta\)</span> 值小于或等于它先辈节点的 <span class="math inline">\(\alpha\)</span> 值，则n以下的分枝可停止搜索，并令节点 n 的倒推值为 <span class="math inline">\(\beta\)</span> 。这种枝称为 <span class="math inline">\(\alpha\)</span> 剪枝。</p>
+<p>它的方法和规则如下： 剪枝方法：</p>
+<ul>
+<li>MAX 节点（或节点）的 <span class="math inline">\(\alpha\)</span> 值为当前子节点的最大倒推值；</li>
+<li>MIN 节点（与节点）的 <span class="math inline">\(\beta\)</span> 值为当前子节点的最小倒推值；</li>
+</ul>
+<p>剪枝的规则：</p>
+<p><span class="math inline">\(\beta\)</span> 剪枝</p>
+<p>任何 MAX 节点 n 的 <span class="math inline">\(\alpha\)</span> 值大于或等于它先辈节点的 <span class="math inline">\(\beta\)</span> 值，则 n 以下的分枝可停止搜索，并令节点 n 的倒推值为 <span class="math inline">\(\alpha\)</span> 。这种枝称为 <span class="math inline">\(\beta\)</span> 剪枝。</p>
+<p><span class="math inline">\(\alpha\)</span> 剪枝</p>
+<p>任何 MIN 节点 n 的 <span class="math inline">\(\beta\)</span> 值小于或等于它先辈节点的 <span class="math inline">\(\alpha\)</span> 值，则n以下的分枝可停止搜索，并令节点 n 的倒推值为 <span class="math inline">\(\beta\)</span> 。这种枝称为 <span class="math inline">\(\alpha\)</span> 剪枝。</p>
 <figure>
 <img src="/imgs/AI/搜索/alphabeta剪枝使用例.png" srcset="/img/loading.gif" lazyload alt="使用例" /><figcaption>使用例</figcaption>
 </figure>
