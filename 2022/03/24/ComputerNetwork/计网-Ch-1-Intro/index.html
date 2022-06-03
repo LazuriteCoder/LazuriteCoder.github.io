@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/imgs/CompNet/eg03.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/eg04.png">
 <meta property="article:published_time" content="2022-03-24T12:34:53.000Z">
-<meta property="article:modified_time" content="2022-06-03T03:39:39.287Z">
+<meta property="article:modified_time" content="2022-06-03T03:40:49.945Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="介绍">
@@ -384,12 +384,8 @@
 <blockquote>
 <p>eg: </br> 配一张图，大概是 PC-设备-设备-PC M = 7.5 Mbits, L = 1500 bits (M = 5000L) </br> R = 1.5 Mbps </br> 报文交换的交付时间为:</p>
 </blockquote>
-<p><span class="math inline">\(M / R = 7.5 / 1.5 = 5 s\)</span> 总时间为：<span class="math inline">\(5 * 3 = 15 s\)</span>。</p>
-<p>分组交换的交付时间为:</p>
-<p>因为已经分了 5000 组，一个组传输一段的用时为 <span class="math inline">\(L/R = 1500/(1.5 \times 10^6) = 1 \ ms\)</span></p>
-<p>想象一个这样的情况，从第一组开始，用时 1ms 出发到达第一个中途交换机，这样第二组也可以开始出发了，那么到第 5000 组出发的时候，已经经过了 4999 个 1ms，第 5000 组再走 3 段路就可以全部送达了！所以总共需要：</p>
-<p><span class="math inline">\(1ms \times (4999 + 3) = 5002ms\)</span> <span class="math inline">\(5002 ms = 5.002 s\)</span></p>
-<p>总结一个分组交换的报文交付时间如下：</p>
+<p><span class="math inline">\(M / R = 7.5 / 1.5 = 5 s\)</span> 总时间为：<span class="math inline">\(5 * 3 = 15 s\)</span>。 分组交换的交付时间为: 因为已经分了 5000 组，一个组传输一段的用时为 <span class="math inline">\(L/R = 1500/(1.5 \times 10^6) = 1 \ ms\)</span> 想象一个这样的情况，从第一组开始，用时 1ms 出发到达第一个中途交换机，这样第二组也可以开始出发了，那么到第 5000 组出发的时候，已经经过了 4999 个 1ms，第 5000 组再走 3 段路就可以全部送达了！所以总共需要： <span class="math inline">\(1ms \times (4999 + 3) = 5002ms\)</span> <span class="math inline">\(5002 ms = 5.002 s\)</span></p>
+<p>总结: 一个分组交换的报文交付时间如下：</p>
 <ul>
 <li>报文：<span class="math inline">\(M bits\)</span></li>
 <li>链路带宽：<span class="math inline">\(R bps\)</span></li>
