@@ -16,12 +16,12 @@
   <meta name="author" content="LazuriteCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总览 物理层的结构是自下而上的第一层，物理层考虑的是怎样才能在连接各台计算机 这一部分的内容主要是学习： - 了解物理层的主要功能 - 理解数据通信的相关概念和基本原理 - 掌握物理传输介质的特性 - 掌握信道、信道容量的概念和计算 - 掌握多路复用技术 - 理解基带传输与频带传输 - 理解基带传输的典型编码与频带传输的典型调制技术 内容 物理层基本功能 物理层实现的功能，简单的说实际上是在特定的">
+    <meta name="description" content="总览 物理层的结构是自下而上的第一层，物理层考虑的是怎样才能在连接各台计算机 这一部分的内容主要是学习：  了解物理层的主要功能 理解数据通信的相关概念和基本原理 掌握物理传输介质的特性 掌握信道、信道容量的概念和计算 掌握多路复用技术 理解基带传输与频带传输 理解基带传输的典型编码与频带传输的典型调制技术  内容 物理层基本功能 物理层实现的功能，简单的说实际上是在特定的物理环境或物理介质上实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计网 Ch.2 物理层">
 <meta property="og:url" content="http://example.com/2022/03/24/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-2-%E7%89%A9%E7%90%86%E5%B1%82/index.html">
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
-<meta property="og:description" content="总览 物理层的结构是自下而上的第一层，物理层考虑的是怎样才能在连接各台计算机 这一部分的内容主要是学习： - 了解物理层的主要功能 - 理解数据通信的相关概念和基本原理 - 掌握物理传输介质的特性 - 掌握信道、信道容量的概念和计算 - 掌握多路复用技术 - 理解基带传输与频带传输 - 理解基带传输的典型编码与频带传输的典型调制技术 内容 物理层基本功能 物理层实现的功能，简单的说实际上是在特定的">
+<meta property="og:description" content="总览 物理层的结构是自下而上的第一层，物理层考虑的是怎样才能在连接各台计算机 这一部分的内容主要是学习：  了解物理层的主要功能 理解数据通信的相关概念和基本原理 掌握物理传输介质的特性 掌握信道、信道容量的概念和计算 掌握多路复用技术 理解基带传输与频带传输 理解基带传输的典型编码与频带传输的典型调制技术  内容 物理层基本功能 物理层实现的功能，简单的说实际上是在特定的物理环境或物理介质上实现">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/imgs/CompNet/数据通信系统模型.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/物理层/导引型1.png">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/imgs/CompNet/物理层/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A82.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/物理层/物理层设备.png">
 <meta property="article:published_time" content="2022-03-24T12:35:02.000Z">
-<meta property="article:modified_time" content="2022-05-24T02:21:04.255Z">
+<meta property="article:modified_time" content="2022-06-03T03:49:56.965Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="物理层">
@@ -292,10 +292,28 @@
             <div class="markdown-body">
               
               <h2 id="总览">总览</h2>
-<p>物理层的结构是自下而上的<strong>第一层</strong>，物理层考虑的是怎样才能在连接各台计算机 这一部分的内容主要是学习： - 了解物理层的主要功能 - 理解数据通信的相关概念和基本原理 - 掌握物理传输介质的特性 - 掌握信道、信道容量的概念和计算 - 掌握多路复用技术 - 理解基带传输与频带传输 - 理解基带传输的典型编码与频带传输的典型调制技术</p>
+<p>物理层的结构是自下而上的<strong>第一层</strong>，物理层考虑的是怎样才能在连接各台计算机</p>
+<p>这一部分的内容主要是学习：</p>
+<ul>
+<li>了解物理层的主要功能</li>
+<li>理解数据通信的相关概念和基本原理</li>
+<li>掌握物理传输介质的特性</li>
+<li>掌握信道、信道容量的概念和计算</li>
+<li>掌握多路复用技术</li>
+<li>理解基带传输与频带传输</li>
+<li>理解基带传输的典型编码与频带传输的典型调制技术</li>
+</ul>
 <h2 id="内容">内容</h2>
 <h3 id="物理层基本功能">物理层基本功能</h3>
-<p>物理层实现的功能，简单的说实际上是在特定的物理环境或物理介质上实现一个比特或一个比特流的传输。 它是在连接节点的物理介质上实现比特流传输。 它涉及到了如何进行比特编码，用什么样的信号，什么样的特征表示，数据率如何基于比特如何同步，传输是什么模式等待。 物理层的接口特性有 - 机械特性（形状尺寸等）、电气特性（电压范围等）、功能特性（指明某一电平的电压有何意义）、规程特性 - 时钟同步 传输模式有：单工（Simplex）、半双工（half-duplex）、全双工（full-duplex）</p>
+<p>物理层实现的功能，简单的说实际上是在特定的物理环境或物理介质上实现一个比特或一个比特流的传输。</p>
+<p>它是在连接节点的物理介质上实现比特流传输。</p>
+<p>它涉及到了如何进行比特编码，用什么样的信号，什么样的特征表示，数据率如何基于比特如何同步，传输是什么模式等待。</p>
+<p>物理层的接口特性有</p>
+<ul>
+<li>机械特性（形状尺寸等）、电气特性（电压范围等）、功能特性（指明某一电平的电压有何意义）、规程特性</li>
+<li>时钟同步</li>
+</ul>
+<p>传输模式有：单工（Simplex）、半双工（half-duplex）、全双工（full-duplex）</p>
 <h3 id="数据通信基础">数据通信基础</h3>
 <h4 id="数据通信系统模型">数据通信系统模型</h4>
 <p>对于数据通信系统，模型如图所示： <img src="/imgs/CompNet/数据通信系统模型.png" srcset="/img/loading.gif" lazyload alt="数据通信系统模型" /> 其中，信源和发送设备是发送端，接收设备和信宿是接收端。</p>
@@ -354,19 +372,82 @@
 <li><p>模拟通信 vs 数字通信 区别在于信道中传输的是模拟信号（连续）还是数字信号（离散）</p></li>
 </ul>
 <h4 id="信源编码">信源编码</h4>
-<p>Q: 如果信源产生的是模拟数据，如何在数字通信系统中传输？ A: 信源编码 一个典型的信源编码是——PCM，其包括三个步骤： 采样 -&gt; 量化 -&gt; 编码 采样：目的是用一系列在时间上离散的采样值，代替时间上连续的模拟数据，实现时间上的离散化 量化：使得采样值在取值上离散化 编码：量化后的采样值用一定位数的二进制数码来表示，如果量化的级数为 <span class="math inline">\(N\)</span>，则每个采样值就编码成 <span class="math inline">\(log_2N\)</span> 位二进制码</p>
+<p>Q: 如果信源产生的是模拟数据，如何在数字通信系统中传输？</p>
+<p>A: 信源编码</p>
+<p>一个典型的信源编码是——PCM，其包括三个步骤：</p>
+<p>采样 -&gt; 量化 -&gt; 编码</p>
+<p>采样：目的是用一系列在时间上离散的采样值，代替时间上连续的模拟数据，实现时间上的离散化</p>
+<p>量化：使得采样值在取值上离散化</p>
+<p>编码：量化后的采样值用一定位数的二进制数码来表示，如果量化的级数为 <span class="math inline">\(N\)</span>，则每个采样值就编码成 <span class="math inline">\(log_2N\)</span> 位二进制码</p>
 <p>PCM 的转换过程是通过将原始信号（连续信号）取值转化为 PAM 脉冲（在某几个位置取值取点）， 再进行量化成为 PCM 脉冲（比如说取整），最后编码 PCM 输出。</p>
 <h4 id="扩频">扩频</h4>
-<p>扩频 (Spread Spectrum)： - 模拟或数字数据 - 模拟信号 - 将数据的传输（调制）扩展到更宽的频带上 - 制造干扰使通信不易被窃听 - 跳频 (Frequency Hoping) - 载波信号频率在一组频率上随机（某种规律跳变） - <del>由好莱坞女星发明</del> - 直接序列扩频 (Direct Sequence Spread Spectrum) - 通过传输多个比特表示原始信息的一个比特 - 碎码序列</p>
+<p>扩频 (Spread Spectrum)：</p>
+<ul>
+<li>模拟或数字数据</li>
+<li>模拟信号</li>
+<li>将数据的传输（调制）扩展到更宽的频带上</li>
+<li>制造干扰使通信不易被窃听</li>
+<li>跳频 (Frequency Hoping)
+<ul>
+<li>载波信号频率在一组频率上随机（某种规律跳变）</li>
+<li><del>由好莱坞女星发明</del></li>
+</ul></li>
+<li>直接序列扩频 (Direct Sequence Spread Spectrum)
+<ul>
+<li>通过传输多个比特表示原始信息的一个比特</li>
+<li>碎码序列</li>
+</ul></li>
+</ul>
 <h3 id="物理介质">物理介质</h3>
 <h4 id="导引型">导引型</h4>
 <p>直接上 PPT 的图吧！ <img src="/imgs/CompNet/物理层/导引型1.png" srcset="/img/loading.gif" lazyload alt="导引型1" /> <img src="/imgs/CompNet/物理层/导引型2.png" srcset="/img/loading.gif" lazyload alt="导引型2" /></p>
 <h4 id="非导引型">非导引型</h4>
 <p>也是直接上图吧！ <img src="/imgs/CompNet/物理层/非导引型1.png" srcset="/img/loading.gif" lazyload alt="非导引型1" /> <img src="/imgs/CompNet/物理层/非导引型2.png" srcset="/img/loading.gif" lazyload alt="非导引型2" /> <img src="/imgs/CompNet/物理层/非导引型3.png" srcset="/img/loading.gif" lazyload alt="非导引型3" /></p>
 <h3 id="信道与信道容量">信道与信道容量</h3>
-<p>信道： - 狭义：信号传输介质 - 广义：包括传输介质和通信系统的一些变换装置</p>
-<p>传输特性： - 恒参信道传输特性 - 各种有线信道和部分无线信道，如微波视线传播链路和卫星 链路 等，都属于恒参信道 - 理想的恒参信道是一个理想的无失真传输信道 - 对信号幅值产生固定的衰减 - 对信号输出产生固定的时延 - 随参信道传输特性 - 许多无线信道都是随参信道 - 信号的传输衰减随时间随机变化 - 信号的传输时延随时间随机变化 - 存在多径传播现象</p>
-<p>信道容量： 信道容量是指信道无差错涮熟信息的<strong>最大</strong>平均信息速率 - 奈奎斯特 (Nyquist) 信道容量公式 - 理想无噪声的信道容量： <span class="math inline">\(C = 2Blog_2M\)</span> - <span class="math inline">\(C\)</span> 为信道容量，单位为 <span class="math inline">\(b/s (bps)\)</span>；<span class="math inline">\(B\)</span> 为信道带宽，单位为 <span class="math inline">\(Hz\)</span>；<span class="math inline">\(M\)</span> 为进制数，集信号状态数 - 是理想信道的极限容量 - eg.1: - Q: 在无噪声情况下，若某通信链路的带宽为 <span class="math inline">\(3 kHz\)</span>，采用 <span class="math inline">\(4\)</span> 个相位、每个相位具有 <span class="math inline">\(4\)</span> 种振幅的 <span class="math inline">\(QAM\)</span> 调制技术，则该通信链路的最大数据传输速率是多少？ - A: <span class="math inline">\(24 kbps\)</span> 对于这个信道容量公式，可以得出这样的结论： - 任何信道中，码元传输速率是邮上线的，如果速率超过上限，就会出现严重的码间串扰问题 - 信道的频带越宽，速率就可以更高 - 这个公式给出了码元传输速率的限制，但是未对信息传输速率限制 如果想要提高传输速率，需要设法使得码元携带更多比特的信息量。</p>
+<p>信道：</p>
+<ul>
+<li>狭义：信号传输介质</li>
+<li>广义：包括传输介质和通信系统的一些变换装置</li>
+</ul>
+<p>传输特性：</p>
+<ul>
+<li>恒参信道传输特性
+<ul>
+<li>各种有线信道和部分无线信道，如微波视线传播链路和卫星 链路 等，都属于恒参信道</li>
+<li>理想的恒参信道是一个理想的无失真传输信道</li>
+<li>对信号幅值产生固定的衰减</li>
+<li>对信号输出产生固定的时延</li>
+</ul></li>
+<li>随参信道传输特性
+<ul>
+<li>许多无线信道都是随参信道</li>
+<li>信号的传输衰减随时间随机变化</li>
+<li>信号的传输时延随时间随机变化</li>
+<li>存在多径传播现象</li>
+</ul></li>
+</ul>
+<p>信道容量：</p>
+<p>信道容量是指信道无差错涮熟信息的<strong>最大</strong>平均信息速率</p>
+<ul>
+<li>奈奎斯特 (Nyquist) 信道容量公式
+<ul>
+<li>理想无噪声的信道容量： <span class="math inline">\(C = 2Blog_2M\)</span></li>
+<li><span class="math inline">\(C\)</span> 为信道容量，单位为 <span class="math inline">\(b/s (bps)\)</span>；<span class="math inline">\(B\)</span> 为信道带宽，单位为 <span class="math inline">\(Hz\)</span>；<span class="math inline">\(M\)</span> 为进制数，集信号状态数</li>
+<li>是理想信道的极限容量</li>
+</ul></li>
+<li>eg.1:
+<ul>
+<li>Q: 在无噪声情况下，若某通信链路的带宽为 <span class="math inline">\(3 kHz\)</span>，采用 <span class="math inline">\(4\)</span> 个相位、每个相位具有 <span class="math inline">\(4\)</span> 种振幅的 <span class="math inline">\(QAM\)</span> 调制技术，则该通信链路的最大数据传输速率是多少？</li>
+<li>A: <span class="math inline">\(24 kbps\)</span></li>
+</ul></li>
+</ul>
+<p>对于这个信道容量公式，可以得出这样的结论：</p>
+<ul>
+<li>任何信道中，码元传输速率是邮上线的，如果速率超过上限，就会出现严重的码间串扰问题</li>
+<li>信道的频带越宽，速率就可以更高</li>
+<li>这个公式给出了码元传输速率的限制，但是未对信息传输速率限制</li>
+</ul>
+<p>如果想要提高传输速率，需要设法使得码元携带更多比特的信息量。</p>
 <ul>
 <li>香农 (Shannon) 信道容量公式
 <ul>
@@ -383,9 +464,34 @@
 <li>A: <span class="math inline">\(20 Mbps\)</span></li>
 </ul></li>
 </ul>
-<p>同样可以得到一些结论： - 信噪比越大，信息的极限传输速率越高 - 如果信息传输速率低于极限传输速率，那么可以找到方法实现无差错的传输 - 他只是极限速率，实际速率会低不少</p>
+<p>同样可以得到一些结论：</p>
+<ul>
+<li>信噪比越大，信息的极限传输速率越高</li>
+<li>如果信息传输速率低于极限传输速率，那么可以找到方法实现无差错的传输</li>
+<li>他只是极限速率，实际速率会低不少</li>
+</ul>
 <h3 id="信道共享">信道共享</h3>
-<p>首先是多路复用啊 <img src="/imgs/CompNet/物理层/多路复用.png" srcset="/img/loading.gif" lazyload alt="多路复用" /> <img src="/imgs/CompNet/物理层/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A82.png" srcset="/img/loading.gif" lazyload alt="多路复用2" /> 这里大概的给出点东西，实际上还看 PPT 更详细清楚一些。 - 频分多路 FDM - 个用户占用不同的带宽资源 - 时分多路 TDM - 将时间划为等长的 <strong>时分复用帧</strong>，每个用户在每个 TDM 帧中占用固定序号的时隙 - 每个用户占用的时隙是 <strong>周期性出现</strong> 周期即为 TDM 帧的长度 - 时分复用的所有用户是在不同时间占用<strong>相同的</strong>频带宽度 - 波分多路 WDM - 光的频分复用 - 码分多路 CDM - 为用户分配一个唯一的 m bit 的码片序列</p>
+<p>首先是多路复用啊 <img src="/imgs/CompNet/物理层/多路复用.png" srcset="/img/loading.gif" lazyload alt="多路复用" /> <img src="/imgs/CompNet/物理层/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A82.png" srcset="/img/loading.gif" lazyload alt="多路复用2" /> 这里大概的给出点东西，实际上还看 PPT 更详细清楚一些。</p>
+<ul>
+<li>频分多路 FDM
+<ul>
+<li>个用户占用不同的带宽资源</li>
+</ul></li>
+<li>时分多路 TDM
+<ul>
+<li>将时间划为等长的 <strong>时分复用帧</strong>，每个用户在每个 TDM 帧中占用固定序号的时隙</li>
+<li>每个用户占用的时隙是 <strong>周期性出现</strong> 周期即为 TDM 帧的长度</li>
+<li>时分复用的所有用户是在不同时间占用<strong>相同的</strong>频带宽度</li>
+</ul></li>
+<li>波分多路 WDM
+<ul>
+<li>光的频分复用</li>
+</ul></li>
+<li>码分多路 CDM
+<ul>
+<li>为用户分配一个唯一的 m bit 的码片序列</li>
+</ul></li>
+</ul>
 <h3 id="基带传输">基带传输</h3>
 <p>看 PPT 比较直观</p>
 <h3 id="频带传输">频带传输</h3>
