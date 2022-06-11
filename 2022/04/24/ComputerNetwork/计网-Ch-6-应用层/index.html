@@ -23,12 +23,40 @@
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
 <meta property="og:description" content="总览 本章学习目标 - 掌握网络应用体系结构 - 理解网络应用通信原理 - 掌握域名系统及域名解析过程 - 掌握FTP应用及应用层协议 - 掌握email应用及应用层协议 - 掌握Web应用及应用层协议 - 掌握Web响应时间优化方案 - 掌握P2P应用原理及特点 - 掌握P2P文件分发原理 - 掌握P2P索引技术 - 掌握Socket编程技术 内容 网络应用体系结构  客户端&#x2F;服务器结构 (Cl">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611091919368.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611092501575.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611092944705.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611093950118.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611100338284.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611110103120.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611110645518.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611142504160.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611143119847.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611143144856.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611143614782.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611144015824.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611144123228.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611144803489.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611145203359.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611152002321.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611152312547.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611152406524.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611152444032.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611155421646.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611155436945.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611155454731.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611155826140.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611161349859.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611161605829.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611161700383.png">
+<meta property="og:image" content="http://example.com/imgs/CompNet/应用层/image-20220611161738448.png">
 <meta property="article:published_time" content="2022-04-24T02:09:54.000Z">
-<meta property="article:modified_time" content="2022-05-24T02:21:04.255Z">
+<meta property="article:modified_time" content="2022-06-11T08:21:59.813Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="传输层">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/imgs/CompNet/应用层/image-20220611091919368.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -220,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          797 字
+          5.9k 字
         
       </span>
     
@@ -231,7 +259,7 @@
         
         
         
-          4 分钟
+          25 分钟
         
       </span>
     
@@ -291,14 +319,248 @@
 <li>混合结构 (Hybrid)</li>
 </ul>
 <h4 id="cs-架构">C/S 架构</h4>
-<p>服务器 (server) - 7*24 小时提供服务 - 永久性可访问地址/域名 - 利用大量服务器实现可扩展性 客户机 (client) - 与服务器通信，使用服务器提供的服务 - 间歇性接入网络 - 可能使用动态 IP 地址 - 不会与其他客户机直接通信</p>
+<p>服务器 (server) - 7*24 小时提供服务 - 永久性可访问地址/域名 - 利用大量服务器实现可扩展性</p>
+<p>客户机 (client)</p>
+<ul>
+<li>与服务器通信，使用服务器提供的服务</li>
+<li>间歇性接入网络</li>
+<li>可能使用动态 IP 地址</li>
+<li>不会与其他客户机直接通信</li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611091919368.png" srcset="/img/loading.gif" lazyload alt="C/S架构例子—web" /><figcaption>C/S架构例子—web</figcaption>
+</figure>
+<h4 id="纯-p2p-结构">纯 P2P 结构</h4>
+<p>简单提几个点：</p>
+<ul>
+<li>没有永远在线的服务器</li>
+<li>任意端系统/节点之间可以直接通讯</li>
+<li>节点间歇性接入网络</li>
+<li>节点可能改变 IP 地址</li>
+<li>优点：高度可伸缩</li>
+<li>缺点：难于管理</li>
+</ul>
+<h4 id="混合结构">混合结构</h4>
+<ul>
+<li>将两种结构混合在一起使用</li>
+<li>利用优点同时规避缺点</li>
+</ul>
+<p>Napster</p>
+<ul>
+<li>文件传输使用 P2P 结构</li>
+<li>文件搜索采用 C/S 结构——集中式
+<ul>
+<li>每个节点向中央服务器登记自己的内容</li>
+<li>每个节点向中央服务器提交查询请求，查找感兴趣的内容</li>
+</ul></li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611092501575.png" srcset="/img/loading.gif" lazyload alt="napster" /><figcaption>napster</figcaption>
+</figure>
 <h3 id="网络应用通信原理">网络应用通信原理</h3>
+<h4 id="网络应用的基础进程间通信">网络应用的基础：进程间通信</h4>
+<p>进程</p>
+<ul>
+<li>主机上运行的程序</li>
+</ul>
+<p>同一主机上运行的进程之间如何通信？</p>
+<ul>
+<li>进程间通信机制</li>
+<li>操作系统提供</li>
+</ul>
+<p>不同主机上运行的进程间如何通信？</p>
+<ul>
+<li>消息交换</li>
+</ul>
+<p>客户机和服务器进程？</p>
+<ul>
+<li>客户机进程：发起通信的进程</li>
+<li>服务器进程：等待通信请求的进程</li>
+</ul>
+<h4 id="套接字socket">套接字：Socket</h4>
+<p>进程间通信利用 socket 发送/接收消息实现。</p>
+<p>这个过程类似于寄信</p>
+<ul>
+<li>发送方将消息送到门外邮箱</li>
+<li>发送方依赖（门外的）传输基础设施将消息传到接收方所在的主机，并送到接收方的门外</li>
+<li>接收方从门外获取消息</li>
+</ul>
+<p>传输基础设施向进程提供 API</p>
+<ul>
+<li>传输协议的选择</li>
+<li>参数的设置</li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611092944705.png" srcset="/img/loading.gif" lazyload alt="socket通信" /><figcaption>socket通信</figcaption>
+</figure>
+<h4 id="如何寻址进程">如何寻址进程？</h4>
+<p>不同主机上实现进程通信，则每个进程需要拥有<strong>标识符</strong>。</p>
+<p>如何对主机寻址？</p>
+<ul>
+<li>使用 IP 地址
+<ul>
+<li>有了 IP 地址后，足以定位进程吗？</li>
+<li>否！同一主机上可能同时有多个进程需要通信。</li>
+</ul></li>
+</ul>
+<p>端口号 (Port number)</p>
+<ul>
+<li>为主机上每一个需要通信的进程分配一个端口号</li>
+<li>HTTP Server: 80</li>
+<li>Mail Server: 25</li>
+</ul>
+<p>进程的标识符：</p>
+<ul>
+<li>IP 地址 + 端口号</li>
+</ul>
+<h4 id="应用层协议">应用层协议</h4>
+<p>网络应用需要遵循应用层协议。</p>
+<p>公开协议：</p>
+<ul>
+<li>由 RFC (Request For Comments) 定义</li>
+<li>允许互操作</li>
+<li>HTTP, SMTP, ...</li>
+</ul>
+<p>私有协议：</p>
+<ul>
+<li>多数 P2P 文件共享应用</li>
+</ul>
+<p>应用层协议的内容：</p>
+<ul>
+<li>消息的类型 (Type)
+<ul>
+<li>请求消息</li>
+<li>响应消息</li>
+</ul></li>
+<li>消息的语法 (syntax) /格式
+<ul>
+<li>消息中有哪些字段 (field)</li>
+<li>每个字段如何描述</li>
+</ul></li>
+<li>字段的语义 (semantics)
+<ul>
+<li>字段中消息的含义</li>
+</ul></li>
+<li>规则 (rules)
+<ul>
+<li>进程==何时==发送/相应消息</li>
+<li>进程==如何==发送/相应消息</li>
+</ul></li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611093950118.png" srcset="/img/loading.gif" lazyload alt="HTTP请求消息的格式" /><figcaption>HTTP请求消息的格式</figcaption>
+</figure>
+<h4 id="网络应用对传输服务的需求">网络应用对传输服务的需求</h4>
+<ul>
+<li><p>数据丢失 (data) / 可靠性 (reliability)</p>
+<ul>
+<li><p>某些网络应用能够容忍一定的数据丢失：网络电话</p></li>
+<li><p>某些网络应用要求 100% 可靠的数据传输：文件传输， telnet</p></li>
+</ul></li>
+<li><p>时间 (timing) / 延迟 (delay)</p>
+<ul>
+<li>有些应用只有在延迟足够低时才“有效”</li>
+<li>网络电话 / 网络游戏</li>
+</ul></li>
+<li>带宽 (bandwidth)
+<ul>
+<li>某些应用只有在带宽达到最低要求时才“有效”：网络视频</li>
+<li>某些应用能够适应任何带宽弹性应用： email</li>
+</ul></li>
+</ul>
+<h4 id="internet-提供的传输服务">Internet 提供的传输服务</h4>
+<p>TCP 服务：</p>
+<ul>
+<li>面向连接：客户机 / 服务器进程间需要建立连接</li>
+<li>可靠传输</li>
+<li>流量控制：发送方速度不会过快，以至于超出接收方处理能力</li>
+<li>拥塞控制：网络负载过重时能够限制发送方的发送速度</li>
+<li>不提供时间 / 延迟保障</li>
+<li>不提供最小带宽保障</li>
+</ul>
+<p>UDP 服务：</p>
+<ul>
+<li>无连接</li>
+<li>不可靠的数据传输</li>
+<li>不提供：
+<ul>
+<li>可靠性保证</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
+<li>延迟保障</li>
+<li>带宽保障</li>
+</ul></li>
+</ul>
+<h4 id="典型网络应用使用的传输层服务">典型网络应用使用的传输层服务</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Application</th>
+<th>Application layer protocol</th>
+<th>Underlying transport protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e-mail</td>
+<td>SMTP [RFC 2821]</td>
+<td>TCP</td>
+</tr>
+<tr class="even">
+<td>remote terminal access</td>
+<td>Telnet [RFC 854]</td>
+<td>TCP</td>
+</tr>
+<tr class="odd">
+<td>Web</td>
+<td>HTTP [RFC 2616]</td>
+<td>TCP</td>
+</tr>
+<tr class="even">
+<td>fine transfer</td>
+<td>FTP [RFC 959]</td>
+<td>TCP</td>
+</tr>
+<tr class="odd">
+<td>streaming multimedia</td>
+<td>proprietary</td>
+<td>TCP / UDP</td>
+</tr>
+<tr class="even">
+<td>Internet telephony</td>
+<td>proprietary</td>
+<td>typically TCP</td>
+</tr>
+</tbody>
+</table>
 <h3 id="域名解析系统-dns">域名解析系统 DNS</h3>
-<h4 id="section"></h4>
+<ul>
+<li>实现域名和 IP 地址的映射</li>
+<li>多层命名服务器构成的<strong>分布式数据库</strong></li>
+<li><strong>应用层协议</strong>：完成名字的解析
+<ul>
+<li>Internet 核心功能</li>
+<li>应用层协议实现</li>
+</ul></li>
+<li>DNS 服务
+<ul>
+<li>域名向 IP 地址的翻译</li>
+<li>主机别名</li>
+<li>邮件服务器别名</li>
+<li>负载均衡：Web 服务器</li>
+</ul></li>
+</ul>
 <h4 id="本地域名服务器">本地域名服务器</h4>
 <ul>
 <li>不严格属于层级体系</li>
-<li>每个 ISP</li>
+<li>每个 ISP 至少有一个本地域名服务器
+<ul>
+<li>默认域名解析服务器</li>
+</ul></li>
+<li>当主机进行 DNS 查询时，查询<strong>首先</strong>被发送到本地域名服务器
+<ul>
+<li>作为代理 (proxy)，将查询转发给（层级式）域名服务器系统</li>
+</ul></li>
 </ul>
 <h4 id="dns-根域名服务器">DNS 根域名服务器</h4>
 <ul>
@@ -306,6 +568,7 @@
 <li>根域名服务器
 <ul>
 <li>获得映射</li>
+<li>向本地域名服务器返回映射</li>
 <li>全球有 13 个</li>
 </ul></li>
 </ul>
@@ -317,7 +580,7 @@
 <li>Network Solution 维护 com</li>
 <li>Educase 维护 edu</li>
 </ul></li>
-<li>权威域名服务器
+<li>权威 (Authoritative) 域名服务器
 <ul>
 <li>负责组织内部</li>
 <li>组织负责维护</li>
@@ -325,18 +588,471 @@
 </ul></li>
 </ul>
 <h4 id="dns-查询过程">DNS 查询过程</h4>
-<p>递归查询： <!-- 图之后补 --> 迭代查询</p>
+<p>递归查询和迭代查询</p>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611100338284.png" srcset="/img/loading.gif" lazyload alt="递归查询和迭代查询" /><figcaption>递归查询和迭代查询</figcaption>
+</figure>
+<h4 id="dns-记录缓存和更新">DNS 记录缓存和更新</h4>
+<p>只要域名服务器获得域名—IP 映射，就<strong>缓存</strong>这一映射</p>
+<ul>
+<li>一段时间过后，缓存条目失效（删除）</li>
+<li>本地域名服务器一般会缓存顶级域名服务器的映射
+<ul>
+<li>所以根域名服务器不常被访问</li>
+</ul></li>
+</ul>
+<p>记录的更新 / 通知机制</p>
+<ul>
+<li>RFC 2136</li>
+<li>Dynamic Updates in the Domain Name System
+<ul>
+<li>DNS UPDATE</li>
+</ul></li>
+</ul>
+<h4 id="dns-记录">DNS 记录</h4>
+<p>资源记录 RR (Resource Records)</p>
+<ul>
+<li>RR format: (name, value, type, ttl)</li>
+<li>Type = A
+<ul>
+<li>Name: 主机域名</li>
+<li>Value: IP 地址</li>
+</ul></li>
+<li>Type = NS
+<ul>
+<li>Name: 域</li>
+<li>Value: 该域权威域名服务器的主机域名</li>
+</ul></li>
+<li>Type = CNAME
+<ul>
+<li>Name: 某一真实域名的别名</li>
+<li>Value: 真实域名</li>
+</ul></li>
+<li>Type = MX
+<ul>
+<li>Name: 邮件服务器别名</li>
+<li>Value: 邮件服务器域名</li>
+</ul></li>
+</ul>
+<h4 id="dns-协议与消息">DNS 协议与消息</h4>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611110103120.png" srcset="/img/loading.gif" lazyload alt="DNS 协议与消息" /><figcaption>DNS 协议与消息</figcaption>
+</figure>
 <h4 id="注册域名">注册域名</h4>
+<p>eg: 注册域名 networkutopia.com</p>
+<p>向域名管理机构提供权威域名解析器的名字和 IP 地址</p>
+<p>域名管理机构向 com 顶级域名服务器中插入两条记录：</p>
+<blockquote>
+<p>(networkutopia.com, dns1.networkutopia.com, NS) (dns1.networkutopia.com, 212.212.212.1, A)</p>
+</blockquote>
+<h4 id="dns-例题">DNS 例题</h4>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611110645518.png" srcset="/img/loading.gif" lazyload alt="DNS 例题" /><figcaption>DNS 例题</figcaption>
+</figure>
 <h3 id="ftp-应用">FTP 应用</h3>
+<p>FTP: File Transport Protocol</p>
+<ul>
+<li>文件传输协议</li>
+<li>C/S 模型</li>
+<li>FTP: RFC 959</li>
+<li>FTP server: port 21</li>
+</ul>
 <h3 id="email-应用">Email 应用</h3>
+<h4 id="basic">Basic</h4>
 <p>构成组件： - 邮件客户端 - 邮件服务器 - SMTP 协议</p>
 <p>邮件客户端（用户代理）： - 读、写消息 - 与服务器交互，收发</p>
 <p>邮件服务器： - 邮箱：存储发给该用户的 Email - 消息队列：存储等待发送的 Email</p>
-<p>SMTP 协议： - 邮件服务器直接传递消息所使用的协议 - 客户端： - 服务器： - 采用 TCP 实现可靠传输 - 服务器端口号——25 - 传输三阶段 - 握手 - 消息传输 - 关闭 - 命令/响应交互模式 - 命令： - 响应： - Email 信息只能包含 7 比特 ASCII 码</p>
+<h4 id="smtp-协议">SMTP 协议</h4>
+<ul>
+<li>邮件服务器<strong>直接传递消息</strong>所使用的协议</li>
+<li>客户端：发消息</li>
+<li>服务器：接消息</li>
+<li>采用 TCP 实现可靠传输</li>
+<li>服务器端口号——25</li>
+<li>传输三阶段
+<ul>
+<li>握手</li>
+<li>消息传输</li>
+<li>关闭</li>
+</ul></li>
+<li>命令/响应交互模式
+<ul>
+<li>命令：</li>
+<li>响应：</li>
+</ul></li>
+<li>Email 信息只能包含 7 比特 ASCII 码</li>
+</ul>
+<p>SMTP 交互实例这里不提了，因为做了实验怎么都明白了</p>
+<h4 id="email-消息格式">Email 消息格式</h4>
+<p>RFC 822：</p>
+<p>header + 空白行 + body</p>
+<ul>
+<li>header
+<ul>
+<li>To</li>
+<li>From</li>
+<li>Subject</li>
+</ul></li>
+<li>body
+<ul>
+<li>本体</li>
+<li>只能是 ASCII 字符</li>
+</ul></li>
+</ul>
+<p>RFC 2045, 2056</p>
+<p>添加额外的行声明 MIME 的内容类型</p>
+<h4 id="邮件访问协议">邮件访问协议</h4>
+<p>邮件访问协议：从服务器获取邮件</p>
+<ul>
+<li>POP: Post Office Protocol</li>
+<li>IMAP: Internet Mail Access Protocol</li>
+<li>HTTP: Web Mail</li>
+</ul>
 <h3 id="web-应用">Web 应用</h3>
+<p>核心讲述 HTTP</p>
+<p>网页 (Web Page) 包含多个对象 (objects)</p>
+<ul>
+<li>对象：HTML 文件、JPEG 图片、视频文件、动态脚本等</li>
+<li>基本 HTML 文件：包含对其他对象引用的链接</li>
+</ul>
+<p>对象的寻址 (addressing)</p>
+<ul>
+<li>URL(Uniform Resource Locator) : 统一资源定位器</li>
+<li>Scheme://host:port/path</li>
+</ul>
+<h4 id="http-协议概述">HTTP 协议概述</h4>
+<p>HTTP—Hyper Text Transfer Protocol</p>
+<p>HTTP 版本：</p>
+<ul>
+<li>1.0 — RFC 1945</li>
+<li>1.1 — RFC 2068</li>
+</ul>
+<p>HTTP 的特性：</p>
+<ul>
+<li>使用 TCP 传输服务
+<ul>
+<li>服务器在 80 端口等待客户的请求</li>
+<li>浏览器发起到服务器的 TCP 连接（创建套接字 Socket）</li>
+<li>服务器接受来自浏览器的 TCP 连接</li>
+<li>浏览器（HTTP 客户端）与 Web 服务器（HTTP 服务器）交换 HTTP 消息</li>
+<li>关闭 TCP 连接</li>
+</ul></li>
+<li>无状态
+<ul>
+<li>服务器不维护任何有关客户端过去所发请求的信息</li>
+</ul></li>
+</ul>
+<p>HTTP 有两类消息：</p>
+<ul>
+<li>请求消息 (request)
+<ul>
+<li>ASCII 人直接可读</li>
+<li>上传输入的方法
+<ul>
+<li>POST 方法</li>
+<li>URL 方法</li>
+</ul></li>
+</ul></li>
+<li>响应消息 (response)</li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611142504160.png" srcset="/img/loading.gif" lazyload alt="浏览器" /><figcaption>浏览器</figcaption>
+</figure>
+<p>HTTP / 1.0 请求—响应过程</p>
+<ul>
+<li>每个 TCP 连接传输一个对象</li>
+<li>非持久性连接 (Nonpersistent HTTP)</li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611143119847.png" srcset="/img/loading.gif" lazyload alt="HTTP / 1.0 请求—响应过程-1" /><figcaption>HTTP / 1.0 请求—响应过程-1</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611143144856.png" srcset="/img/loading.gif" lazyload alt="HTTP / 1.0 请求—响应过程-2" /><figcaption>HTTP / 1.0 请求—响应过程-2</figcaption>
+</figure>
+<p>RTT(Round Trip Time)</p>
+<ul>
+<li>从客户端发送一个很小的数据包到服务器所经历的时间</li>
+</ul>
+<p>响应时间 (Response Time)</p>
+<ul>
+<li>发起、建立 TCP 连接：用时一个 RTT</li>
+<li>发送 HTTP 请求到 HTTP 相应消息的前几个字节到达：用时一个 RTT</li>
+<li>响应消息传输时间</li>
+<li><span class="math inline">\(t_{响应时间} = t_{RTT} + t_{响应消息发送时间}\)</span></li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611143614782.png" srcset="/img/loading.gif" lazyload alt="响应时间分析" /><figcaption>响应时间分析</figcaption>
+</figure>
+<h4 id="响应时间优化并行连接">响应时间优化——并行连接</h4>
+<ul>
+<li>非持久性连接的问题：
+<ul>
+<li>每个对象需要两个 RTT</li>
+<li>操作系统需要为每个 TCP 连接开销资源 (overhead)</li>
+<li>浏览器可以怎么做？
+<ul>
+<li>打开多个<strong>并行 TCP 连接</strong>以获取网页所需对象</li>
+<li>给服务器端造成的影响？</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611144015824.png" srcset="/img/loading.gif" lazyload alt="并行：一个引用 3 个 JPEG 小图像的 Web 页的对比" /><figcaption>并行：一个引用 3 个 JPEG 小图像的 Web 页的对比</figcaption>
+</figure>
+<h4 id="响应时间优化持久连接">响应时间优化——持久连接</h4>
+<p>持久连接 (Persistent HTTP)</p>
+<ul>
+<li>发送响应后，服务器<strong>保持</strong> TCP 连接打开</li>
+<li>后续 HTTP 消息可以通过这个连接发送</li>
+<li>每个 TCP 连接允许传输多个对象</li>
+</ul>
+<p>持久连接有两种形式：</p>
+<ul>
+<li>非流水持久连接
+<ul>
+<li>客户端只有收到前一个响应后才发送新的请求</li>
+<li>每个被引用的对象耗时 1 个 RTT</li>
+</ul></li>
+<li>流水的持久连接
+<ul>
+<li>客户端只要遇到一个引用对象就尽快发出请求</li>
+<li>理想情况下，收到所有的引用对象只需耗时 1 个 RTT</li>
+<li>HTTP/1.1 版本默认使用流水的持久连接</li>
+</ul></li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611144123228.png" srcset="/img/loading.gif" lazyload alt="持久：一个引用 3 个 JPEG 小图像的 Web 页的对比" /><figcaption>持久：一个引用 3 个 JPEG 小图像的 Web 页的对比</figcaption>
+</figure>
+<h4 id="响应时间优化http2">响应时间优化——HTTP/2</h4>
+<p>一个问题：如果 HTTP/1.1 连续请求多个大小不同的对象，会出现怎样的问题呢？</p>
+<p>比如：</p>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611144803489.png" srcset="/img/loading.gif" lazyload alt="HTTP/1.1 连续请求多个大小不同的对象" /><figcaption>HTTP/1.1 连续请求多个大小不同的对象</figcaption>
+</figure>
+<p>由于：</p>
+<ul>
+<li>服务器顺序相应（FCFS 调度）</li>
+<li>在大对象之后请求的小对象，需要等待大对象的传输 (head-of-line (HOL) blocking)</li>
+<li>若发生数据丢失会暂停对象的传输</li>
+</ul>
+<p>所以 HTTP/2 [RFC 7540, 2015] ： 减少多对象请求的时延（响应时间）</p>
+<ul>
+<li>将对象分割为系列“帧”，不同对象的帧交替传输</li>
+<li>与 HTTP/1.1 相比，方法、状态码、多部首行没变</li>
+<li>对象传输顺序基于客户定义的对象优先级 (not FCFS)</li>
+<li>推送 (push) 客户未请求的对象</li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611145203359.png" srcset="/img/loading.gif" lazyload alt="HTTP/2 使用例" /><figcaption>HTTP/2 使用例</figcaption>
+</figure>
+<h4 id="响应时间优化http3">响应时间优化——HTTP/3</h4>
+<p>如果还想对 HTTP/2 进一步优化该怎么做呢？</p>
+<p>对于 HTTP/2 而言</p>
+<ul>
+<li>使用单一的 TCP</li>
+<li>丢包恢复仍然会暂停对象传输</li>
+</ul>
+<p>针对特定场景 TCP 的风格</p>
+<table>
+<thead>
+<tr class="header">
+<th>场景</th>
+<th>挑战</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>长、胖管道（大量数据传输）</td>
+<td>许多数据包在“飞行”；丢包将关闭管道</td>
+</tr>
+<tr class="even">
+<td>无线网络</td>
+<td>由于无线链路噪声、移动等造成的丢包；TCP 将其视为拥塞丢包</td>
+</tr>
+<tr class="odd">
+<td>长延迟链路</td>
+<td>超长的 RTT</td>
+</tr>
+<tr class="even">
+<td>数据中心网络</td>
+<td>延迟敏感</td>
+</tr>
+<tr class="odd">
+<td>后台流量</td>
+<td>低优先级的“后台” TCP 流</td>
+</tr>
+</tbody>
+</table>
+<p>在 UDP 上实现应用，将传输层功能转移到应用层</p>
+<ul>
+<li><p>HTTP/3: QUIC</p>
+<ul>
+<li>Quick UDP Internet Connections</li>
+</ul></li>
+<li><p>基于 UDP 的应用层协议</p>
+<ul>
+<li>提高 HTTP 的性能</li>
+<li>部署在许多谷歌服务器、APP 应用程序（Chrome、 移动 YTB）</li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611152002321.png" srcset="/img/loading.gif" lazyload alt="HTTP/3" /><figcaption>HTTP/3</figcaption>
+</figure></li>
+<li>应用层实现连接建立、错误控制、拥塞控制等功能
+<ul>
+<li>差错控制、拥塞控制：采用与 TCP 类似的丢失检测和拥塞控制算法</li>
+<li>连接建立“可靠性、拥塞控制、身份验证、加密等在一个 RTT 建立状态</li>
+</ul></li>
+<li>多个应用级”流“复用一个 QUIC 连接
+<ul>
+<li>可靠数据传输与安全分离</li>
+<li>常见的拥塞控制</li>
+</ul></li>
+</ul>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611152312547.png" srcset="/img/loading.gif" lazyload alt="与 TCP 比较" /><figcaption>与 TCP 比较</figcaption>
+</figure>
+<p>再与 HTTP/1.1 进行比较</p>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611152406524.png" srcset="/img/loading.gif" lazyload alt="HTTP/1.1" /><figcaption>HTTP/1.1</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611152444032.png" srcset="/img/loading.gif" lazyload alt="HTTP/2 with QUIC" /><figcaption>HTTP/2 with QUIC</figcaption>
+</figure>
+<h4 id="响应时间优化web-缓存-代理服务器">响应时间优化——Web 缓存 / 代理服务器</h4>
+<p>目标：在不访问源服务器的前提下满足客户端的 HTTP 请求</p>
+<p>WHY?</p>
+<ul>
+<li>缩短客户端请求的响应时间
+<ul>
+<li>缓存更靠近客户端</li>
+</ul></li>
+<li>减少机构/组织的流量</li>
+<li>在大范围内 (Internet) 实现有效的内容分发</li>
+</ul>
+<p>Web 缓存/代理服务器</p>
+<ul>
+<li>用户设定浏览器通过缓存进行 Web 访问</li>
+<li>浏览器响缓存/代理服务器发送所有的 HTTP 请求
+<ul>
+<li>如果所请求对象在缓存中，缓存返回对象</li>
+<li>否则缓存服务器向原始服务器发送 HTTP 请求，获取对象，然后返回给客户端保存该对象</li>
+</ul></li>
+<li>缓存即充当客户端，也充当服务器
+<ul>
+<li>原始请求客户端的服务器</li>
+<li>客户端到源服务器</li>
+</ul></li>
+<li>一般由 ISP （Internet 服务提供商）架设</li>
+</ul>
+<p>Web 缓存示例：</p>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611155421646.png" srcset="/img/loading.gif" lazyload alt="Web 缓存示例1" /><figcaption>Web 缓存示例1</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611155436945.png" srcset="/img/loading.gif" lazyload alt="Web 缓存示例2" /><figcaption>Web 缓存示例2</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611155454731.png" srcset="/img/loading.gif" lazyload alt="Web 缓存示例3" /><figcaption>Web 缓存示例3</figcaption>
+</figure>
+<p>其他方案？</p>
+<p>CDN</p>
+<h4 id="cookie">Cookie</h4>
+<h5 id="技术介绍">技术介绍</h5>
+<p>无状态 HTTP 协议会带来什么问题？</p>
+<p>很多应用需要服务器掌握客户端的状态，如网上购物，如何实现？</p>
+<p>答案是==Cookie 技术==</p>
+<ul>
+<li>某些网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据（通常经过加密）</li>
+<li>RFC 6265</li>
+</ul>
+<p>Cookie 的组件：</p>
+<ul>
+<li>HTTP 响应消息的 cookie 头部行</li>
+<li>HTTP 请求消息的 cookie 头部行</li>
+<li>保存在客户端主机上的 cookie 文件，由浏览器管理</li>
+<li>Web 服务器端的后台数据库</li>
+</ul>
+<h5 id="原理">原理</h5>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611155826140.png" srcset="/img/loading.gif" lazyload alt="Cookie 原理" /><figcaption>Cookie 原理</figcaption>
+</figure>
+<h5 id="应用">应用</h5>
+<p>可以用于：</p>
+<ul>
+<li>身份认证</li>
+<li>购物车</li>
+<li>推荐</li>
+<li>Web e-mail</li>
+</ul>
+<p>但是会有隐私问题！</p>
+<h4 id="http-vs.-smtp">HTTP vs. SMTP</h4>
+<p>SMTP:</p>
+<ul>
+<li>推式 (push)</li>
+<li>使用持久性连接</li>
+<li>要求消息必须由 7 位 ASCII 码构成</li>
+<li>利用 <code>&lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;</code> 确定消息的结束</li>
+<li>多个对象在由多个部分构成的消息中发送</li>
+</ul>
+<p>HTTP:</p>
+<ul>
+<li>拉式 (pull)</li>
+<li>每个对象封装在独立的响应消息中</li>
+</ul>
+<p>共同点：</p>
+<ul>
+<li>都是使用了命令/响应交互模式</li>
+<li>命令和状态代码都是 ASCII 码</li>
+</ul>
 <h3 id="p2p-应用">P2P 应用</h3>
+<p>一些点：</p>
+<ul>
+<li>没有服务器</li>
+<li>任意端系统之间直接通信</li>
+<li>节点阶段性接入 Internet</li>
+<li>节点可能更换 IP 地址</li>
+</ul>
+<p>与 C/S 结构比较吧！</p>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611161349859.png" srcset="/img/loading.gif" lazyload alt="C/S vs P2P - 1" /><figcaption>C/S vs P2P - 1</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611161605829.png" srcset="/img/loading.gif" lazyload alt="C/S vs P2P - 2" /><figcaption>C/S vs P2P - 2</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611161700383.png" srcset="/img/loading.gif" lazyload alt="C/S vs P2P - 3" /><figcaption>C/S vs P2P - 3</figcaption>
+</figure>
+<figure>
+<img src="/imgs/CompNet/应用层/image-20220611161738448.png" srcset="/img/loading.gif" lazyload alt="C/S vs P2P - 3" /><figcaption>C/S vs P2P - 3</figcaption>
+</figure>
 <h3 id="socket-编程">Socket 编程</h3>
+<p>参考实验指导书</p>
+<p>（略）</p>
 <h2 id="总结">总结</h2>
+<p>主要涉及了：</p>
+<ul>
+<li>网络应用的体系结构
+<ul>
+<li>C/S</li>
+<li>P2P</li>
+<li>混合</li>
+</ul></li>
+<li>网络应用的通信原理
+<ul>
+<li>Socket</li>
+</ul></li>
+<li>应用层的一些技术
+<ul>
+<li>DNS</li>
+<li>FTP</li>
+<li>Email</li>
+<li>Web
+<ul>
+<li>HTTP 相关技术</li>
+</ul></li>
+<li>P2P</li>
+</ul></li>
+</ul>
 
               
             </div>
