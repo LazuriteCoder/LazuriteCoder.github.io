@@ -65,7 +65,7 @@
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612231438033.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612232446499.png">
 <meta property="article:published_time" content="2022-03-25T05:37:43.000Z">
-<meta property="article:modified_time" content="2022-06-13T00:57:29.582Z">
+<meta property="article:modified_time" content="2022-06-13T07:33:52.837Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="网络层">
@@ -541,7 +541,74 @@
 </tbody>
 </table>
 <h3 id="ip协议">IP协议</h3>
-<p><img src="/imgs/CompNet/网络层/IPBU.png" srcset="/img/loading.gif" lazyload alt="引入" /> #### IPv4 数据报分组格式 <img src="/imgs/CompNet/网络层/IPv4数据报分组格式.png" srcset="/img/loading.gif" lazyload alt="分组格式" /> 接下来进行介绍： - <strong>版本号</strong>字段占 4 位，是 IP 协议的版本号 - 且有这样的对应关系：4-&gt; IPv4, 6-&gt;IPv6 - <strong>首部长度</strong>字段占 4 位，是 IP 分组首部长度 - ==以 4 字节位单位== - eg: 5 -&gt; IP 首部长度位 20(5*4) 字节 - <strong>服务类型</strong>字段占 8 位，是指示期望获得哪种类型的服务 - 1998 年这个字段改名为区分服务 - 只有在网络提供区分服务 (DiffServ) 时使用 - 一般情况下不使用，通常 IP 分组的该字段（第二字节）的值为 00H - <strong>总长度</strong>字段占 16 位，是 IP 分组的总字节数（首部+数据） - 最大 IP 分组的总长度：65535B - 最小的 IP 分组首部： 20B - IP 分组可以封装的最大数据：65535-20 = 65515B - <strong>标识</strong>字段占 16 位：标识一个 IP 分组 - IP 协议利用一个计数器，每产生IP分组计数器加 1，作为该 IP 分组的标识 - <strong>标志位</strong>字段占 3 位，保留位，DF 位和 MF 位 - DF (Don't Fragment) - MF (More Fragment) - DF=1：禁止分片； DF=0：允许分片 - MF=1：非最后一片； MF=0：最后一片(或未分片) - <strong>片偏移</strong>字段占 13 位，是一个 IP 分组分片封装原IP分组数据的相对偏移量 - 片偏移字段以8字节为单位 - <strong>生存时间(TTL)</strong>字段占 8 位：IP 分组在网络中可以通过的路由器数（或者说是跳步数） - 路由器转发一次分组，TTL - 1 - 如果 TTL = 0，路由器则丢弃该 IP 分组 - <strong>协议</strong>字段占 8 位，是指示 IP 分组封装的是哪个协议的数据包 - 实现复用/分解 - eg. 6 为 TCP，表示封装的为 TCP 段；17 为 UDP，表示封装的是 UDP 数据报 - <strong>首部校验和</strong>字段占 16 位，是实现对 IP 分组首部的差错检测 - 计算校验和时，该字段置为全 0 - 采用反码算数运算求和，和的反码作为首部校验和字段 - 逐跳计算、逐跳校验 - <strong>源 IP 地址</strong> 和 <strong>目的 IP 地址</strong>字段都是占 32 位，分别标识发送分组的源主机/路由器（网络接口）和接受分组的目的主机/路由器（网络接口）的 IP - <strong>选项</strong>字段长度可变，范围位于 1B ~ 40B 之间，携带安全、源选路径、时间戳和路由记录等内容 - 但实际上很少被使用 - <strong>填充</strong>字段占长度可变，范围在 0 ~3B 之间：目的是补齐整个首部，符合 32 位对齐，即保证首部长度是 4 字节的倍数</p>
+<figure>
+<img src="/imgs/CompNet/网络层/IPBU.png" srcset="/img/loading.gif" lazyload alt="引入" /><figcaption>引入</figcaption>
+</figure>
+<h4 id="ipv4-数据报分组格式">IPv4 数据报分组格式</h4>
+<figure>
+<img src="/imgs/CompNet/网络层/IPv4数据报分组格式.png" srcset="/img/loading.gif" lazyload alt="分组格式" /><figcaption>分组格式</figcaption>
+</figure>
+<p>接下来进行介绍：</p>
+<ul>
+<li><strong>版本号</strong>字段占 4 位，是 IP 协议的版本号
+<ul>
+<li>且有这样的对应关系：4-&gt; IPv4, 6-&gt;IPv6</li>
+</ul></li>
+<li><strong>首部长度</strong>字段占 4 位，是 IP 分组首部长度
+<ul>
+<li>==以 4 字节位单位==</li>
+<li>eg: 5 -&gt; IP 首部长度位 20(5*4) 字节</li>
+</ul></li>
+<li><strong>服务类型</strong>字段占 8 位，是指示期望获得哪种类型的服务
+<ul>
+<li>1998 年这个字段改名为区分服务</li>
+<li>只有在网络提供区分服务 (DiffServ) 时使用</li>
+<li>一般情况下不使用，通常 IP 分组的该字段（第二字节）的值为 00H</li>
+</ul></li>
+<li><strong>总长度</strong>字段占 16 位，是 IP 分组的总字节数（首部+数据）
+<ul>
+<li>最大 IP 分组的总长度：65535B</li>
+<li>最小的 IP 分组首部： 20B</li>
+<li>IP 分组可以封装的最大数据：65535-20 = 65515B</li>
+</ul></li>
+<li><strong>标识</strong>字段占 16 位：标识一个 IP 分组
+<ul>
+<li>IP 协议利用一个计数器，每产生IP分组计数器加 1，作为该 IP 分组的标识</li>
+</ul></li>
+<li><strong>标志位</strong>字段占 3 位，保留位，DF 位和 MF 位
+<ul>
+<li>DF (Don't Fragment)</li>
+<li>MF (More Fragment)</li>
+<li>DF=1：禁止分片； DF=0：允许分片</li>
+<li>MF=1：非最后一片； MF=0：最后一片(或未分片)</li>
+</ul></li>
+<li><strong>片偏移</strong>字段占 13 位，是一个 IP 分组分片封装原IP分组数据的相对偏移量
+<ul>
+<li>片偏移字段以8字节为单位</li>
+</ul></li>
+<li><strong>生存时间(TTL)</strong>字段占 8 位：IP 分组在网络中可以通过的路由器数（或者说是跳步数）
+<ul>
+<li>路由器转发一次分组，TTL - 1</li>
+<li>如果 TTL = 0，路由器则丢弃该 IP 分组</li>
+</ul></li>
+<li><strong>协议</strong>字段占 8 位，是指示 IP 分组封装的是哪个协议的数据包
+<ul>
+<li>实现复用/分解</li>
+<li>eg. 6 为 TCP，表示封装的为 TCP 段；17 为 UDP，表示封装的是 UDP 数据报</li>
+</ul></li>
+<li><strong>首部校验和</strong>字段占 16 位，是实现对 IP 分组首部的差错检测
+<ul>
+<li>计算校验和时，该字段置为全 0</li>
+<li>采用反码算数运算求和，和的反码作为首部校验和字段</li>
+<li>逐跳计算、逐跳校验</li>
+</ul></li>
+<li><strong>源 IP 地址</strong> 和 <strong>目的 IP 地址</strong>字段都是占 32 位，分别标识发送分组的源主机/路由器（网络接口）和接受分组的目的主机/路由器（网络接口）的 IP</li>
+<li><strong>选项</strong>字段长度可变，范围位于 1B ~ 40B 之间，携带安全、源选路径、时间戳和路由记录等内容
+<ul>
+<li>但实际上很少被使用</li>
+</ul></li>
+<li><strong>填充</strong>字段占长度可变，范围在 0 ~3B 之间：目的是补齐整个首部，符合 32 位对齐，即保证首部长度是 4 字节的倍数</li>
+</ul>
 <h4 id="ip-分片过程">IP 分片过程</h4>
 <p>分片过程需要用到字段：<strong>标识、标志位和片偏移</strong>。</p>
 <p>假设原 IP 分组总长度为 <span class="math inline">\(L\)</span>，待转发链路的 MTU 为 <span class="math inline">\(M\)</span>，</p>
