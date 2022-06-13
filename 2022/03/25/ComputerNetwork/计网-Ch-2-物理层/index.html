@@ -19,11 +19,11 @@
     <meta name="description" content="总览  理解网络层服务 理解虚电路网络与数据报网络 掌握路由器体系结构 掌握 IP 协议  IP 数据报 IP 地址与子网划分 CIDR 与路由聚合  掌握 DHCP、NAT、ICMP、 ARP 等协议 掌握典型路由算法和路由协议  内容 网络层服务 概述  从发送主机向接收主机传送数据段 (segment) 发送主机：将数据段封装到数据报 (datagram) 中 接收主机：向传输层交付数据段">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计网 Ch.4 网络层">
-<meta property="og:url" content="http://example.com/2022/03/25/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-4-%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
+<meta property="og:url" content="http://example.com/2022/03/25/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-2-%E7%89%A9%E7%90%86%E5%B1%82/index.html">
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
 <meta property="og:description" content="总览  理解网络层服务 理解虚电路网络与数据报网络 掌握路由器体系结构 掌握 IP 协议  IP 数据报 IP 地址与子网划分 CIDR 与路由聚合  掌握 DHCP、NAT、ICMP、 ARP 等协议 掌握典型路由算法和路由协议  内容 网络层服务 概述  从发送主机向接收主机传送数据段 (segment) 发送主机：将数据段封装到数据报 (datagram) 中 接收主机：向传输层交付数据段">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612122605966.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612122605966.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/拥塞场景1.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/拥塞场景2.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/拥塞场景2-2.png">
@@ -31,8 +31,8 @@
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/拥塞场景3-2.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/ATMABR-1.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/ATMABR-2.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612123952397.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612123818194.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612123952397.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612123818194.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/IPBU.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/IPv4数据报分组格式.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/IP分片使用例.png">
@@ -40,37 +40,34 @@
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/子网掩码.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/子网划分.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/子网掩码eg.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612131318323.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612131705940.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612131318323.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612131705940.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/网络层例题图.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612134839303.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612135222736.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612135320925.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612134839303.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612135222736.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612135320925.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/DHCP实例.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612135927427.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612141729079.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612135927427.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612141729079.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/NAT例.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612145600263.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612145730149.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612150047484.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612145600263.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612145730149.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612150047484.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/网络层/例3图.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612214053810.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612214128196.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612113507221.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612113643462.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612113731758.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612113756041.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612113822557.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612231019013.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612231438033.png">
-<meta property="og:image" content="http://example.com/imgs/CompNet/网络层/image-20220612232446499.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612214053810.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612214128196.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612113507221.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612113643462.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612113731758.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612113756041.png">
+<meta property="og:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612113822557.png">
 <meta property="article:published_time" content="2022-03-25T05:37:43.000Z">
-<meta property="article:modified_time" content="2022-06-13T00:57:29.582Z">
+<meta property="article:modified_time" content="2022-06-12T15:00:03.174Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="网络层">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/CompNet/网络层/image-20220612122605966.png">
+<meta name="twitter:image" content="d:/文档/drafts/计网-Ch-4-网络层/image-20220612122605966.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -273,7 +270,7 @@
         
         
         
-          52 分钟
+          50 分钟
         
       </span>
     
@@ -377,7 +374,7 @@
 </ul>
 <h4 id="网络层服务模型">网络层服务模型</h4>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612122605966.png" srcset="/img/loading.gif" lazyload alt="网络层服务类型" /><figcaption>网络层服务类型</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612122605966.png" srcset="/img/loading.gif" lazyload alt="网络层服务类型" /><figcaption>网络层服务类型</figcaption>
 </figure>
 <ul>
 <li><strong>无连接服务</strong> (connection-less service):
@@ -473,11 +470,11 @@
 </ul>
 <h4 id="数据报转发表">数据报转发表</h4>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612123952397.png" srcset="/img/loading.gif" lazyload alt="转发表" /><figcaption>转发表</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612123952397.png" srcset="/img/loading.gif" lazyload alt="转发表" /><figcaption>转发表</figcaption>
 </figure>
 <h4 id="最长前缀匹配优先">最长前缀匹配优先</h4>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612123818194.png" srcset="/img/loading.gif" lazyload alt="最长前缀匹配" /><figcaption>最长前缀匹配</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612123818194.png" srcset="/img/loading.gif" lazyload alt="最长前缀匹配" /><figcaption>最长前缀匹配</figcaption>
 </figure>
 <p>在检索转发表时，优先选择与分组目的地址匹配<strong>前缀最长</strong>的入口 (entry)</p>
 <h4 id="数据报网络-vs.-vc-网络">数据报网络 vs. VC 网络</h4>
@@ -541,7 +538,7 @@
 </tbody>
 </table>
 <h3 id="ip协议">IP协议</h3>
-<p><img src="/imgs/CompNet/网络层/IPBU.png" srcset="/img/loading.gif" lazyload alt="引入" /> #### IPv4 数据报分组格式 <img src="/imgs/CompNet/网络层/IPv4数据报分组格式.png" srcset="/img/loading.gif" lazyload alt="分组格式" /> 接下来进行介绍： - <strong>版本号</strong>字段占 4 位，是 IP 协议的版本号 - 且有这样的对应关系：4-&gt; IPv4, 6-&gt;IPv6 - <strong>首部长度</strong>字段占 4 位，是 IP 分组首部长度 - ==以 4 字节位单位== - eg: 5 -&gt; IP 首部长度位 20(5*4) 字节 - <strong>服务类型</strong>字段占 8 位，是指示期望获得哪种类型的服务 - 1998 年这个字段改名为区分服务 - 只有在网络提供区分服务 (DiffServ) 时使用 - 一般情况下不使用，通常 IP 分组的该字段（第二字节）的值为 00H - <strong>总长度</strong>字段占 16 位，是 IP 分组的总字节数（首部+数据） - 最大 IP 分组的总长度：65535B - 最小的 IP 分组首部： 20B - IP 分组可以封装的最大数据：65535-20 = 65515B - <strong>标识</strong>字段占 16 位：标识一个 IP 分组 - IP 协议利用一个计数器，每产生IP分组计数器加 1，作为该 IP 分组的标识 - <strong>标志位</strong>字段占 3 位，保留位，DF 位和 MF 位 - DF (Don't Fragment) - MF (More Fragment) - DF=1：禁止分片； DF=0：允许分片 - MF=1：非最后一片； MF=0：最后一片(或未分片) - <strong>片偏移</strong>字段占 13 位，是一个 IP 分组分片封装原IP分组数据的相对偏移量 - 片偏移字段以8字节为单位 - <strong>生存时间(TTL)</strong>字段占 8 位：IP 分组在网络中可以通过的路由器数（或者说是跳步数） - 路由器转发一次分组，TTL - 1 - 如果 TTL = 0，路由器则丢弃该 IP 分组 - <strong>协议</strong>字段占 8 位，是指示 IP 分组封装的是哪个协议的数据包 - 实现复用/分解 - eg. 6 为 TCP，表示封装的为 TCP 段；17 为 UDP，表示封装的是 UDP 数据报 - <strong>首部校验和</strong>字段占 16 位，是实现对 IP 分组首部的差错检测 - 计算校验和时，该字段置为全 0 - 采用反码算数运算求和，和的反码作为首部校验和字段 - 逐跳计算、逐跳校验 - <strong>源 IP 地址</strong> 和 <strong>目的 IP 地址</strong>字段都是占 32 位，分别标识发送分组的源主机/路由器（网络接口）和接受分组的目的主机/路由器（网络接口）的 IP - <strong>选项</strong>字段长度可变，范围位于 1B ~ 40B 之间，携带安全、源选路径、时间戳和路由记录等内容 - 但实际上很少被使用 - <strong>填充</strong>字段占长度可变，范围在 0 ~3B 之间：目的是补齐整个首部，符合 32 位对齐，即保证首部长度是 4 字节的倍数</p>
+<p><img src="/imgs/CompNet/网络层/IPBU.png" srcset="/img/loading.gif" lazyload alt="IPBU" /> #### IPv4 数据报分组格式 <img src="/imgs/CompNet/网络层/IPv4数据报分组格式.png" srcset="/img/loading.gif" lazyload alt="分组格式" /> 接下来进行介绍： - <strong>版本号</strong>字段占 4 位，是 IP 协议的版本号 - 且有这样的对应关系：4-&gt; IPv4, 6-&gt;IPv6 - <strong>首部长度</strong>字段占 4 位，是 IP 分组首部长度 - ==以 4 字节位单位== - eg: 5 -&gt; IP 首部长度位 20(5*4) 字节 - <strong>服务类型</strong>字段占 8 位，是指示期望获得哪种类型的服务 - 1998 年这个字段改名为区分服务 - 只有在网络提供区分服务 (DiffServ) 时使用 - 一般情况下不使用，通常 IP 分组的该字段（第二字节）的值为 00H - <strong>总长度</strong>字段占 16 位，是 IP 分组的总字节数（首部+数据） - 最大 IP 分组的总长度：65535B - 最小的 IP 分组首部： 20B - IP 分组可以封装的最大数据：65535-20 = 65515B - <strong>标识</strong>字段占 16 位：标识一个 IP 分组 - IP 协议利用一个计数器，每产生IP分组计数器加 1，作为该 IP 分组的标识 - <strong>标志位</strong>字段占 3 位，保留位，DF 位和 MF 位 - DF (Don't Fragment) - MF (More Fragment) - DF=1：禁止分片； DF=0：允许分片 - MF=1：非最后一片； MF=0：最后一片(或未分片) - <strong>片偏移</strong>字段占 13 位，是一个 IP 分组分片封装原IP分组数据的相对偏移量 - 片偏移字段以8字节为单位 - <strong>生存时间(TTL)</strong>字段占 8 位：IP 分组在网络中可以通过的路由器数（或者说是跳步数） - 路由器转发一次分组，TTL - 1 - 如果 TTL = 0，路由器则丢弃该 IP 分组 - <strong>协议</strong>字段占 8 位，是指示 IP 分组封装的是哪个协议的数据包 - 实现复用/分解 - eg. 6 为 TCP，表示封装的为 TCP 段；17 为 UDP，表示封装的是 UDP 数据报 - <strong>首部校验和</strong>字段占 16 位，是实现对 IP 分组首部的差错检测 - 计算校验和时，该字段置为全 0 - 采用反码算数运算求和，和的反码作为首部校验和字段 - 逐跳计算、逐跳校验 - <strong>源 IP 地址</strong> 和 <strong>目的 IP 地址</strong>字段都是占 32 位，分别标识发送分组的源主机/路由器（网络接口）和接受分组的目的主机/路由器（网络接口）的 IP - <strong>选项</strong>字段长度可变，范围位于 1B ~ 40B 之间，携带安全、源选路径、时间戳和路由记录等内容 - 但实际上很少被使用 - <strong>填充</strong>字段占长度可变，范围在 0 ~3B 之间：目的是补齐整个首部，符合 32 位对齐，即保证首部长度是 4 字节的倍数</p>
 <h4 id="ip-分片过程">IP 分片过程</h4>
 <p>分片过程需要用到字段：<strong>标识、标志位和片偏移</strong>。</p>
 <p>假设原 IP 分组总长度为 <span class="math inline">\(L\)</span>，待转发链路的 MTU 为 <span class="math inline">\(M\)</span>，</p>
@@ -812,14 +809,14 @@ MF_i = \left\{\begin{array}{l}
 </ul>
 <h5 id="数据报格式">数据报格式</h5>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612131318323.png" srcset="/img/loading.gif" lazyload alt="IPv6 数据报格式" /><figcaption>IPv6 数据报格式</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612131318323.png" srcset="/img/loading.gif" lazyload alt="IPv6 数据报格式" /><figcaption>IPv6 数据报格式</figcaption>
 </figure>
 <ul>
 <li>固定长度的 40 字节基本首部（确定）</li>
 <li>不允许分片</li>
 </ul>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612131705940.png" srcset="/img/loading.gif" lazyload alt="IPv6" /><figcaption>IPv6</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612131705940.png" srcset="/img/loading.gif" lazyload alt="IPv6" /><figcaption>IPv6</figcaption>
 </figure>
 <ul>
 <li><strong>优先级 (priority)</strong>，标识数据报的优先级</li>
@@ -993,15 +990,15 @@ MF_i = \left\{\begin{array}{l}
 </ul>
 <h5 id="icmp-报文格式与封装">ICMP 报文格式与封装</h5>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612134839303.png" srcset="/img/loading.gif" lazyload alt="ICMP 报文" /><figcaption>ICMP 报文</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612134839303.png" srcset="/img/loading.gif" lazyload alt="ICMP 报文" /><figcaption>ICMP 报文</figcaption>
 </figure>
 <p>回忆实验的实现的最后也是调用 <code>ip_out()</code> 将 ICMP 报文发送出去。</p>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612135222736.png" srcset="/img/loading.gif" lazyload alt="ICMP 的数据封装" /><figcaption>ICMP 的数据封装</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612135222736.png" srcset="/img/loading.gif" lazyload alt="ICMP 的数据封装" /><figcaption>ICMP 的数据封装</figcaption>
 </figure>
 <h5 id="应用举例">应用举例</h5>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612135320925.png" srcset="/img/loading.gif" lazyload alt="Tranceroute" /><figcaption>Tranceroute</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612135320925.png" srcset="/img/loading.gif" lazyload alt="Tranceroute" /><figcaption>Tranceroute</figcaption>
 </figure>
 <h4 id="动态主机配置协议-dhcp">动态主机配置协议 (DHCP)</h4>
 <p>如何获得 IP 地址？</p>
@@ -1046,7 +1043,7 @@ MF_i = \left\{\begin{array}{l}
 <p>所以，为了节省 IP 地址的消耗，也隐藏网络内部结构就可以通过 NAT 完成。</p>
 <p>为了网络安全，划分了部分 IP 地址为私有地址，这些地址只用于 LAN 而不用于 WAN。</p>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612135927427.png" srcset="/img/loading.gif" lazyload alt="NAT 直观例" /><figcaption>NAT 直观例</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612135927427.png" srcset="/img/loading.gif" lazyload alt="NAT 直观例" /><figcaption>NAT 直观例</figcaption>
 </figure>
 <p>私有地址网段有：</p>
 <table>
@@ -1093,7 +1090,7 @@ MF_i = \left\{\begin{array}{l}
 </ul></li>
 </ul>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612141729079.png" srcset="/img/loading.gif" lazyload alt="NAT 过程" /><figcaption>NAT 过程</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612141729079.png" srcset="/img/loading.gif" lazyload alt="NAT 过程" /><figcaption>NAT 过程</figcaption>
 </figure>
 <h6 id="append">append</h6>
 <ul>
@@ -1192,7 +1189,7 @@ IP 地址
 <p>R2 转发后，P 的源 IP 地址和目的 IP 地址分别是：203.10.2.6 和 192.168.1.2。</p>
 <p>// 注：主要是关心转发的关系</p>
 </blockquote>
-<h4 id="地址解析协议-arp">地址解析协议 ARP</h4>
+<h4 id="地址解析协议-arp">地址解析协议 ARP:</h4>
 <p>（主要通过实验课的实现来理解最好）</p>
 <h5 id="引入">引入</h5>
 <p>已知 IP 如何确定 MAC 地址？ 地址解析协议！</p>
@@ -1229,21 +1226,21 @@ IP 地址
 </ul>
 <p>一个 LAN 到另一个 LAN： - A 构造 IP 数据报，源 IP 地址是 A 的 IP 地址，目的 IP 地址是 B 的 IP 地址 - A 构造链路层帧，其中源 MAC 地址是 A 的 MAC 地址，目的 MAC 地址是 <strong>R（左）接口的 MAC 地址</strong>，封装 A 到 B 的 IP 数据报。 即目的 MAC 地址看默认网关，目的 IP 地址直接看真的 IP 地址。</p>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612145600263.png" srcset="/img/loading.gif" lazyload alt="不在同一 LAN 的 ARP - 1" /><figcaption>不在同一 LAN 的 ARP - 1</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612145600263.png" srcset="/img/loading.gif" lazyload alt="不在同一 LAN 的 ARP - 1" /><figcaption>不在同一 LAN 的 ARP - 1</figcaption>
 </figure>
 <ul>
 <li>帧从 A 发送至 R</li>
 <li>R 接收帧，提取 IP 数据报，传递给上层协议</li>
 </ul>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612145730149.png" srcset="/img/loading.gif" lazyload alt="不在同一 LAN 的 ARP - 2" /><figcaption>不在同一 LAN 的 ARP - 2</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612145730149.png" srcset="/img/loading.gif" lazyload alt="不在同一 LAN 的 ARP - 2" /><figcaption>不在同一 LAN 的 ARP - 2</figcaption>
 </figure>
 <ul>
 <li>R 转发 IP 数据报 （源、目的 IP 地址未改变）</li>
 <li>R 创建链路帧，源 MAC 地址是 R（右）接口的 MAC 地址，目的地址是 B 的 MAC 地址，封装 A 到 B 的 IP 数据报</li>
 </ul>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612150047484.png" srcset="/img/loading.gif" lazyload alt="不在同一 LAN 的 ARP - 3" /><figcaption>不在同一 LAN 的 ARP - 3</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612150047484.png" srcset="/img/loading.gif" lazyload alt="不在同一 LAN 的 ARP - 3" /><figcaption>不在同一 LAN 的 ARP - 3</figcaption>
 </figure>
 <h3 id="路由算法">路由算法</h3>
 <p>路由算法（协议）确定去往目的网络的最佳路径 关键问题：源到目的（如 u 到 z）的最小费用路径是什么？ 路由算法：寻找最小费用路径的算法</p>
@@ -1381,10 +1378,10 @@ IP 地址
 <p>R1 所维护的距离矢量包括自身的距离矢量以及邻居 R2 最新交换过来的距离矢量。</p>
 <h4 id="路由算法例">路由算法例</h4>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612214053810.png" srcset="/img/loading.gif" lazyload alt="路由算法例-1" /><figcaption>路由算法例-1</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612214053810.png" srcset="/img/loading.gif" lazyload alt="路由算法例-1" /><figcaption>路由算法例-1</figcaption>
 </figure>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612214128196.png" srcset="/img/loading.gif" lazyload alt="路由算法例-2" /><figcaption>路由算法例-2</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612214128196.png" srcset="/img/loading.gif" lazyload alt="路由算法例-2" /><figcaption>路由算法例-2</figcaption>
 </figure>
 <h3 id="路由协议">路由协议</h3>
 <p>以 Internet 网络为例 - 采用层次路由 - AS 内部路由协议——内部网关协议 (IGP) - 最常见的 AS - 路由信息：RIP - 开放最短路径优先：OSRF - 内部网关路由协议：IGRP - Cisco 私有</p>
@@ -1460,53 +1457,29 @@ IP 地址
 </tbody>
 </table>
 <h2 id="总结">总结</h2>
-<h4 id="直白的例题">直白的例题</h4>
 <p>在学习完毕后，你应该能写出这一题：</p>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612113507221.png" srcset="/img/loading.gif" lazyload alt="总结例-1" /><figcaption>总结例-1</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612113507221.png" srcset="/img/loading.gif" lazyload alt="总结例-1" /><figcaption>总结例-1</figcaption>
 </figure>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612113643462.png" srcset="/img/loading.gif" lazyload alt="总结例-2" /><figcaption>总结例-2</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612113643462.png" srcset="/img/loading.gif" lazyload alt="总结例-2" /><figcaption>总结例-2</figcaption>
 </figure>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612113731758.png" srcset="/img/loading.gif" lazyload alt="总结例-3" /><figcaption>总结例-3</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612113731758.png" srcset="/img/loading.gif" lazyload alt="总结例-3" /><figcaption>总结例-3</figcaption>
 </figure>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612113756041.png" srcset="/img/loading.gif" lazyload alt="总结例-4" /><figcaption>总结例-4</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612113756041.png" srcset="/img/loading.gif" lazyload alt="总结例-4" /><figcaption>总结例-4</figcaption>
 </figure>
 <figure>
-<img src="/imgs/CompNet/网络层/image-20220612113822557.png" srcset="/img/loading.gif" lazyload alt="总结例-5" /><figcaption>总结例-5</figcaption>
+<img src="D:\文档\drafts\计网-Ch-4-网络层\image-20220612113822557.png" srcset="/img/loading.gif" lazyload alt="总结例-5" /><figcaption>总结例-5</figcaption>
 </figure>
 <ol type="1">
-<li><p>关键词：剩余 IP 地址空间——因为局域网 4 (192.168.1.0/25) 已经用了一半了，剩下的就是 192.168.1.128/25</p>
-<p>剩下的空间就是 192.168.1.128/25，一共 126 个 IP 地址。再根据地址数需求划分，使用不等长划分。</p>
-<p>因为局域网 1 需要的 IP 地址数差不多为一半（60 个），所以先划分一半给它，剩下的 2 和 3 再分。</p>
-<p>于是：</p>
-<p>局域网 1：分配 192.168.1.128/26</p>
-<p>局域网 2：分配 192.168.1.192/27</p>
-<p>局域网 3：分配 192.168.1.224/27</p>
-<p>（广播地址：下一个分配减一，很好理解，因为再加一就进位了）</p>
-<p>（可分配地址范围：从<strong>子网地址 + 1 到 广播地址 - 1</strong>）</p>
-<figure>
-<img src="/imgs/CompNet/网络层/image-20220612231019013.png" srcset="/img/loading.gif" lazyload alt="答案图" /><figcaption>答案图</figcaption>
-</figure></li>
-<li><p>路由表如下：</p>
-<p>（看图，对应处理）</p>
-<p>（DNS 服务器——特定主机路由，子网掩码四个 255）</p>
-<figure>
-<img src="/imgs/CompNet/网络层/image-20220612231438033.png" srcset="/img/loading.gif" lazyload alt="例题-路由表" /><figcaption>例题-路由表</figcaption>
-</figure></li>
-<li><p>对于 R2 到局域网的路由 是 192.168.1.0/24，实质上一次转发</p>
-<p>（下一条 IP 地址相同，前 n 位相同，将其聚合）</p></li>
-<li><p>（地址不唯一）</p>
-<figure>
-<img src="/imgs/CompNet/网络层/image-20220612232446499.png" srcset="/img/loading.gif" lazyload alt="例题-配置" /><figcaption>例题-配置</figcaption>
-</figure></li>
-<li><p>判断子网掩码是否正确，所在生成的子网比实际子网要大</p>
-<p>（子网掩码应为 255.255.255.128，但这个子网配大了）</p>
-<p>（这个过程需要把解析报文封装到 UDP，UDP 再封装到 IP，但由于子网掩码配大了，它还以为是在同一个子网内，它会直接发送 ARP 查询报文，但实际上是没发到的，所以错啦！）</p></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li>判断子网掩码是否正确，所在生成的子网比实际子网要大</li>
 </ol>
-<h4 id="学到的内容">学到的内容</h4>
 <ul>
 <li>网络层服务</li>
 <li>虚电路网络与数据报网络</li>
@@ -1579,7 +1552,7 @@ IP 地址
   <div class="license-box my-3">
     <div class="license-title">
       <div>计网 Ch.4 网络层</div>
-      <div>http://example.com/2022/03/25/ComputerNetwork/计网-Ch-4-网络层/</div>
+      <div>http://example.com/2022/03/25/ComputerNetwork/计网-Ch-2-物理层/</div>
     </div>
     <div class="license-meta">
       
@@ -1621,9 +1594,9 @@ IP 地址
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/25/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-2-%E7%89%A9%E7%90%86%E5%B1%82/" title="计网 Ch.4 网络层">
+                      <a href="/2022/04/04/Algorithm/%E7%AE%97%E6%B3%95-ex-1-%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="算法 ex.1 线段树">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计网 Ch.4 网络层</span>
+                        <span class="hidden-mobile">算法 ex.1 线段树</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1631,8 +1604,8 @@ IP 地址
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/24/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E5%B1%80%E5%9F%9F%E7%BD%91/" title="计网 Ch.3 数据链路层与局域网">
-                        <span class="hidden-mobile">计网 Ch.3 数据链路层与局域网</span>
+                      <a href="/2022/03/25/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-4-%E7%BD%91%E7%BB%9C%E5%B1%82/" title="计网 Ch.4 网络层">
+                        <span class="hidden-mobile">计网 Ch.4 网络层</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
