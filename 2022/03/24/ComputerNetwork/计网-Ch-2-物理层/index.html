@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/imgs/CompNet/物理层/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A82.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/物理层/物理层设备.png">
 <meta property="article:published_time" content="2022-03-24T12:35:02.000Z">
-<meta property="article:modified_time" content="2022-06-13T02:38:55.701Z">
+<meta property="article:modified_time" content="2022-06-13T02:54:07.183Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="物理层">
@@ -241,7 +241,7 @@
         
         
         
-          13 分钟
+          14 分钟
         
       </span>
     
@@ -432,7 +432,7 @@
 <li>奈奎斯特 (Nyquist) 信道容量公式
 <ul>
 <li>理想无噪声的信道容量： <span class="math inline">\(C = 2Blog_2M\)</span></li>
-<li><span class="math inline">\(C\)</span> 为信道容量，单位为 <span class="math inline">\(b/s (bps)\)</span>；<span class="math inline">\(B\)</span> 为信道带宽，单位为 <span class="math inline">\(Hz\)</span>；<span class="math inline">\(M\)</span> 为进制数，集信号状态数</li>
+<li><span class="math inline">\(C\)</span> 为信道容量，单位为 <span class="math inline">\(b/s (bps)\)</span>；<span class="math inline">\(B\)</span> 为信道带宽，单位为 <span class="math inline">\(Hz\)</span>；<span class="math inline">\(M\)</span> 为进制数，即信号状态数</li>
 <li>是理想信道的极限容量</li>
 </ul></li>
 <li>eg.1:
@@ -443,7 +443,7 @@
 </ul>
 <p>对于这个信道容量公式，可以得出这样的结论：</p>
 <ul>
-<li>任何信道中，码元传输速率是邮上线的，如果速率超过上限，就会出现严重的码间串扰问题</li>
+<li>任何信道中，码元传输速率是有上限的，如果速率超过上限，就会出现严重的码间串扰问题</li>
 <li>信道的频带越宽，速率就可以更高</li>
 <li>这个公式给出了码元传输速率的限制，但是未对信息传输速率限制</li>
 </ul>
@@ -462,6 +462,10 @@
 <ul>
 <li>Q: 若某通信链路的带宽为 <span class="math inline">\(2 MHz\)</span>，信噪比为 <span class="math inline">\(30 dB\)</span>，则该通信链路的最大数据传输速率约是多少？</li>
 <li>A: <span class="math inline">\(20 Mbps\)</span></li>
+<li>Why?
+<ul>
+<li>信噪比为 <span class="math inline">\(30 dB\)</span> 即 ： <span class="math inline">\((S/N)_{dB} = 10log_{10}(Singal\ power/ Noise\  Power) \Rightarrow S/N = 1000\)</span></li>
+</ul></li>
 </ul></li>
 </ul>
 <p>同样可以得到一些结论：</p>

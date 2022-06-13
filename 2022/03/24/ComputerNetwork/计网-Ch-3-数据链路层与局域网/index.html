@@ -16,18 +16,18 @@
   <meta name="author" content="LazuriteCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总览 数据链路层在物理层提供服务的基础上向网络层提供服务，主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出差错的物理连接改造为逻辑上无差错的数据链路，使其对网络层能够表现为一条无差错的链路。 在这一章主要学习： - 理解数据链路层主要服务 - 理解链路层寻址及其特点 - 掌握差错编码原理及典型编码 - 掌握可靠数据传输基本原理及协议、信道利用率的计算 - 掌握多路访问控制协议特点 -">
+    <meta name="description" content="总览 数据链路层在物理层提供服务的基础上向网络层提供服务，主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出差错的物理连接改造为逻辑上无差错的数据链路，使其对网络层能够表现为一条无差错的链路。 在这一章主要学习：  理解数据链路层主要服务 理解链路层寻址及其特点 掌握差错编码原理及典型编码 掌握可靠数据传输基本原理及协议、信道利用率的计算 掌握多路访问控制协议特点 掌握以太网技术、交换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计网 Ch.3 数据链路层与局域网">
 <meta property="og:url" content="http://example.com/2022/03/24/ComputerNetwork/%E8%AE%A1%E7%BD%91-Ch-3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E5%B1%80%E5%9F%9F%E7%BD%91/index.html">
 <meta property="og:site_name" content="Lazurite&#39;s Blog.">
-<meta property="og:description" content="总览 数据链路层在物理层提供服务的基础上向网络层提供服务，主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出差错的物理连接改造为逻辑上无差错的数据链路，使其对网络层能够表现为一条无差错的链路。 在这一章主要学习： - 理解数据链路层主要服务 - 理解链路层寻址及其特点 - 掌握差错编码原理及典型编码 - 掌握可靠数据传输基本原理及协议、信道利用率的计算 - 掌握多路访问控制协议特点 -">
+<meta property="og:description" content="总览 数据链路层在物理层提供服务的基础上向网络层提供服务，主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出差错的物理连接改造为逻辑上无差错的数据链路，使其对网络层能够表现为一条无差错的链路。 在这一章主要学习：  理解数据链路层主要服务 理解链路层寻址及其特点 掌握差错编码原理及典型编码 掌握可靠数据传输基本原理及协议、信道利用率的计算 掌握多路访问控制协议特点 掌握以太网技术、交换">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/imgs/CompNet/链路层/CRC举例.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/链路层/以太网帧结构.png">
 <meta property="og:image" content="http://example.com/imgs/CompNet/链路层/PPP数据帧.png">
 <meta property="article:published_time" content="2022-03-24T15:26:11.000Z">
-<meta property="article:modified_time" content="2022-05-24T02:21:04.255Z">
+<meta property="article:modified_time" content="2022-06-13T03:11:31.153Z">
 <meta property="article:author" content="LazuriteCoder">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="数据链路层">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k 字
+          9.7k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          42 分钟
+          41 分钟
         
       </span>
     
@@ -287,11 +287,29 @@
             <div class="markdown-body">
               
               <h2 id="总览">总览</h2>
-<p>数据链路层在物理层提供服务的基础上向网络层提供服务，主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出差错的物理连接改造为逻辑上无差错的数据链路，使其对网络层能够表现为一条无差错的链路。 在这一章主要学习： - 理解数据链路层主要服务 - 理解链路层寻址及其特点 - 掌握差错编码原理及典型编码 - 掌握可靠数据传输基本原理及协议、信道利用率的计算 - 掌握多路访问控制协议特点 - 掌握以太网技术、交换机工作原理、VLAN 技术等 - 理解PPP协议 - 了解链路虚拟化概念及原理</p>
+<p>数据链路层在物理层提供服务的基础上向网络层提供服务，主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出差错的物理连接改造为逻辑上无差错的数据链路，使其对网络层能够表现为一条无差错的链路。 在这一章主要学习：</p>
+<ul>
+<li>理解数据链路层主要服务</li>
+<li>理解链路层寻址及其特点</li>
+<li>掌握差错编码原理及典型编码</li>
+<li>掌握可靠数据传输基本原理及协议、信道利用率的计算</li>
+<li>掌握多路访问控制协议特点</li>
+<li>掌握以太网技术、交换机工作原理、VLAN 技术等</li>
+<li>理解PPP协议</li>
+<li>了解链路虚拟化概念及原理</li>
+</ul>
 <h2 id="内容">内容</h2>
 <h3 id="数据链路层服务">数据链路层服务</h3>
 <h4 id="基本介绍">基本介绍</h4>
-<p>数据链路层位于网络层 (AL) 和物理层 (PHL) 之间，它向上对网络层提供<strong>明确 (well-defined) 的服务接口</strong>，向下利用物理层提供的位流服务。 - 负责<strong>结点-结点 (node-to-node)</strong> 数据传输 - <strong>组帧 (Framing)</strong> - <strong>物理寻址 (Physical addressing)</strong> - <strong>流量控制 (Flow control)</strong> - <strong>差错控制 (Error control)</strong> - <strong>访问控制 (Access control)</strong></p>
+<p>数据链路层位于网络层 (AL) 和物理层 (PHL) 之间，它向上对网络层提供<strong>明确 (well-defined) 的服务接口</strong>，向下利用物理层提供的位流服务。</p>
+<ul>
+<li>负责<strong>结点-结点 (node-to-node)</strong> 数据传输</li>
+<li><strong>组帧 (Framing)</strong></li>
+<li><strong>物理寻址 (Physical addressing)</strong></li>
+<li><strong>流量控制 (Flow control)</strong></li>
+<li><strong>差错控制 (Error control)</strong></li>
+<li><strong>访问控制 (Access control)</strong></li>
+</ul>
 <h4 id="术语">术语</h4>
 <ul>
 <li>结点 (nodes)：主机、路由器、交换机</li>
@@ -304,7 +322,45 @@
 <li>帧 (frame)：链路层（第二层）数据分组，封装网络层数据报 <strong>数据链路层</strong>负责通过一条链路从一个结点向另一个物理链路直接相连的相邻结点传送数据报。</li>
 </ul>
 <h4 id="链路层服务">链路层服务</h4>
-<p>链路层的服务主要是组帧，即 framing - 封装网络层数据报构成数据帧 - 帧同步：从物理层接收的比特流中准确区分出一帧的开始与结束 - 字节计数法 (Byte count) - 但是会在某个计数字节出错后导致错误（失去了帧边界划分的依据） - 带字节填充的定界符法 (Flag bytes with byte stuffing) - 定界符 (FLAG)：一个特殊的字节，比如 01111110，即 0x7E，用于区分前后两个不同的帧 - 一个帧在这里的结构大概是 FLAG + 头标 + 有效载荷 + 尾标 + FLAG - 但是如果有效载荷部分包含与定界符相同的字节也会出问题！ - 所以需要使得信息为中出现的特殊字符不被认为是帧的首尾定界符，需要在特殊字符中填充转义字符。 - 带比特填充的定界符法 (Flag bits with bit stuffing) - 定界符：如两个 0 比特之间，连续 6 个 1 比特，即 01111110，0x7E - 但是也会有有效载荷部分包含与定界符相同的为组合诶… - 于是发送方的数据链路层在信息为中遇到连续 5 个连续的“1”时，自动插入一个“0”，接收方只需要做逆操作就可以了！ - 0 比特填充法很容易通过硬件实现，性能优于字符填充 - 物理层编码违例 (Physical layer coding violations) - 核心思想：定界符为不会在数据部分出现的码字。 - 4B/5B 编码方案：未使用的码字 - 前导码：存在很长的前导码 (preamble) - 例如：传统以太网、802.11 - 曼彻斯特编码/差分曼彻斯特编码：比特周期<strong>中间信号无跳变</strong> - （将比特 “1” 编码成为“高-低”电平对，将比特“0”编码成为“低-高”电平对，“高-高”、“低-低”电平对在数据比特中是违规的） - 例如：802.5 令牌环网</p>
+<p>链路层的服务主要是组帧，即 framing</p>
+<ul>
+<li>封装网络层数据报构成数据帧</li>
+<li>帧同步：从物理层接收的比特流中准确区分出一帧的开始与结束
+<ul>
+<li>字节计数法 (Byte count)
+<ul>
+<li>但是会在某个计数字节出错后导致错误（失去了帧边界划分的依据）</li>
+</ul></li>
+<li>带字节填充的定界符法 (Flag bytes with byte stuffing)
+<ul>
+<li>定界符 (FLAG)：一个特殊的字节，比如 01111110，即 0x7E，用于区分前后两个不同的帧</li>
+<li>一个帧在这里的结构大概是 FLAG + 头标 + 有效载荷 + 尾标 + FLAG</li>
+<li>但是如果有效载荷部分包含与定界符相同的字节也会出问题！</li>
+<li>所以需要使得信息为中出现的特殊字符不被认为是帧的首尾定界符，需要在特殊字符中填充转义字符。</li>
+</ul></li>
+<li>带比特填充的定界符法 (Flag bits with bit stuffing)
+<ul>
+<li>定界符：如两个 0 比特之间，连续 6 个 1 比特，即 01111110，0x7E</li>
+<li>但是也会有有效载荷部分包含与定界符相同的为组合诶…</li>
+<li>于是发送方的数据链路层在信息为中遇到连续 5 个连续的“1”时，自动插入一个“0”，接收方只需要做逆操作就可以了！</li>
+<li>0 比特填充法很容易通过硬件实现，性能优于字符填充</li>
+</ul></li>
+<li>物理层编码违例 (Physical layer coding violations)
+<ul>
+<li>核心思想：定界符为不会在数据部分出现的码字。</li>
+<li>4B/5B 编码方案：未使用的码字</li>
+<li>前导码：存在很长的前导码 (preamble)
+<ul>
+<li>例如：传统以太网、802.11</li>
+</ul></li>
+<li>曼彻斯特编码/差分曼彻斯特编码：比特周期<strong>中间信号无跳变</strong>
+<ul>
+<li>（将比特 “1” 编码成为“高-低”电平对，将比特“0”编码成为“低-高”电平对，“高-高”、“低-低”电平对在数据比特中是违规的）</li>
+<li>例如：802.5 令牌环网</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 <h4 id="链路层的具体实现">链路层的具体实现</h4>
 <ul>
 <li>每个主机或路由器接口</li>
@@ -324,53 +380,109 @@
 <h4 id="差错编码基本原理">差错编码基本原理</h4>
 <p><span class="math inline">\(D \rightarrow DR\)</span> 其中 <span class="math inline">\(R\)</span> 为差错检测与纠正比特（冗余比特） <span class="math inline">\(输入 \rightarrow D \rightarrow R = f(D) \rightarrow |D\quad |R| \rightarrow |\quad 信道 \quad | \rightarrow |D^{&#39;} \quad | R^{&#39;} | \rightarrow R^{&#39;} = f(D^{&#39;}) ? \ 是则输出，否则错误\)</span> 注：差错编码<strong>不能保证 100% 可靠</strong></p>
 <h4 id="差错编码的检错能力">差错编码的检错能力</h4>
-<p>差错编码可以分为<strong>检错码</strong>和<strong>纠错码</strong>。 这里引入一个概念——汉明距离 (Hamming distance)，顾名思义，应该与汉明码有关！ 汉明距离即为两个码字之间对应位不同的数目。 对于检错码，如果编码集的汉明距离 <span class="math inline">\(d_s = r+1\)</span>，则该差错编码可以检测 <span class="math inline">\(r\)</span> 位差错。 - 例如，编码集 {0000, 0101, 1010, 1111} 的汉明距离 <span class="math inline">\(d_s = 2\)</span>，可以 100% 检测 1 比特差错。 对于纠错码，如果编码集的汉明距离 <span class="math inline">\(d_s = 2r+1\)</span>，则该纠错码可以纠正 <span class="math inline">\(r\)</span> 位差错 - 例如，编码集 {000000, 010101, 101010, 111111} 的汉明距离 <span class="math inline">\(d_s = 3\)</span> 可以纠正 1 比特差错，如 100010 纠正为 101010</p>
+<p>差错编码可以分为<strong>检错码</strong>和<strong>纠错码</strong>。</p>
+<p>这里引入一个概念——汉明距离 (Hamming distance)，顾名思义，应该与汉明码有关！</p>
+<p>汉明距离即为两个码字之间对应位不同的数目。</p>
+<p>对于检错码，如果编码集的汉明距离 <span class="math inline">\(d_s = r+1\)</span>，则该差错编码可以检测 <span class="math inline">\(r\)</span> 位差错。</p>
+<ul>
+<li>例如，编码集 {0000, 0101, 1010, 1111} 的汉明距离 <span class="math inline">\(d_s = 2\)</span>，可以 100% 检测 1 比特差错。</li>
+</ul>
+<p>对于纠错码，如果编码集的汉明距离 <span class="math inline">\(d_s = 2r+1\)</span>，则该纠错码可以纠正 <span class="math inline">\(r\)</span> 位差错</p>
+<ul>
+<li>例如，编码集 {000000, 010101, 101010, 111111} 的汉明距离 <span class="math inline">\(d_s = 3\)</span> 可以纠正 1 比特差错，如 100010 纠正为 101010</li>
+</ul>
 <h4 id="奇偶校验码">奇偶校验码</h4>
-<p>1 比特校验位： - 检测奇数位差错</p>
-<p>二维奇偶校验： - 检测奇数位差错、部分偶数位差错 - 纠正同一行/列的奇数位错</p>
+<p>1 比特校验位：</p>
+<ul>
+<li>检测奇数位差错</li>
+</ul>
+<p>二维奇偶校验：</p>
+<ul>
+<li><p>检测奇数位差错、部分偶数位差错</p></li>
+<li><p>纠正同一行/列的奇数位错</p></li>
+</ul>
 <h4 id="internet-校验和-checksum">Internet 校验和 (Checksum)</h4>
-<p>发送端： - 将“数据”（校验内容）划分为 16 位的二进制“整熟”序列。 - 求和 (sum)：补码求和（最高位进位的“1”，返回最低位继续加） - 校验和 (Checksum)：sum 的反码。 - 放入分组 (UDP, TCP, IP) 的校验和字段。</p>
-<p>接收端： - 与发送端相同的算法计算 - 计算得到的 "checksum" - 为 16 位全 0（或 sum 为 16 位全 1）——无错 - 否则即为出错</p>
+<p>发送端：</p>
+<ul>
+<li><p>将“数据”（校验内容）划分为 16 位的二进制“整熟”序列。</p></li>
+<li><p>求和 (sum)：补码求和（最高位进位的“1”，返回最低位继续加）</p></li>
+<li><p>校验和 (Checksum)：sum 的反码。</p></li>
+<li><p>放入分组 (UDP, TCP, IP) 的校验和字段。</p></li>
+</ul>
+<p>接收端：</p>
+<ul>
+<li><p>与发送端相同的算法计算</p></li>
+<li><p>计算得到的 "checksum"</p>
+<ul>
+<li><p>为 16 位全 0（或 sum 为 16 位全 1）——无错</p></li>
+<li><p>否则即为出错</p></li>
+</ul></li>
+</ul>
 <h4 id="循环冗余校验码-crc">循环冗余校验码 (CRC)</h4>
-<p>这个是一个检错能力更强的差错编码，它将数据比特 <span class="math inline">\(D\)</span> 视为一个二进制数，选择一个 <span class="math inline">\(r+1\)</span> 位的比特模式（生成比特模式），<span class="math inline">\(G\)</span>。 （上面那句话的意思其实就是：<span class="math inline">\(G\)</span> 其实有 <span class="math inline">\(r\)</span> 位，<span class="math inline">\(D\)</span> 在其尾部添加 <span class="math inline">\(r-1\)</span> 位 <span class="math inline">\(0\)</span>） 目标是：选择 <span class="math inline">\(r\)</span> 位的 CRC 比特，其中 <span class="math inline">\(R\)</span> 满足： - <span class="math inline">\(&lt;D, R&gt;\)</span>刚好可以被 <span class="math inline">\(G\)</span> 整除（模 2 除法，这一步中做的是异或运算而不是常规的借位除法运算） - 接收端检错：利用 <span class="math inline">\(G\)</span> 除 <span class="math inline">\(&lt;D, R&gt;\)</span>，余式全 0 则没有错否则即为有错 - 可以检测所有突发长度小于 <span class="math inline">\(r+1\)</span> 位差错 广泛应用于实际网络（以太网，802.11 WiFi，ATM）</p>
+<p>这个是一个检错能力更强的差错编码，它将数据比特 <span class="math inline">\(D\)</span> 视为一个二进制数，选择一个 <span class="math inline">\(r+1\)</span> 位的比特模式（生成比特模式），<span class="math inline">\(G\)</span>。</p>
+<p>（上面那句话的意思其实就是：<span class="math inline">\(G\)</span> 其实有 <span class="math inline">\(r\)</span> 位，<span class="math inline">\(D\)</span> 在其尾部添加 <span class="math inline">\(r-1\)</span> 位 <span class="math inline">\(0\)</span>） 目标是：选择 <span class="math inline">\(r\)</span> 位的 CRC 比特，其中 <span class="math inline">\(R\)</span> 满足：</p>
+<ul>
+<li><p><span class="math inline">\(&lt;D, R&gt;\)</span>刚好可以被 <span class="math inline">\(G\)</span> 整除（模 2 除法，这一步中做的是异或运算而不是常规的借位除法运算）</p></li>
+<li><p>接收端检错：利用 <span class="math inline">\(G\)</span> 除 <span class="math inline">\(&lt;D, R&gt;\)</span>，余式全 0 则没有错否则即为有错</p></li>
+<li><p>可以检测所有突发长度小于 <span class="math inline">\(r+1\)</span> 位差错</p></li>
+</ul>
+<p>广泛应用于实际网络（以太网，802.11 WiFi，ATM）</p>
 <h4 id="crc-举例">CRC 举例</h4>
 <figure>
 <img src="/imgs/CompNet/链路层/CRC举例.png" srcset="/img/loading.gif" lazyload alt="CRC 举例" /><figcaption>CRC 举例</figcaption>
 </figure>
 <h4 id="差错纠正">差错纠正</h4>
 <ul>
-<li>前向纠错
+<li><p>前向纠错</p>
 <ul>
 <li>纠错码</li>
 </ul></li>
-<li>检错重发
+<li><p>检错重发</p>
 <ul>
-<li>停-等协议</li>
-<li>滑动窗口协议</li>
+<li><p>停-等协议</p></li>
+<li><p>滑动窗口协议</p></li>
 </ul></li>
-<li>反馈校验</li>
-<li>检错丢弃</li>
-<li>……</li>
+<li><p>反馈校验</p></li>
+<li><p>检错丢弃</p></li>
+<li><p>……</p></li>
 </ul>
 <h3 id="可靠数据传输">可靠数据传输</h3>
-<p><del>这里会讲到好多协议啊</del> #### 一些概念 - 什么是可靠？ - 不错、不丢，不乱、不多 - 可靠数据传输协议 - 可靠数据传输对应用层、传输层、链路层都很重要 - 网络Top-10问题 - 信道的不可靠特性 决定了可靠数据传输协议(rdt)的复杂性</p>
+<p><del>这里会讲到好多协议啊</del></p>
+<h4 id="一些概念">一些概念</h4>
+<ul>
+<li><p>什么是可靠？</p>
+<ul>
+<li>不错、不丢，不乱、不多</li>
+</ul></li>
+<li><p>可靠数据传输协议</p>
+<ul>
+<li><p>可靠数据传输对应用层、传输层、链路层都很重要</p></li>
+<li><p>网络Top-10问题</p></li>
+<li><p>信道的不可靠特性 决定了可靠数据传输协议(rdt)的复杂性</p></li>
+</ul></li>
+</ul>
 <p>Rdt1.0, Rdt2.0, Rdt2.1, Rdt2.2, Rdt3.0</p>
 <h4 id="流水线协议">流水线协议</h4>
-<p>目的是为了提高资源利用率，就是流水线思想！ 允许发送方在收到 ACK 之前连续发送多个分组 - 更大的序列号范围 - 发送方和/或接收方需要更大的存储空间以缓存分组</p>
+<p>目的是为了提高资源利用率，就是流水线思想！</p>
+<p>允许发送方在收到 ACK 之前连续发送多个分组</p>
+<ul>
+<li><p>更大的序列号范围</p></li>
+<li><p>发送方和/或接收方需要更大的存储空间以缓存分组</p></li>
+</ul>
 <h4 id="滑动窗口协议">滑动窗口协议</h4>
 <!-- 留点内容读读书再填 -->
 <ul>
-<li>窗口
+<li><p>窗口</p>
 <ul>
-<li>允许使用的序列号范围</li>
-<li>窗口尺寸为 N：最多有 N 个等待确认的消息</li>
+<li><p>允许使用的序列号范围</p></li>
+<li><p>窗口尺寸为 N：最多有 N 个等待确认的消息</p></li>
 </ul></li>
-<li>滑动窗口
+<li><p>滑动窗口</p>
 <ul>
 <li>随着协议的运行，窗口在序列号空间内向前滑动</li>
 </ul></li>
-<li>滑动窗口协议：GBN, SR</li>
-<li>从概念上看：停止-等待协议、后退 N 帧协议和选择重传协议只是发送、接收窗口的大小有区别：</li>
+<li><p>滑动窗口协议：GBN, SR</p></li>
+<li><p>从概念上看：停止-等待协议、后退 N 帧协议和选择重传协议只是发送、接收窗口的大小有区别：</p></li>
 </ul>
 <table>
 <thead>
@@ -402,40 +514,83 @@
 <li>滑动窗口协议的信道利用率: <span class="math inline">\(U = \dfrac{W_s \times t_{Seg}}{t_{Seg} + RTT + t_{ACK}} \Rightarrow U = \dfrac{W_s \times L/R}{L/R + 2dp + L^{&#39;} / R} \Rightarrow U = \dfrac{W_s \times L}{L + 2dpR + L^{&#39;}}\)</span></li>
 <li>数据链路层的滑动窗口协议中，窗口大小在传输过程是固定的（与传输层的滑动窗口区别）</li>
 </ul>
-<p>滑动窗口和 ARQ - ARQ 协议分等停 ARQ 协议和连续 ARQ 协议，连续 ARQ 协议了采用滑动窗口方法，又分为后退 N 步协议和选择重传协议</p>
+<p>滑动窗口和 ARQ</p>
+<ul>
+<li>ARQ 协议分等停 ARQ 协议和连续 ARQ 协议，连续 ARQ 协议了采用滑动窗口方法，又分为后退 N 步协议和选择重传协议</li>
+</ul>
 <h4 id="go-back-n-gbn-协议">Go-Back-N (GBN) 协议</h4>
 <h5 id="简介">简介</h5>
-<p>在 GBN 中，发送方不需要等收到上一帧的 ACK 后才能开始发送下一帧，它可以直接连续进行帧发送。 - 接收方检测出失序的信息帧后，要求发送方重发<strong>最后一个正确接收的信息帧之后</strong>的所有未被确认的帧 - 发送方发送了 N 个帧后，若发现 N 个帧的前一个帧在计时器超时后仍未返回确认消息，则判定为出错或丢失，此时发送方重传该出错帧及随后的 N 个帧。 - 接收方只允许顺序接受帧。 ##### 描述 - 分组头部包含 k-bit 序列号 - 窗口尺寸为 N，最多允许 N 个分组未确认 - ACK(n): 确认的序列号 n 的分组均已被正确接收 - 累计确认 - 可能收到重复 ACK - 为空中的分组设置计时器 (timer) - 超时 Timeout(n) 事件：重传序列号大于等于 n，还未收到 ACK 的所有分组。</p>
+<p>在 GBN 中，发送方不需要等收到上一帧的 ACK 后才能开始发送下一帧，它可以直接连续进行帧发送。</p>
+<ul>
+<li><p>接收方检测出失序的信息帧后，要求发送方重发<strong>最后一个正确接收的信息帧之后</strong>的所有未被确认的帧</p></li>
+<li><p>发送方发送了 N 个帧后，若发现 N 个帧的前一个帧在计时器超时后仍未返回确认消息，则判定为出错或丢失，此时发送方重传该出错帧及随后的 N 个帧。</p></li>
+<li><p>接收方只允许顺序接受帧。</p></li>
+</ul>
+<h5 id="描述">描述</h5>
+<ul>
+<li><p>分组头部包含 k-bit 序列号</p></li>
+<li><p>窗口尺寸为 N，最多允许 N 个分组未确认</p></li>
+<li><p>ACK(n): 确认的序列号 n 的分组均已被正确接收</p>
+<ul>
+<li><p>累计确认</p></li>
+<li><p>可能收到重复 ACK</p></li>
+</ul></li>
+<li><p>为空中的分组设置计时器 (timer)</p></li>
+<li><p>超时 Timeout(n) 事件：重传序列号大于等于 n，还未收到 ACK 的所有分组。</p></li>
+</ul>
 <!-- ##### 发送方
 ##### 接收方扩展 FSM -->
 <h5 id="示例">示例</h5>
-<p>Q: 数据链路层采用后退 N 帧协议，发送方已经发送了编号为 0~7 的帧。当计时器超时时，若发送方只收到 0、2、3 号帧的确认，则发送方需要重发的帧数是多少？分别是那几个帧？ A: 根据 GBN 协议工作原理，GBN 协议的确认是累积确认，所以此时发送端需要重发的帧数是 4 个，依次分别是 4、5、 6、7 号帧。</p>
+<p>Q: 数据链路层采用后退 N 帧协议，发送方已经发送了编号为 0~7 的帧。当计时器超时时，若发送方只收到 0、2、3 号帧的确认，则发送方需要重发的帧数是多少？分别是那几个帧？</p>
+<p>A: 根据 GBN 协议工作原理，GBN 协议的确认是累积确认，所以此时发送端需要重发的帧数是 4 个，依次分别是 4、5、 6、7 号帧。</p>
 <h4 id="selective-repeat-sr-协议">Selective Repeat (SR) 协议</h4>
 <h5 id="基本信息">基本信息</h5>
-<p>为了进一步提高信道利用率，可以考虑只对出现差错的数据帧或者是超时的数据帧，但是为了能够容纳下发送序号不连续且仍处在接收窗口中的数据帧，需要增大接收窗口。 为了保证接收方向前移动窗口后，新旧窗口的序号没有重叠的部分，需要满足如下条件： <span class="math inline">\(W_R + W_T \le 2^n\)</span></p>
+<p>为了进一步提高信道利用率，可以考虑只对出现差错的数据帧或者是超时的数据帧，但是为了能够容纳下发送序号不连续且仍处在接收窗口中的数据帧，需要增大接收窗口。</p>
+<p>为了保证接收方向前移动窗口后，新旧窗口的序号没有重叠的部分，需要满足如下条件：</p>
+<p><span class="math inline">\(W_R + W_T \le 2^n\)</span></p>
 <ul>
-<li>接收方对每个分组单独进行确认
+<li><p>接收方对每个分组单独进行确认</p>
 <ul>
 <li>设置缓存机制，缓存乱序到达的分组</li>
 </ul></li>
-<li>发送方只重传那些没收到ACK的分组
+<li><p>发送方只重传那些没收到ACK的分组</p>
 <ul>
 <li>为每个分组设置定时器</li>
 </ul></li>
-<li>发送方窗口
+<li><p>发送方窗口</p>
 <ul>
-<li>N个连续的序列号</li>
-<li>限制已发送且未确认的分组数</li>
+<li><p>N个连续的序列号</p></li>
+<li><p>限制已发送且未确认的分组数</p></li>
 </ul></li>
-<li>接收窗口 -
+<li><p>接收窗口 -</p>
 <ul>
 <li>可以接收的无差错到达的分组序号</li>
 </ul></li>
 </ul>
 <h3 id="多路访问控制协议">多路访问控制协议</h3>
 <h4 id="总述">总述</h4>
-<p>多路访问控制 MAC 也是介质访问控制，它需要完成的任务是——使用介质的每个结点隔离来自同一信道上其他结点所传送的信号，以协调活动结点的传输。 假设一些结点共享广播信道，他们互相发生通信，如果不加控制，那么结点间的通信可能会因为互相干扰而失败，而介质访问的任务就是，采取措施，保证不会因为发生干扰而失败。 常见的介质访问控制方法有： - 信道划分 (channel partitioning) - 多路复用技术 - 在一条介质上同时携带多个传输信号来提高传输系统利用率 - 把多个物理信道组合在一条物理信道上 - TDMA, FDMA, CDMA, WDMA... - 随机访问 (random access) - 信道不划分，允许冲突 - 采用冲突“恢复”机制 - 轮询访问 （轮转 “taking turns”） - 结点轮流使用信道 其中信道划分是静态方法，随机和轮询是动态方法。</p>
+<p>多路访问控制 MAC 也是介质访问控制，它需要完成的任务是——使用介质的每个结点隔离来自同一信道上其他结点所传送的信号，以协调活动结点的传输。</p>
+<p>假设一些结点共享广播信道，他们互相发生通信，如果不加控制，那么结点间的通信可能会因为互相干扰而失败，而介质访问的任务就是，采取措施，保证不会因为发生干扰而失败。</p>
+<p>常见的介质访问控制方法有：</p>
 <ul>
+<li>信道划分 (channel partitioning)
+<ul>
+<li>多路复用技术
+<ul>
+<li>在一条介质上同时携带多个传输信号来提高传输系统利用率</li>
+<li>把多个物理信道组合在一条物理信道上</li>
+</ul></li>
+<li>TDMA, FDMA, CDMA, WDMA...</li>
+</ul></li>
+<li>随机访问 (random access)
+<ul>
+<li>信道不划分，允许冲突</li>
+<li>采用冲突“恢复”机制</li>
+</ul></li>
+<li>轮询访问 （轮转 “taking turns”）
+<ul>
+<li>结点轮流使用信道 其中信道划分是静态方法，随机和轮询是动态方法。</li>
+</ul></li>
 <li>多路访问控制协议 (multiple access control protocol)
 <ul>
 <li>采用分布式算法决定结点如何共享信道，即决策结点何时可以传输数据</li>
@@ -447,128 +602,414 @@
 </ul>
 <h4 id="信道划分">信道划分</h4>
 <h5 id="tdma">TDMA</h5>
-<p>TDMA: Time Division Multiple Access - 时分多路复用 将物理信道按时间分成若干的时间片，轮流地分配给多个信号使用。 - “周期性”接入信道 - 每个站点在每个周期，占用固定长度的时隙 (e.g.长度 = 分组传输时间) - 未用时隙空闲 (idle)</p>
+<p>TDMA: Time Division Multiple Access - 时分多路复用</p>
+<p>将物理信道按时间分成若干的时间片，轮流地分配给多个信号使用。</p>
+<ul>
+<li><p>“周期性”接入信道</p></li>
+<li><p>每个站点在每个周期，占用固定长度的时隙 (e.g.长度 = 分组传输时间)</p></li>
+<li><p>未用时隙空闲 (idle)</p></li>
+</ul>
 <h5 id="fdma">FDMA</h5>
-<p>FDMA: Frequency Division Multiple Access - 频分多路复用 将多路基带信号调制到不同频率载波上，再叠加成为一个复合信号的多路复用技术。 - 信道频谱划分为若干频带 (frequency bands) - 每个站点分配一个固定的频带 - 无传输频带空闲</p>
+<p>FDMA: Frequency Division Multiple Access - 频分多路复用</p>
+<p>将多路基带信号调制到不同频率载波上，再叠加成为一个复合信号的多路复用技术。</p>
+<ul>
+<li><p>信道频谱划分为若干频带 (frequency bands)</p></li>
+<li><p>每个站点分配一个固定的频带</p></li>
+<li><p>无传输频带空闲</p></li>
+</ul>
 <h5 id="others">others</h5>
-<p>CDMA 码分：采用不同的编码来区分各路原始信号，即共享频率又共享时间 WDMA 波分：广播的频分多路复用。</p>
+<p>CDMA 码分：采用不同的编码来区分各路原始信号，即共享频率又共享时间</p>
+<p>WDMA 波分：广播的频分多路复用。</p>
 <h4 id="随机访问">随机访问</h4>
-<p>随机访问协议不采用集中控制方式解决发送消息的次序问题，用户根据意愿随机地发送消息，占用信道的全部速率。 为了解决随机接入发生的碰撞，每个用户需要按照一定的规则重传帧，这些规则就是随机访问介质传输协议。 常用的有 ALOHA, CSMA, CSMA/CD, CSMA/CA</p>
+<p>随机访问协议不采用集中控制方式解决发送消息的次序问题，用户根据意愿随机地发送消息，占用信道的全部速率。</p>
+<p>为了解决随机接入发生的碰撞，每个用户需要按照一定的规则重传帧，这些规则就是随机访问介质传输协议。</p>
+<p>常用的有 ALOHA, CSMA, CSMA/CD, CSMA/CA</p>
 <ul>
-<li>当结点要发送分组时：
+<li><p>当结点要发送分组时：</p>
 <ul>
-<li>利用信道全部数据速率R发送分组</li>
-<li>没有事先的结点间协调</li>
+<li><p>利用信道全部数据速率R发送分组</p></li>
+<li><p>没有事先的结点间协调</p></li>
 </ul></li>
-<li>两个或多个结点同时传输：➜ “冲突”</li>
-<li>随机访问MAC协议需要定义:
+<li><p>两个或多个结点同时传输：➜ “冲突”</p></li>
+<li><p>随机访问MAC协议需要定义:</p>
 <ul>
-<li>如何检测冲突</li>
-<li>如何从冲突中恢复 (e.g., 通过延迟重传)</li>
+<li><p>如何检测冲突</p></li>
+<li><p>如何从冲突中恢复 (e.g., 通过延迟重传)</p></li>
 </ul></li>
-<li>典型的随机访问 MAC 协议：
+<li><p>典型的随机访问 MAC 协议：</p>
 <ul>
-<li>时隙(sloted)ALOHA</li>
-<li>ALOHA</li>
-<li>CSMA、CSMA/CD、CSMA/CA</li>
+<li><p>时隙(sloted)ALOHA</p></li>
+<li><p>ALOHA</p></li>
+<li><p>CSMA、CSMA/CD、CSMA/CA</p></li>
 </ul></li>
 </ul>
 <h5 id="aloha">ALOHA</h5>
 <h6 id="纯-aloha">纯 ALOHA</h6>
-<p>思路是：直接发送帧，如果一段时间内未收到确认即认定为发送成功，否则认定为冲突。 如果产生了冲突，说明起码会有两个发送有问题，不能立即重发，所以重传策略为随即等待一段时间再发送。</p>
+<p>思路是：直接发送帧，如果一段时间内未收到确认即认定为发送成功，否则认定为冲突。</p>
+<p>如果产生了冲突，说明起码会有两个发送有问题，不能立即重发，所以重传策略为随即等待一段时间再发送。</p>
 <h6 id="时隙-aloha">时隙 ALOHA</h6>
 <p>由于纯 ALOHA 非常的简单，实际上的网络吞吐量很低，于是改进了时隙 ALOHA 协议。</p>
-<p>假定： - 所有帧大小相同 - 时间被划分为等长的时隙 (每个时隙可以传输1个帧) - 结点只能在时隙开始时刻发送帧 - 结点间时钟同步 - 如果 2 个或 2 个以上结点在同一时隙发送帧，结点即检测到冲突</p>
-<p>运行: - 当结点有新的帧时，在下一个 时隙(slot)发送 - 如果无冲突：该结点可以在下一个时隙继续发送新的帧 - 如果冲突：该结点在下一个时隙以概率p重传该帧，直至成功</p>
-<p>优点: - 单个结点活动时，可以连续以信道全部速率传输数据 - 高度分散化：只需同步时隙 - 简单</p>
-<p>缺点: - 冲突，浪费时隙 - 空闲时隙 - 结点也许能以远小于分组传输时间检测到冲突 - 时钟同步</p>
-<p>效率： - 假设: N 个结点有很多帧待传输，每个结点在每个时隙均以概率p发送数据 - 对于给定的一个结点，在一个时隙将帧发送成功的概率：<span class="math inline">\(p(1-p)^{N-1}\)</span> - 对于任意结点成功发送帧的 概率：<span class="math inline">\(Np(1-p)^{N-1}\)</span> - 最大效率: 求得使 <span class="math inline">\(Np(1-p)^{N-1}\)</span> 最大的 p* - 对于很多结点，求 <span class="math inline">\(Np*(1-p*)^{N-1}\)</span> 当 N 趋近无穷时的极限，可得:最大效率 <span class="math inline">\(1/e = 0.37\)</span> - 最好情况: 信道被成功利用的时间仅占 37%！</p>
-<h5 id="csma">CSMA</h5>
-<p>载波监听多路访问 (carrier sense multiple access) - 发送帧之前，监听信道(载波)： - 信道空闲：发送完整帧 - 信道忙：推迟发送 - 1-坚持 CSMA - 非坚持 CSMA - P-坚持 CSMA - 冲突可能仍然发生：信号传播延迟 |信道状态|1-坚持|非坚持|p-坚持| |-------|------|-----|------| |空闲|立即发送数据|立即发送数据|以概率 <span class="math inline">\(p\)</span> 发送数据，以概率 <span class="math inline">\(1-p\)</span> 推迟到下一时隙| |忙|继续坚持侦听|放弃侦听，等随机时间后再侦听|继续侦听，直至空闲|</p>
-<p>CSMA/CD: CSMA with Collision Detection - 短时间内可以检测到冲突 - 冲突后传输中止，减少信道浪费 “边发边听，不发不听”</p>
-<p>其实总结一下工作流程： “先听后发、边听边发、冲突停发、随机重发”</p>
+<p>假定：</p>
 <ul>
-<li>冲突检测:
+<li><p>所有帧大小相同</p></li>
+<li><p>时间被划分为等长的时隙 (每个时隙可以传输1个帧)</p></li>
+<li><p>结点只能在时隙开始时刻发送帧</p></li>
+<li><p>结点间时钟同步</p></li>
+<li><p>如果 2 个或 2 个以上结点在同一时隙发送帧，结点即检测到冲突</p></li>
+</ul>
+<p>运行:</p>
 <ul>
-<li>有线局域网易于实现：测量信号强度，比较发射信号与接收信号</li>
-<li>无线局域网很难实现：接收信号强度淹没在本地发射信号强度下</li>
+<li><p>当结点有新的帧时，在下一个 时隙(slot)发送</p>
+<ul>
+<li><p>如果无冲突：该结点可以在下一个时隙继续发送新的帧</p></li>
+<li><p>如果冲突：该结点在下一个时隙以概率p重传该帧，直至成功</p></li>
 </ul></li>
 </ul>
-<p>CSMA/CD 效率： <span class="math inline">\(T_{prop}\)</span>: LAN 中 2 个结点间的最大传播延迟 <span class="math inline">\(t_{trans}\)</span>: 最长帧传输延迟 <span class="math inline">\(e = \dfrac{1}{1+5t_{prop}/t_{trans}}\)</span> - <span class="math inline">\(t_{prop} \rightarrow 0\)</span> 或者 <span class="math inline">\(t_{trans} \rightarrow \infty\)</span> 时，效率趋近 1 - 远优于 ALOHA</p>
+<p>优点:</p>
+<ul>
+<li><p>单个结点活动时，可以连续以信道全部速率传输数据</p></li>
+<li><p>高度分散化：只需同步时隙</p></li>
+<li><p>简单</p></li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li><p>冲突，浪费时隙</p></li>
+<li><p>空闲时隙</p></li>
+<li><p>结点也许能以远小于分组传输时间检测到冲突</p></li>
+<li><p>时钟同步</p></li>
+</ul>
+<p>效率：</p>
+<ul>
+<li><p>假设: N 个结点有很多帧待传输，每个结点在每个时隙均以概率p发送数据</p></li>
+<li><p>对于给定的一个结点，在一个时隙将帧发送成功的概率：<span class="math inline">\(p(1-p)^{N-1}\)</span></p></li>
+<li><p>对于任意结点成功发送帧的 概率：<span class="math inline">\(Np(1-p)^{N-1}\)</span></p></li>
+<li><p>最大效率: 求得使 <span class="math inline">\(Np(1-p)^{N-1}\)</span> 最大的 p*</p></li>
+<li><p>对于很多结点，求 <span class="math inline">\(Np*(1-p*)^{N-1}\)</span> 当 N 趋近无穷时的极限，可得:最大效率 <span class="math inline">\(1/e = 0.37\)</span></p></li>
+<li><p>最好情况: 信道被成功利用的时间仅占 37%！</p></li>
+</ul>
+<h5 id="csma">CSMA</h5>
+<p>载波监听多路访问 (carrier sense multiple access)</p>
+<ul>
+<li><p>发送帧之前，监听信道(载波)：</p>
+<ul>
+<li><p>信道空闲：发送完整帧</p></li>
+<li><p>信道忙：推迟发送</p>
+<ul>
+<li><p>1-坚持 CSMA</p></li>
+<li><p>非坚持 CSMA</p></li>
+<li><p>P-坚持 CSMA</p></li>
+</ul></li>
+</ul></li>
+<li><p>冲突可能仍然发生：信号传播延迟</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>信道状态</th>
+<th>1-坚持</th>
+<th>非坚持</th>
+<th>p-坚持</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>空闲</td>
+<td>立即发送数据</td>
+<td>立即发送数据</td>
+<td>以概率 <span class="math inline">\(p\)</span> 发送数据，以概率 <span class="math inline">\(1-p\)</span> 推迟到下一时隙</td>
+</tr>
+<tr class="even">
+<td>忙</td>
+<td>继续坚持侦听</td>
+<td>放弃侦听，等随机时间后再侦听</td>
+<td>继续侦听，直至空闲</td>
+</tr>
+</tbody>
+</table>
+<p>CSMA/CD: CSMA with Collision Detection</p>
+<ul>
+<li><p>短时间内可以检测到冲突</p></li>
+<li><p>冲突后传输中止，减少信道浪费</p></li>
+</ul>
+<p>“边发边听，不发不听”</p>
+<p>其实总结一下工作流程： “先听后发、边听边发、冲突停发、随机重发”</p>
+<ul>
+<li><p>冲突检测:</p>
+<ul>
+<li><p>有线局域网易于实现：测量信号强度，比较发射信号与接收信号</p></li>
+<li><p>无线局域网很难实现：接收信号强度淹没在本地发射信号强度下</p></li>
+</ul></li>
+</ul>
+<p>CSMA/CD 效率：</p>
+<p><span class="math inline">\(T_{prop}\)</span>: LAN 中 2 个结点间的最大传播延迟</p>
+<p><span class="math inline">\(t_{trans}\)</span>: 最长帧传输延迟</p>
+<p><span class="math inline">\(e = \dfrac{1}{1+5t_{prop}/t_{trans}}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(t_{prop} \rightarrow 0\)</span> 或者 <span class="math inline">\(t_{trans} \rightarrow \infty\)</span> 时，效率趋近 1</p></li>
+<li><p>远优于 ALOHA</p></li>
+</ul>
 <h4 id="轮询访问">轮询访问</h4>
-<p>信道划分 MAC 协议： - 网络负载重时，共享信道效率高，且公平 - 网络负载轻时，共享信道效率低！ 随机访问 MAC 协议： - 网络负载轻时，共享信道效率高，单个结点可以利用信道的全部带宽 - 网络负载重时，产生冲突开销</p>
+<p>信道划分 MAC 协议：</p>
+<ul>
+<li><p>网络负载重时，共享信道效率高，且公平</p></li>
+<li><p>网络负载轻时，共享信道效率低！</p></li>
+</ul>
+<p>随机访问 MAC 协议：</p>
+<ul>
+<li><p>网络负载轻时，共享信道效率高，单个结点可以利用信道的全部带宽</p></li>
+<li><p>网络负载重时，产生冲突开销</p></li>
+</ul>
 <p>轮转访问MAC协议： 综合两者的优点！</p>
 <p>轮询：</p>
 <p>令牌传递：</p>
-<p>总结两个轮转访问 MAC 协议：轮询和令牌传递的共同点和不同点？ - 共同点： - 开销 - 等待延迟 - 单点故障 - 无冲突 - 信道预约 + 数据传输 - 不同点： - 轮询：集中式预约（分配）信道 - 令牌：分布式预约信道 能否设计一个新的轮转访问 MAC 协议？</p>
-<p>比特映像介质访问控制协议: - 将时间划分成一系列的预约周期和数据传输周期 - 每个预约周期包括 N 个时隙，每个时隙 1 比特，对应一个站 - 任何一个站想发送数据，必须在它的时隙到来时发一个“1” - 当预约周期结束后，所有站都知道有哪些站希望发送数据，于是 这些预约过的站按编号顺序发送，永不冲突 - 最后一个站发完数据后，开始新一轮的预约周期</p>
+<p>总结两个轮转访问 MAC 协议：轮询和令牌传递的共同点和不同点？</p>
+<ul>
+<li><p>共同点：</p>
+<ul>
+<li><p>开销</p></li>
+<li><p>等待延迟</p></li>
+<li><p>单点故障</p></li>
+<li><p>无冲突</p></li>
+<li><p>信道预约 + 数据传输</p></li>
+</ul></li>
+<li><p>不同点：</p>
+<ul>
+<li><p>轮询：集中式预约（分配）信道</p></li>
+<li><p>令牌：分布式预约信道</p></li>
+</ul></li>
+</ul>
+<p>能否设计一个新的轮转访问 MAC 协议？</p>
+<p>比特映像介质访问控制协议:</p>
+<ul>
+<li><p>将时间划分成一系列的预约周期和数据传输周期</p></li>
+<li><p>每个预约周期包括 N 个时隙，每个时隙 1 比特，对应一个站</p></li>
+<li><p>任何一个站想发送数据，必须在它的时隙到来时发一个“1”</p></li>
+<li><p>当预约周期结束后，所有站都知道有哪些站希望发送数据，于是 这些预约过的站按编号顺序发送，永不冲突</p></li>
+<li><p>最后一个站发完数据后，开始新一轮的预约周期</p></li>
+</ul>
 <h4 id="mac-总结">MAC 总结</h4>
 <ul>
-<li>信道划分 MAC 协议：时间、频带、码片划分
+<li><p>信道划分 MAC 协议：时间、频带、码片划分</p>
 <ul>
 <li>TDMA、FDMA、CDMA</li>
 </ul></li>
-<li>随机访问MAC协议：
+<li><p>随机访问MAC协议：</p>
 <ul>
-<li>ALOHA, S-ALOHA, CSMA, CSMA/CD</li>
-<li>CSMA/CD应用于以太网</li>
-<li>CSMA/CA应用802.11无线局域网</li>
+<li><p>ALOHA, S-ALOHA, CSMA, CSMA/CD</p></li>
+<li><p>CSMA/CD应用于以太网</p></li>
+<li><p>CSMA/CA应用802.11无线局域网</p></li>
 </ul></li>
-<li>轮转访问 MAC 协议：
+<li><p>轮转访问 MAC 协议：</p>
 <ul>
-<li>主结点轮询；令牌传递；比特映像介质访问控制</li>
-<li>蓝牙、FDDI、令牌环网</li>
+<li><p>主结点轮询；令牌传递；比特映像介质访问控制</p></li>
+<li><p>蓝牙、FDDI、令牌环网</p></li>
 </ul></li>
 </ul>
 <h3 id="局域网技术">局域网技术</h3>
 <h4 id="总览-1">总览</h4>
-<p>局域网 (Local Area Nework) 是指在一个较小地理范围内将计算机、外部设备和数据库系统等通过连接介质连接起来的计算机网络。 它能够进行广播和组播，并且互相间是平等的关系。 局域网的拓扑结构： 1. 星形：中心 2. 总线型：单个故障影响小 3. 环形 有几种特殊的局域网拓扑实现： 1. 以太网：逻辑结构总线型，物理拓扑星形或者是拓展星形 2. 令牌环 (Token Ring, IEEE 802.5)：逻辑环形：物理星形 3. FDDI(IEEE 802.8)：逻辑环形，物理双环</p>
+<p>局域网 (Local Area Nework) 是指在一个较小地理范围内将计算机、外部设备和数据库系统等通过连接介质连接起来的计算机网络。</p>
+<p>它能够进行广播和组播，并且互相间是平等的关系。</p>
+<p>局域网的拓扑结构：</p>
+<ol type="1">
+<li><p>星形：中心</p></li>
+<li><p>总线型：单个故障影响小</p></li>
+<li><p>环形</p></li>
+</ol>
+<p>有几种特殊的局域网拓扑实现：</p>
+<ol type="1">
+<li><p>以太网：逻辑结构总线型，物理拓扑星形或者是拓展星形</p></li>
+<li><p>令牌环 (Token Ring, IEEE 802.5)：逻辑环形：物理星形</p></li>
+<li><p>FDDI(IEEE 802.8)：逻辑环形，物理双环</p></li>
+</ol>
 <h4 id="mac-地址">MAC 地址</h4>
-<p>为了满足链路层寻址<strong>唯一</strong>的关键需求，使用了 MAC 地址。 MAC 地址（或者说是 LAN 地址，物理地址，以太网地址）: - 作用：局域网内标识一个帧从哪个接口发出，并且需要到达哪个接口 - 局域网中的每块网卡都有一个唯一的 <strong>MAC 地址</strong> - 48 位 MAC 地址，固化在网卡的 ROM 中，有时也可以软件设置。 - e.g.: 1A-FF-BB-76-09-AD - 广播地址：FF-FF-FF-FF-FF-FF - 由 IEEE 统一管理和分配 - 网卡生产商购买 MAC 地址空间（前 24 比特） - 一个类比： - MAC 地址：身份证号 - IP 地址：邮政地址</p>
-<p>IP 地址： - 32 位 (IPv4) - 接口的网络层地址 - 用于标识网络层（第三层）分组，支持分组转发</p>
-<p>MAC 地址是“平面”地址：➜ 可“携带” - 可以从一个 LAN 移动到另一个 LAN IP 地址是层次地址：➜ 不可“携带” - IP地址依赖于结点连接到哪个子网</p>
+<p>为了满足链路层寻址<strong>唯一</strong>的关键需求，使用了 MAC 地址。</p>
+<p>MAC 地址（或者说是 LAN 地址，物理地址，以太网地址）:</p>
+<ul>
+<li><p>作用：局域网内标识一个帧从哪个接口发出，并且需要到达哪个接口</p></li>
+<li><p>局域网中的每块网卡都有一个唯一的 <strong>MAC 地址</strong></p></li>
+<li><p>48 位 MAC 地址，固化在网卡的 ROM 中，有时也可以软件设置。</p></li>
+<li><p>e.g.: 1A-FF-BB-76-09-AD</p></li>
+<li><p>广播地址：FF-FF-FF-FF-FF-FF</p></li>
+<li><p>由 IEEE 统一管理和分配</p></li>
+<li><p>网卡生产商购买 MAC 地址空间（前 24 比特）</p></li>
+<li><p>一个类比：</p>
+<ul>
+<li><p>MAC 地址：身份证号</p></li>
+<li><p>IP 地址：邮政地址</p></li>
+</ul></li>
+</ul>
+<p>IP 地址：</p>
+<ul>
+<li><p>32 位 (IPv4)</p></li>
+<li><p>接口的网络层地址</p></li>
+<li><p>用于标识网络层（第三层）分组，支持分组转发</p></li>
+</ul>
+<p>MAC 地址是“平面”地址：➜ 可“携带”</p>
+<ul>
+<li>可以从一个 LAN 移动到另一个 LAN</li>
+</ul>
+<p>IP 地址是层次地址：➜ 不可“携带”</p>
+<ul>
+<li>IP地址依赖于结点连接到哪个子网</li>
+</ul>
 <h4 id="以太网">以太网</h4>
 <p>是造价低廉、应用最广泛、比令牌局域网和 ATM 等简单便宜，满足 10 Mbps 到 10 Gbps 速率需求的统治级别的局域网技术。</p>
-<p>以太网的物理拓扑模型： - 总线 (bus): 上世纪 90 年代中期前流行 - 所有结点在同一冲突域 (collision domain) (可能彼此冲突) - 同轴电缆 - 星型 (star): 目前主流网络拓扑 - 中心交换机 (switch) - 每个结点一个单独冲突域（结点间彼此不冲突）</p>
-<p>以太网：不可靠、无连接服务 - 无连接 (connectionless): 发送帧的网卡与接收帧的网卡间没有“握手”过程 - 不可靠 (unreliable): 接收网卡不向发送网卡进行确认 - 差错帧直接丢弃，丢弃帧中的数据恢复依靠高层协议 (e.g., TCP)，否则，发生数据丢失 - 以太网的MAC协议: 采用二进制指数退避算法的 CSMA/CD</p>
-<p>以太网的 CSMA/CD 算法 1. NIC 从网络层接收数据报，创建数据帧。 2. 监听信道：如果 NIC 监听到信道空闲，则开始发送帧；如果 NIC 监听到信道忙，则一直等待到信道空闲，然后发送帧。 3. NIC 发送完整个帧，而没有检测到其他结点的数据发送，则 NIC 确认帧发送成功！ 4. 如果 NIC 检测到其他结点传输数据，则中止发送，并发送堵塞信号 (jam signal) 5. 中止发送后，NIC 进入二进制指数退避： - 第m次连续冲突后： - 取 n = Min(m, 10) - NIC 从 {0,1,2, …, 2n-1} 中随机选择一个数 K - NIC 等待 K·512 比特的传输延迟时间，再返回第 2 步 - 连续冲突次数越多，平均等待时间越长。</p>
-<p>以太网帧结构： <img src="/imgs/CompNet/链路层/以太网帧结构.png" srcset="/img/loading.gif" lazyload alt="以太网帧结构" /> - 前导码 (Preamble)(8B): - 7 个字节的 10101010，第 8 字节为 10101011 - 用于发送端与接收端的时钟同步 - 通常不计入帧长 - 目的 MAC 地址、源 MAC 地址 (各 6B): - 如果网卡的 MAC 地址与收到的帧的目的 MAC 地址匹配，或者帧的目的 MAC 地址为广播地址 (FF-FF-FF-FF-FF-FF)，则网卡接收该帧，并将其封装的网络层分组交给相应的网络层协议。 - 否则，网卡丢弃（不接收）该帧。 - 类型 (Type)(2B): 指示帧中封装的是哪种高层协议的分组 （如，IP 数据报、Novell IPX 数据报、AppleTalk 数据报等） - 数据(Data)(46-1500B): 指上层协议载荷。 - <span class="math inline">\(R = 10 Mbps, RTT_{max} = 512μs, L_{min} / R = RTT_{max}\)</span> - <span class="math inline">\(L_{min} = 512bits=64B, Data_{min} = L_{min}-18=46B\)</span> - CRC(4B): 循环冗余校验码 - 丢弃差错帧</p>
-<p>以太网标准： - 相同的MAC协议和帧格式 - 不同速率: 2 Mbps, 10 Mbps, 100 Mbps, 1 Gbps, 10 Gbps，40Gbps - 不同物理介质: 光纤，线缆 - 100Base-T：快速以太网</p>
+<p>以太网的物理拓扑模型：</p>
+<ul>
+<li><p>总线 (bus): 上世纪 90 年代中期前流行</p>
+<ul>
+<li><p>所有结点在同一冲突域 (collision domain) (可能彼此冲突)</p></li>
+<li><p>同轴电缆</p></li>
+</ul></li>
+<li><p>星型 (star): 目前主流网络拓扑</p>
+<ul>
+<li><p>中心交换机 (switch)</p></li>
+<li><p>每个结点一个单独冲突域（结点间彼此不冲突）</p></li>
+</ul></li>
+</ul>
+<p>以太网：不可靠、无连接服务</p>
+<ul>
+<li><p>无连接 (connectionless): 发送帧的网卡与接收帧的网卡间没有“握手”过程</p></li>
+<li><p>不可靠 (unreliable): 接收网卡不向发送网卡进行确认</p>
+<ul>
+<li>差错帧直接丢弃，丢弃帧中的数据恢复依靠高层协议 (e.g., TCP)，否则，发生数据丢失</li>
+</ul></li>
+<li><p>以太网的MAC协议: 采用二进制指数退避算法的 CSMA/CD</p></li>
+</ul>
+<p>以太网的 CSMA/CD 算法</p>
+<ol type="1">
+<li><p>NIC 从网络层接收数据报，创建数据帧。</p></li>
+<li><p>监听信道：如果 NIC 监听到信道空闲，则开始发送帧；如果 NIC 监听到信道忙，则一直等待到信道空闲，然后发送帧。</p></li>
+<li><p>NIC 发送完整个帧，而没有检测到其他结点的数据发送，则 NIC 确认帧发送成功！</p></li>
+<li><p>如果 NIC 检测到其他结点传输数据，则中止发送，并发送堵塞信号 (jam signal)</p></li>
+<li><p>中止发送后，NIC 进入二进制指数退避：</p>
+<ul>
+<li><p>第m次连续冲突后：</p>
+<ul>
+<li><p>取 n = Min(m, 10)</p></li>
+<li><p>NIC 从 {0,1,2, …, 2n-1} 中随机选择一个数 K</p></li>
+<li><p>NIC 等待 K·512 比特的传输延迟时间，再返回第 2 步</p></li>
+</ul></li>
+<li><p>连续冲突次数越多，平均等待时间越长。</p></li>
+</ul></li>
+</ol>
+<p>以太网帧结构：</p>
+<figure>
+<img src="/imgs/CompNet/链路层/以太网帧结构.png" srcset="/img/loading.gif" lazyload alt="以太网帧结构" /><figcaption>以太网帧结构</figcaption>
+</figure>
+<ul>
+<li><p>前导码 (Preamble)(8B):</p>
+<ul>
+<li><p>7 个字节的 10101010，第 8 字节为 10101011</p></li>
+<li><p>用于发送端与接收端的时钟同步</p></li>
+<li><p>通常不计入帧长</p></li>
+</ul></li>
+<li><p>目的 MAC 地址、源 MAC 地址 (各 6B):</p>
+<ul>
+<li><p>如果网卡的 MAC 地址与收到的帧的目的 MAC 地址匹配，或者帧的目的 MAC 地址为广播地址 (FF-FF-FF-FF-FF-FF)，则网卡接收该帧，并将其封装的网络层分组交给相应的网络层协议。</p></li>
+<li><p>否则，网卡丢弃（不接收）该帧。</p></li>
+</ul></li>
+<li><p>类型 (Type)(2B): 指示帧中封装的是哪种高层协议的分组 （如，IP 数据报、Novell IPX 数据报、AppleTalk 数据报等）</p></li>
+<li><p>数据(Data)(46-1500B): 指上层协议载荷。</p>
+<ul>
+<li><p><span class="math inline">\(R = 10 Mbps, RTT_{max} = 512μs, L_{min} / R = RTT_{max}\)</span></p></li>
+<li><p><span class="math inline">\(L_{min} = 512bits=64B, Data_{min} = L_{min}-18=46B\)</span></p></li>
+</ul></li>
+<li><p>CRC(4B): 循环冗余校验码</p>
+<ul>
+<li>丢弃差错帧</li>
+</ul></li>
+</ul>
+<p>以太网标准：</p>
+<ul>
+<li><p>相同的MAC协议和帧格式</p></li>
+<li><p>不同速率: 2 Mbps, 10 Mbps, 100 Mbps, 1 Gbps, 10 Gbps，40Gbps</p></li>
+<li><p>不同物理介质: 光纤，线缆</p></li>
+<li><p>100Base-T：快速以太网</p></li>
+</ul>
 <p>链路层设备 VS. 物理层设备 |-|集线器 (hub)|交换机 (switche)| 网桥 (bridge)| |-|-----------|----------------|-------------| |层次|1|2|2| |流量（冲突域）隔离|no|yes|yes| |广播域隔离|no|no|no| |即插即用|yes|yes|yes| |优化路由|no|no|no| |直通传输|yes|yes|yes|</p>
 <h3 id="ppp-协议">PPP 协议</h3>
 <h4 id="引入-简介">引入 &amp; 简介</h4>
-<p>首先介绍广域网，是覆盖距离很广的长距离网络。 |-|广域网|局域网| |覆盖范围|广|小| |连接方式|点对点|多点接入| |OSI|物理层、链路层、网络层|物理层、链路层| |强调|资源共享|数据传输|</p>
-<p>*点对点的数据链路控制： - 一个发送端，一个接收端，一条链路：比广播链路容易 - 无需介质访问控制 (Media Access Control) - 无需明确的 MAC 寻址 - e.g., 拨号链路，ISDN 链路 - 常见的点对点数据链路控制协议（广域网）： - HDLC: High Level Data Link Control - <strong>PPP (Point-to-Point Protocol)</strong></p>
+<p>首先介绍广域网，是覆盖距离很广的长距离网络。</p>
+<p>|-|广域网|局域网| |覆盖范围|广|小| |连接方式|点对点|多点接入| |OSI|物理层、链路层、网络层|物理层、链路层| |强调|资源共享|数据传输|</p>
+<p>*点对点的数据链路控制：</p>
 <ul>
-<li>PPP (Point-to-Point Protocol) 协议由 IETF 制定，1994 年成为正式标准 (RFC1661)</li>
-<li>PPP 协议是目前使用最多的数据链路层协议之一</li>
-<li>能够在不同的链路上运行</li>
-<li>能够承载不同的网络层分组</li>
-<li>特点：简单、灵活</li>
+<li><p>一个发送端，一个接收端，一条链路：比广播链路容易</p>
+<ul>
+<li><p>无需介质访问控制 (Media Access Control)</p></li>
+<li><p>无需明确的 MAC 寻址</p></li>
+<li><p>e.g., 拨号链路，ISDN 链路</p></li>
+</ul></li>
+<li><p>常见的点对点数据链路控制协议（广域网）：</p>
+<ul>
+<li><p>HDLC: High Level Data Link Control</p></li>
+<li><p><strong>PPP (Point-to-Point Protocol)</strong></p></li>
+</ul></li>
+<li><p>PPP (Point-to-Point Protocol) 协议由 IETF 制定，1994 年成为正式标准 (RFC1661)</p></li>
+<li><p>PPP 协议是目前使用最多的数据链路层协议之一</p></li>
+<li><p>能够在不同的链路上运行</p></li>
+<li><p>能够承载不同的网络层分组</p></li>
+<li><p>特点：简单、灵活</p></li>
 </ul>
-<p>设计需求： - 组帧：将网络层数据报封装到数据链路层帧中 - 可以同时承载任何网络层协议分组（不仅 IP 数据报） - 可以向上层实现分用（多路分解） - 比特透明传输：数据域必须支持承载任何比特模式 - 异步传输时：字节填充 - 同步传输时：零比特填充 - 差错检测——无纠正 - 连接活性 (connection liveness) 检测：检测、并向网络层 通知链路状态 - 网络层地址协商：端结点可以学习/配置彼此网络地址</p>
+<p>设计需求：</p>
+<ul>
+<li><p>组帧：将网络层数据报封装到数据链路层帧中</p>
+<ul>
+<li><p>可以同时承载任何网络层协议分组（不仅 IP 数据报）</p></li>
+<li><p>可以向上层实现分用（多路分解）</p></li>
+</ul></li>
+<li><p>比特透明传输：数据域必须支持承载任何比特模式</p>
+<ul>
+<li><p>异步传输时：字节填充</p></li>
+<li><p>同步传输时：零比特填充</p></li>
+</ul></li>
+<li><p>差错检测——无纠正</p></li>
+<li><p>连接活性 (connection liveness) 检测：检测、并向网络层 通知链路状态</p></li>
+<li><p>网络层地址协商：端结点可以学习/配置彼此网络地址</p></li>
+</ul>
 <h4 id="ppp-数据帧">PPP 数据帧</h4>
-<p><img src="/imgs/CompNet/链路层/PPP数据帧.png" srcset="/img/loading.gif" lazyload alt="PPP数据帧" /> - 标志 (Flag): 定界符 (delimiter) - 地址 (Address): 无效 (仅仅是一个选项) - 控制 (Control): 无效；未来可能的多种控制域 - 协议 (Protocol): 上层协议 (eg, PPP-LCP, IP, IPCP, etc) - 信息 (info): 上层协议分组数据 - 校验 (check): CRC 校验，用于差错检测</p>
+<figure>
+<img src="/imgs/CompNet/链路层/PPP数据帧.png" srcset="/img/loading.gif" lazyload alt="PPP数据帧" /><figcaption>PPP数据帧</figcaption>
+</figure>
+<ul>
+<li><p>标志 (Flag): 定界符 (delimiter)</p></li>
+<li><p>地址 (Address): 无效 (仅仅是一个选项)</p></li>
+<li><p>控制 (Control): 无效；未来可能的多种控制域</p></li>
+<li><p>协议 (Protocol): 上层协议 (eg, PPP-LCP, IP, IPCP, etc)</p></li>
+<li><p>信息 (info): 上层协议分组数据</p></li>
+<li><p>校验 (check): CRC 校验，用于差错检测</p></li>
+</ul>
 <p>PPP 协议的透明传输和 PPP 数据控制协议具体看 PPT 吧。</p>
 <h4 id="pppoe">PPPoE</h4>
 <ul>
-<li>Ethernet 优点
+<li><p>Ethernet 优点</p>
 <ul>
 <li>原理简单，应用非常广，设备成本低</li>
 </ul></li>
-<li>Ethernet 缺点
+<li><p>Ethernet 缺点</p>
 <ul>
 <li>安全性较低、不宜管理：使用广播信道，造成了安全性较低，无认证功能</li>
 </ul></li>
-<li>PPP优点</li>
-<li>原理简单
+<li><p>PPP优点</p></li>
+<li><p>原理简单</p>
 <ul>
-<li>安全性高：点对点信道，提供认证机制</li>
-<li>提供良好的访问控制和计费功能</li>
+<li><p>安全性高：点对点信道，提供认证机制</p></li>
+<li><p>提供良好的访问控制和计费功能</p></li>
 </ul></li>
 </ul>
-<p>PPPoE(Point-to-Point Protocol over Ethernet) - 提供在<strong>以太网链路上的 PPP 连接</strong> - 实现了传统以太网不能提供的身份验证、加密，以及压缩等功能 - 实现基于用户的访问控制、计费、业务类型分类等，运营商广泛支持 - PPPoE 使用 Client/Server 模型，服务器通常是接入服务器</p>
-<p>PPPoE可分为三个阶段： - Discovery阶段 − 获取对方以太网地址，确定PPPoE会话ID - Session阶段 − PPP协商阶段 − PPP报数数据传输 - Terminate阶段 − 会话建立以后的任意时刻，发送报文结束会话</p>
+<p>PPPoE(Point-to-Point Protocol over Ethernet)</p>
+<ul>
+<li><p>提供在<strong>以太网链路上的 PPP 连接</strong></p></li>
+<li><p>实现了传统以太网不能提供的身份验证、加密，以及压缩等功能</p></li>
+<li><p>实现基于用户的访问控制、计费、业务类型分类等，运营商广泛支持</p></li>
+<li><p>PPPoE 使用 Client/Server 模型，服务器通常是接入服务器</p></li>
+</ul>
+<p>PPPoE可分为三个阶段：</p>
+<ul>
+<li><p>Discovery阶段 − 获取对方以太网地址，确定PPPoE会话ID</p></li>
+<li><p>Session阶段 − PPP协商阶段 − PPP报数数据传输</p></li>
+<li><p>Terminate阶段 − 会话建立以后的任意时刻，发送报文结束会话</p></li>
+</ul>
 <!-- ### 链路虚拟化 -->
 <h2 id="总结">总结</h2>
 <p>其实内容还挺多，应该分成两部分写的。</p>
